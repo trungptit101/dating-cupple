@@ -8,15 +8,16 @@ import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 import {resolve, dirname} from 'node:path'
 
 export default defineConfig({
+    // @import "./src/assets/styles/_variables.scss";
+    // @import "./src/assets/styles/_reset.scss";
+    // @import "./src/assets/styles/_mixins.scss";
+    // @import "./src/assets/styles/_utilities.scss";
+    // @import "./src/assets/styles/_custom.scss";
     css: {
         preprocessorOptions: {
             scss: {
                 additionalData: `
-              @import "./src/assets/styles/_variables.scss";
-              @import "./src/assets/styles/_reset.scss";
-              @import "./src/assets/styles/_mixins.scss";
-              @import "./src/assets/styles/_utilities.scss";
-              @import "./src/assets/styles/_custom.scss";
+              @import "./src/assets/styles/elitecupid-landing.scss";
             `,
             },
         },

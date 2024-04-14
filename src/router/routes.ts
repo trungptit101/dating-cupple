@@ -5,7 +5,7 @@ import { I18nUtils } from '@/utils'
 
 export const routes: RouteRecordRaw[] = [
   {
-    path: '/:locale?',
+    path: '/admin/:locale?',
     component: RouterView,
     beforeEnter: I18nUtils.routeMiddleware,
     children: [
@@ -122,5 +122,13 @@ export const routes: RouteRecordRaw[] = [
         ],
       },
     ],
+  },
+  {
+    path: '',
+    component: () => import('@/views/Client/HomeComponent.vue'),
+  },
+  {
+    path: '/login',
+    component: () => import('@/views/Client/Login.vue'),
   },
 ]

@@ -9,10 +9,10 @@
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "postinstall": "husky install"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.3.1",
     "@intlify/unplugin-vue-i18n": "^0.8.2",
     "@types/jsbarcode": "^3.11.1",
     "@vueup/vue-quill": "^1.1.0",
