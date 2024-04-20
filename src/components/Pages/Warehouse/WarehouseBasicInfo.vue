@@ -143,7 +143,6 @@ const getDetail = async (id: string) => {
     flex: 0 0 200px;
     &__ellipsis {
       word-break: break-word;
-      @include ellipsis(1);
     }
     h3 {
       font-style: normal;

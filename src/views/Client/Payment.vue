@@ -30,19 +30,10 @@
         <div class="flex items-center selected">
           <p>Choose Membership</p>
         </div>
-        <svg class="icon-next-button fill-white opacity-3 mx2">
-          <use
-            xlink:href="/assets/desktop/icons/icons.svg#icon-menuright"
-          ></use>
-        </svg>
+
         <div class="flex items-center opacity-3">
           <p>Personal Details</p>
         </div>
-        <svg class="icon-next-button fill-white opacity-3 mx2">
-          <use
-            xlink:href="/assets/desktop/icons/icons.svg#icon-menuright"
-          ></use>
-        </svg>
         <div class="flex opacity-3 items-center">
           <p>Receipt</p>
         </div>
@@ -55,8 +46,8 @@
           <h1
             class="text-center lg:text-[32px] text-2xl lg:font-light font-normal px-4"
           >
-            Pick Your <span class="bold">Premium Plan</span> and Connect
-            with Elite Singles
+            Pick Your <span class="bold">Premium Plan</span> and Connect with
+            Elite Singles
           </h1>
           <div
             class="flex justify-between lg:max-w-[980px] m-auto lg:mt-10 mt-10"
@@ -425,16 +416,6 @@
                     class="touched"
                   />
                   <div class="icon icon-40 flex-none circle relative diamond">
-                    <svg class="icon-40 absolute circle unchecked">
-                      <use
-                        xlink:href="/assets/desktop/icons/icons.svg#icon-radio-off"
-                      ></use>
-                    </svg>
-                    <svg class="icon-40 absolute circle checked">
-                      <use
-                        xlink:href="/assets/desktop/icons/icons.svg#icon-radio-on"
-                      ></use>
-                    </svg>
                   </div>
                   <div class="ms1">
                     <h3 class="m0 color-medium-grey">3 Months</h3>
@@ -471,16 +452,6 @@
                     class="touched"
                   />
                   <div class="icon icon-40 flex-none circle relative diamond">
-                    <svg class="icon-40 absolute circle unchecked">
-                      <use
-                        xlink:href="/assets/desktop/icons/icons.svg#icon-radio-off"
-                      ></use>
-                    </svg>
-                    <svg class="icon-40 absolute circle checked">
-                      <use
-                        xlink:href="/assets/desktop/icons/icons.svg#icon-radio-on"
-                      ></use>
-                    </svg>
                   </div>
                   <div class="ms1">
                     <h3 class="m0 color-medium-grey">12 Months</h3>
@@ -534,16 +505,6 @@
                   <div
                     class="icon icon-40 flex-none circle relative green upgrade-experiment payment-selector-wrapper"
                   >
-                    <svg class="icon-40 absolute circle unchecked">
-                      <use
-                        xlink:href="/assets/desktop/icons/icons.svg#icon-radio-off"
-                      ></use>
-                    </svg>
-                    <svg class="icon-40 absolute circle checked">
-                      <use
-                        xlink:href="/assets/desktop/icons/icons.svg#icon-radio-on"
-                      ></use>
-                    </svg>
                   </div>
                   <div class="col-3 me2">
                     <div class="ms1 upgrade-experiment payment-variant-text">
@@ -553,21 +514,21 @@
                   </div>
                   <div class="flex items-center col-8 ms2">
                     <div class="bank-logo me1 flex items-center">
-                      <img
+                      <!-- <img
                         src="/assets/images/upgradeMembership/experiment/desktop/1.svg"
-                      />
+                      /> -->
                     </div>
 
                     <div class="bank-logo me1 flex items-center">
-                      <img
+                      <!-- <img
                         src="/assets/images/upgradeMembership/experiment/desktop/2.png"
-                      />
+                      /> -->
                     </div>
 
                     <div class="bank-logo me1 flex items-center">
-                      <img
+                      <!-- <img
                         src="/assets/images/upgradeMembership/experiment/desktop/3.png"
-                      />
+                      /> -->
                     </div>
                   </div>
                 </div>
@@ -581,11 +542,6 @@
                 <div
                   class="upgrade-experiment help-icon-wrapper icon icon-20 flex-none fill-action-unhighlight"
                 >
-                  <svg class="icon-24 absolute circle unchecked">
-                    <use
-                      xlink:href="/assets/desktop/icons/icons.svg#icon-help"
-                    ></use>
-                  </svg>
                 </div>
               </div>
             </div>
@@ -642,18 +598,6 @@
             <div
               class="icon icon-30 relative green pl1 upgrade-experiment sdv-co-reg-checkbox"
             >
-              <svg class="absolute icon-30 left-0 mt1">
-                <use
-                  xmlns:xlink="http://www.w3.org/1999/xlink"
-                  xlink:href="/assets/desktop/icons/icons.svg?v=20240407103928&amp;#icon-checkbox-on"
-                ></use>
-              </svg>
-              <svg class="absolute icon-30 left-0 unchecked mt1">
-                <use
-                  xmlns:xlink="http://www.w3.org/1999/xlink"
-                  xlink:href="/assets/desktop/icons/icons.svg?v=20240407103928&amp;#icon-checkbox-off"
-                ></use>
-              </svg>
             </div>
             <div
               class="mt1 highlight-a relative ms2 upgrade-experiment sdv-co-reg-text"
@@ -704,11 +648,6 @@
       <div id="renew_learnmore" hidden="">
         <div class="modal max-width-2 bg-white rounded p2 fade-in">
           <div class="m2 center">
-            <svg class="icon-116 fill-grey color-action-highlight">
-              <use
-                xlink:href="/assets/desktop/icons/icons.svg#icon-settings"
-              ></use>
-            </svg>
             <h1>Automatic Renewal</h1>
             <p>
               <b>Automatic Renewal - Continuous Service</b><br />

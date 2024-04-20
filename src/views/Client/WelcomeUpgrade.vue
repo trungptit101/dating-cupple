@@ -6,14 +6,6 @@
     <div
       class="calc-header flex items-center justify-center lg:justify-start bg-upgrade"
     >
-      <!-- <svg class="lg:w-[38px] lg:h-8 w-8 h-7 fill-[#D6AD60]">
-        <use xlink:href="/assets/desktop/icons/icons.svg#icon-logoheart"></use>
-      </svg>
-      <svg class="ml-1 w-20 h-8 text-[#D6AD60] fill-[#D6AD60]">
-        <use
-          xlink:href="/assets/desktop/icons/logos/logos.svg#site-logo-elitecupid"
-        ></use>
-      </svg> -->
     </div>
   </div>
   <div id="svelte-questionnaire">
