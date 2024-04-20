@@ -29,7 +29,7 @@
 
       <a
         class="btn-bg btn-color block py1 px2 button relative overflow-hidden rounded shadow ms3 my3"
-        href="auth/login"
+        @click="$router.push({ path: '/login' })"
         title="Login to EliteCupid.com"
       >
         Login
@@ -163,7 +163,10 @@
           <div class="white">3</div>
         </div>
         <div class="icon-156 mx-auto">
-          <img style="margin-top: -10px" src="@/assets/images/comunicating.jpg" />
+          <img
+            style="margin-top: -10px"
+            src="@/assets/images/comunicating.jpg"
+          />
         </div>
         <h3 class="mb1">Start Communicating</h3>
 

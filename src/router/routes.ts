@@ -131,4 +131,8 @@ export const routes: RouteRecordRaw[] = [
     path: '/login',
     component: () => import('@/views/Client/Login.vue'),
   },
+  {
+    path: '/payment/upgrade',
+    component: () => import('@/views/Client/UpgradePayment.vue'),
+  },
 ]
