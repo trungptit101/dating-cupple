@@ -1174,7 +1174,6 @@ onMounted(async () => {
   }
   :deep(.el-form-item__label),
   :deep(.el-form-item__error) {
-    @include ellipsis(1);
   }
   &__ecommerce {
     &__remove {
@@ -1207,7 +1206,6 @@ onMounted(async () => {
       font-size: 20px;
       color: var(--text-primary);
       font-weight: 600;
-      @include ellipsis(1);
     }
     &__remove {
       width: 54px;

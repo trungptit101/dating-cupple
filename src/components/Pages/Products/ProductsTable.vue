@@ -178,7 +178,6 @@ const onDetail = (e: IProductItem) => {
 .tbl {
   &__item {
     &--created-by {
-      @include ellipsis(1);
       &.empty {
         color: var(--text-muted);
         font-style: italic;

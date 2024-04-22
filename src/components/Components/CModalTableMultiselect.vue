@@ -184,7 +184,6 @@ defineExpose({
 <style scoped lang="scss">
 .mdl {
   &__title {
-    @include ellipsis(2);
     color: var(--text-primary);
     font-size: 24px;
     font-weight: 700;

@@ -183,6 +183,5 @@ input[type=number] {
 
 }
 .el-table .cell{
-  @include ellipsis(3);
   word-break: break-word;
 }

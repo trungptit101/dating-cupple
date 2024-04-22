@@ -19,21 +19,9 @@
           <ul dir="ltr">
             <li class="py1 px2 rounded">
               <a class="flex items-center border-none">
-                <div class="flex-none flex item-center">
-                  <svg>
-                    <use
-                      xlink:href="/assets/desktop/icons/icons.svg?v=20240407103928&amp;#icon-globe"
-                    ></use>
-                  </svg>
-                </div>
+                <div class="flex-none flex item-center"></div>
                 English
-                <div class="arrow inline-block">
-                  <svg>
-                    <use
-                      xlink:href="/assets/desktop/icons/icons.svg?v=20240407103928&amp;#icon-menuright"
-                    ></use>
-                  </svg>
-                </div>
+                <div class="arrow inline-block"></div>
               </a>
               <ul class="p0 pt1">
                 <li><a class="p1 block" href="/fr/auth/login">Français</a></li>
@@ -128,41 +116,21 @@
               href="https://www.facebook.com/elitecupid"
               class="fb"
               target="_blank"
-              ><svg class="icon-30 inline-block mx1 fill-white">
-                <title>Facebook</title>
-                <use
-                  xlink:href="/assets/desktop/icons/icons.svg?v=20240407103928&amp;#icon-FB"
-                ></use></svg
             ></a>
             <a
               href="https://www.twitter.com/elitecupid_"
               class="tw"
               target="_blank"
-              ><svg class="icon-30 inline-block mx1 fill-white">
-                <title>Twitter</title>
-                <use
-                  xlink:href="/assets/desktop/icons/icons.svg?v=20240407103928&amp;#icon-twitter"
-                ></use></svg
             ></a>
             <a
               href="https://www.instagram.com/elitecupid/"
               class="insta"
               target="_blank"
-              ><svg class="icon-30 inline-block mx1 fill-white">
-                <title>Instagram</title>
-                <use
-                  xlink:href="/assets/desktop/icons/icons.svg?v=20240407103928&amp;#icon-instagram"
-                ></use></svg
             ></a>
             <a
               href="https://www.youtube.com/channel/UCpHjDYdw9yzsE8L5LhrHc5A"
               class="youtube"
               target="_blank"
-              ><svg class="icon-30 inline-block mx1 fill-white">
-                <title>YouTube</title>
-                <use
-                  xlink:href="/assets/desktop/icons/icons.svg?v=20240407103928&amp;#icon-youTube"
-                ></use></svg
             ></a>
           </div>
         </div>

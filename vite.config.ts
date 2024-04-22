@@ -13,14 +13,15 @@ export default defineConfig({
     // @import "./src/assets/styles/_mixins.scss";
     // @import "./src/assets/styles/_utilities.scss";
     // @import "./src/assets/styles/_custom.scss";
+    base: '/dating-cupple/',
     css: {
-        preprocessorOptions: {
-            scss: {
-                additionalData: `
-              @import "./src/assets/styles/elitecupid-landing.scss";
-            `,
-            },
-        },
+        // preprocessorOptions: {
+        //     scss: {
+        //         additionalData: `
+        //       @import "./src/assets/styles/elitecupid-landing.scss";
+        //     `,
+        //     },
+        // },
     },
     plugins: [
         vue(),

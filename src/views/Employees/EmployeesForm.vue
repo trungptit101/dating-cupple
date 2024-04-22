@@ -445,7 +445,6 @@ const onSubmit = async (formEl: FormInstance | undefined) => {
   }
 
   :deep(.el-form-item__label) {
-    @include ellipsis(1);
   }
 
   &__ecommerce {

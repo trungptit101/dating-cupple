@@ -564,18 +564,10 @@ onMounted(async () => {
     width: 200px;
   }
   &__container {
-    @include tablet {
-      flex-direction: column;
-    }
   }
   &__carousel {
     width: 35%;
     min-width: 35%;
-    @include tablet {
-      width: 100%;
-      min-width: 100%;
-      margin-bottom: 24px;
-    }
   }
   &__content {
     color: var(--text-primary);
@@ -607,33 +599,12 @@ onMounted(async () => {
     }
     &__value {
       line-height: 120%;
-      @include tablet {
-        padding-right: 16px;
-      }
       &--created-by {
         color: var(--text-secondary);
       }
       &__attribute {
         row-gap: 8px;
         column-gap: 24px;
-        @include tablet {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-        &__item {
-          width: calc(50% - 12px);
-          @include tablet {
-            width: 100%;
-          }
-          &__label {
-            @include ellipsis(1);
-            color: var(--text-secondary);
-            line-height: 120%;
-            &--dynamic {
-              color: var(--text-primary);
-            }
-          }
-        }
       }
       &__dynamic__attribute {
         padding-left: 0;

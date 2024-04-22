@@ -150,10 +150,8 @@ const onConfirmDelete = async (id: number) => {
     }
   }
   &__ellipse-3 {
-    @include ellipsis(3);
   }
   &__ellipse-1 {
-    @include ellipsis(1);
   }
 }
 </style>

@@ -1,5 +1,4 @@
 export { default as CBarcode } from './CBarcode.vue'
-export { default as CHeaderAccount } from './CHeaderAccount.vue'
 export { default as CNotification } from './CNotification.vue'
 export { default as CPageContainer } from './CPageContainer.vue'
 export { default as CLanguageSwitcher } from './CLanguageSwitcher.vue'
