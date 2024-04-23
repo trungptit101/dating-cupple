@@ -1,1 +1,0 @@
-const o=(r,t)=>{if(r)return r.toString().replace(/\B(?=(\d{3})+(?!\d))/g,t||".")},i=({address:r,ward:t,district:m,province:e})=>[r?r.trim():"",t?t.trim():"",m?m.trim():"",e?e.trim():""].join(", ").trim();export{o as f,i as g};
