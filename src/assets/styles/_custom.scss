@@ -1,0 +1,187 @@
+:root {
+  --el-color-primary: var(--primary);
+  --el-border-radius-base: 8px;
+  --el-component-size: 40px;
+  --el-font-family: 'Inter', sans-serif;
+  --el-border-color: var(--line-primary);
+
+}
+.el-aside {
+  width: 258px;
+}
+.el-main {
+  padding: 0;
+}
+.el-button {
+  --el-button-active-bg-color: #d56262;
+  height: var(--el-component-size);
+  --el-button-bg-color: var(--line-primary);
+  --el-button-font-weight: 600;
+  --el-button-text-color: var(--text-primary-reverse);
+  font-family: var(--el-font-family);
+  font-size: 14px;
+  i[class^="icon-"] {
+    font-size: 24px;
+  }
+  &+.el-button {
+    margin-left: 8px;
+  }
+  &--primary {
+    --el-button-hover-bg-color: var(--primary);
+    --el-button-bg-color: var(--primary);
+    --el-button-hover-border-color: var(--primary);
+  }
+  &--danger {
+    --el-button-bg-color: var(--danger);
+  }
+  &--info {
+    --el-button-bg-color: var(--info);
+    --el-button-hover-bg-color: rgba(29, 128, 221, 0.7);
+  }
+}
+.el-input {
+  --el-input-placeholder-color: var(--text-muted);
+  --el-input-text-color: var(--text-primary);
+  --el-input-border-radius: 8px;
+  font-size: 14px;
+}
+.el-table {
+  --el-table-header-bg-color: var(--background-secondary) !important;
+  --el-table-header-text-color: var(--text-secondary) !important;
+  --el-table-row-hover-bg-color: var(--primary-8) !important;
+  font-size: 14px !important;
+  .el-table__cell {
+    padding: 12px 0 !important;
+    color: var(--text-primary);
+  }
+  thead {
+    height: 48px;
+    tr {
+      th {
+        font-weight: 600;
+        border-right: 1px solid var(--line-primary) !important;
+        border-bottom: 1px solid var(--line-primary) !important;
+        &:last-child {
+          border-right: none !important;
+        }
+      }
+    }
+  }
+  td.el-table-fixed-column--right {
+    background-color: var(--background-primary) !important;
+  }
+  &__row {
+    &.hover-row {
+      td.el-table-fixed-column--right {
+        background-color: #f3ffed !important;
+      }
+    }
+  }
+}
+.el-pagination {
+  --el-pagination-button-bg-color: var(--background-primary);
+  --el-pagination-border-radius: 6px;
+  --el-pagination-button-color: var(--text-secondary);
+}
+.el-input-group {
+  &__append, &__prepend {
+    background-color: transparent;
+  }
+}
+.el-date-editor {
+  .el-range-input {
+    width: 50%;
+  }
+}
+
+.btn {
+  &__action {
+    &--red {
+      background-color: var(--danger-10);
+      color: var(--danger);
+      margin-right: 8px;
+      border-radius: 6px;
+      width: 30px;
+      height: 30px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    &--blue {
+      background-color: var(--info-10);
+      color: var(--info);
+      margin-right: 8px;
+      border-radius: 6px;
+      width: 30px;
+      height: 30px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    &--yellow {
+      background-color: var(--warning-11);
+      color: var(--warning);
+      border-radius: 6px;
+      width: 30px;
+      height: 30px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    &--gray {
+      background-color: var(--gray-1);
+      color: var(--gray);
+      border-radius: 6px;
+      width: 30px;
+      height: 30px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+  }
+}
+.el-input__wrapper{
+  width: 100%;
+}
+.el-input__inner {
+  min-height: 40px !important;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.carousel__prev {
+  left: -40px !important;
+}
+.carousel__next {
+  right: -40px !important;
+}
+.tabCustom{
+   overflow: hidden;
+  .el-tabs__nav{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .el-tabs__item{
+    height: 50px;
+  }
+  .el-tabs--border-card>.el-tabs__header {
+    border: none;
+    box-shadow: none;
+    .el-tabs__item{
+      padding-top: 5px;
+      border: none;
+      box-shadow: none;
+      flex: 0 0 33%;
+      text-align: center;
+      &.is-active,
+      &:not(.is-disabled):hover{
+        color: var(--text-primary);
+      }
+    }
+  }
+
+}
+.el-table .cell{
+  word-break: break-word;
+}

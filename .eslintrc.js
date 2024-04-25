@@ -1,7 +1,6 @@
 module.exports = {
   root: true,
   parserOptions: {
-    parser: 'babel-eslint',
     sourceType: 'module'
   },
   env: {
@@ -9,7 +8,7 @@ module.exports = {
     node: true,
     es6: true,
   },
-  extends: ['plugin:vue/recommended', 'eslint:recommended'],
+  extends: ['plugin:vue/recommended'],
 
   // add your custom rules here
   //it is base on https://github.com/vuejs/eslint-config-vue
@@ -180,7 +179,7 @@ module.exports = {
       'nonwords': false
     }],
     'spaced-comment': [2, 'always', {
-      'markers': ['global', 'globals', 'eslint', 'eslint-disable', '*package', '!', ',']
+      'markers': ['global', 'globals', '*package', '!', ',']
     }],
     'template-curly-spacing': [2, 'never'],
     'use-isnan': 2,
