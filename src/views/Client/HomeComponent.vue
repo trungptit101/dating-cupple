@@ -3,18 +3,10 @@
     <div
       class="flex justify-between items-center absolute top-0 left-0 col-12 z2"
     >
-      <a
-        href="../index.html"
-        class="flex items-center white text-decoration-none z2 m3"
-      >
-        <svg class="logo-heart site-logo">
-          <use xlink:href="#icon-logoheart" />
-        </svg>
-
-        <svg class="logo-domain mx1">
-          <use xlink:href="#site-logo-elitecupid" />
-        </svg>
-      </a>
+      <img
+        src="@/assets/images/logo.png"
+        style="width: 150px; cursor: pointer"
+      />
 
       <div class="mx3 flex items-center">
         <div class="membernav">
@@ -318,7 +310,7 @@
       </h5>
     </div>
     <el-dialog :visible.sync="isDisplayRegisterServey">
-      <RegisterServey />
+      <RegisterServey @finish="finishRegister" />
     </el-dialog>
   </div>
 </template>
@@ -333,6 +325,10 @@ export default {
     };
   },
   watch: {},
-  methods: {},
+  methods: {
+    finishRegister() {
+      this.isDisplayRegisterServey = false;
+    },
+  },
 };
 </script>

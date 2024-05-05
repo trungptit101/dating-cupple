@@ -6,13 +6,10 @@
         class="absolute top-0 left-0 col-12 z2 flex items-center justify-between"
       >
         <a href="/" class="flex items-center white text-decoration-none m3">
-          <svg class="logo-heart site-logo">
-            <use xlink:href="#icon-logoheart" />
-          </svg>
-
-          <svg class="logo-domain mx1">
-            <use xlink:href="#site-logo-elitecupid" />
-          </svg>
+          <img
+            src="@/assets/images/logo.png"
+            style="width: 150px; cursor: pointer"
+          />
         </a>
 
         <div class="mx3 flex items-center">

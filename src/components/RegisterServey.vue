@@ -1,21 +1,22 @@
 <template>
   <el-form :model="form" ref="ruleFormRef" :rules="rules" label-position="top">
-    <el-form-item label="First Name" prop="firstName">
-      <el-input size="large" v-model="form.firstName"></el-input>
+    <el-form-item label="name" prop="name">
+      <el-input size="large" v-model="form.name"></el-input>
     </el-form-item>
     <el-row>
       <el-col :xs="8" :md="8">
-        <el-form-item label="I'm a" prop="firstName">
+        <el-form-item label="I'm a" prop="gender">
           <div class="gender-group flex">
-            <input type="hidden" name="seek" value="253" />
+            <input type="hidden" name="seek" value="male" />
             <div class="gender-checkbox gender-male flex-none">
               <label for="radio1">
                 <input
                   class="hide touched"
                   type="radio"
                   name="gender"
-                  value="253"
+                  value="male"
                   id="radio1"
+                  v-model="form.gender"
                   data-validate="requireone"
                   data-validate-legend="true"
                   data-gtm-form-interact-field-id="2"
@@ -39,8 +40,9 @@
                   class="hide touched"
                   type="radio"
                   name="gender"
-                  value="254"
+                  value="female"
                   id="radio2"
+                  v-model="form.gender"
                   data-validate="requireone"
                   data-validate-legend="true"
                   data-gtm-form-interact-field-id="0"
@@ -69,8 +71,9 @@
                   class="hide touched"
                   type="radio"
                   name="gender_w"
+                  v-model="form.lookingGender"
                   id="form-registration-gender_w-male"
-                  value="253"
+                  value="male"
                   data-gtm-form-interact-field-id="3"
                 />
                 <div
@@ -92,8 +95,9 @@
                   class="hide touched"
                   type="radio"
                   name="gender_w"
+                  v-model="form.lookingGender"
                   id="form-registration-gender_w-female"
-                  value="254"
+                  value="female"
                   data-gtm-form-interact-field-id="1"
                 />
                 <div
@@ -112,7 +116,7 @@
         </el-form-item>
       </el-col>
       <el-col :xs="8" :md="8">
-        <el-form-item label="Age">
+        <el-form-item label="Age" prop="age">
           <el-select
             v-model="form.age"
             placeholder="Select"
@@ -145,46 +149,51 @@
         show-password
       />
     </el-form-item>
-    <el-form-item class="d-flex" prop="privacy">
-      <el-checkbox v-model="form.privacy" size="large" />
-      <div class="ml1">
-        Yes, I confirm that I am over 18 and agree to the
-        <a href="" target="_blank" class="bold">Terms of Use</a>
-        and
-        <a href="" target="_blank" class="bold">Privacy Statement</a>.
-      </div>
+    <el-form-item class="d-flex privacy-age" prop="privacy">
+      <el-row>
+        <el-col :span="1">
+          <el-checkbox v-model="form.privacy" size="large" />
+        </el-col>
+        <el-col :span="23">
+          Yes, I confirm that I am over 18 and agree to the
+          <a class="bold">Terms of Use</a>
+          and
+          <a class="bold">Privacy Statement</a>.
+        </el-col>
+      </el-row>
     </el-form-item>
     <el-form-item>
       <el-button
-        type="primary"
+        type="warning"
         class="col-12 btn-bg"
         size="large"
+        :loading="loading"
         @click="submitForm('ruleFormRef')"
         >View Singles Now</el-button
       >
     </el-form-item>
   </el-form>
 </template>
-
-
-
 <script>
+import { Message } from "element-ui";
 export default {
   data() {
     return {
+      loading: false,
       form: {
-        firstName: null,
+        name: null,
         age: null,
         email: null,
         password: null,
         privacy: null,
         gender: null,
+        lookingGender: null,
       },
       rules: {
-        firstName: [
+        name: [
           {
             required: true,
-            message: "Please enter your first name",
+            message: "Please enter your name",
             trigger: "blur",
           },
         ],
@@ -233,12 +242,35 @@ export default {
       if (index > 17) this.optionsAge.push({ value: index, lable: index });
     }
   },
-  watch: {},
+  watch: {
+    "form.gender"(val) {
+      if (val == "male") {
+        this.form.lookingGender = "female";
+      } else if (val == "female") {
+        this.form.lookingGender = "male";
+      }
+    },
+  },
   methods: {
     async submitForm(formEl) {
       await this.$refs[formEl].validate((valid, fields) => {
         if (valid) {
-          console.log("submit!");
+          console.log("submit!", this.form);
+          this.loading = true;
+          this.$store
+            .dispatch("user/register", this.form)
+            .then((res) => {
+              Message({
+                message: "Đăng ký thành công",
+                type: "success",
+                duration: 1000,
+              });
+              this.$emit("finish");
+              this.loading = false;
+            })
+            .catch(() => {
+              this.loading = false;
+            });
         } else {
           console.log("error submit!", fields);
         }
@@ -247,3 +279,10 @@ export default {
   },
 };
 </script>
+<style lang="scss">
+.privacy-age {
+  .el-form-item__content {
+    line-height: normal !important;
+  }
+}
+</style>
