@@ -201,7 +201,6 @@ export default {
           this.$store
             .dispatch("user/login", this.form)
             .then((res) => {
-              console.log("alooooo", res);
               Message({
                 message: "Đăng nhập thành công",
                 type: "success",

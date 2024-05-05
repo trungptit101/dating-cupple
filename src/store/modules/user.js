@@ -1,12 +1,11 @@
 import { login, register, logout, getInfo } from "@/api/user";
-import { getToken, setToken, removeToken } from "@/utils/auth";
+import { getToken, setToken, removeToken, setUser } from "@/utils/auth";
 import { resetRouter } from "@/router";
 
 const getDefaultState = () => {
   return {
     token: getToken(),
-    name: "",
-    avatar: "",
+    user: {},
   };
 };
 
@@ -25,6 +24,9 @@ const mutations = {
   SET_AVATAR: (state, avatar) => {
     state.avatar = avatar;
   },
+  SET_USER: (state, user) => {
+    state.user = user;
+  },
 };
 
 const actions = {
@@ -36,6 +38,8 @@ const actions = {
         .then((response) => {
           commit("SET_TOKEN", response.access_token);
           setToken(response.access_token);
+          setUser(response.user);
+          commit("SET_USER", response.user);
           resolve(response);
         })
         .catch((error) => {
@@ -50,6 +54,7 @@ const actions = {
         .then((response) => {
           commit("SET_TOKEN", response.access_token);
           setToken(response.access_token);
+          commit("SET_USER", response.user);
           resolve(response);
         })
         .catch((error) => {

@@ -22,10 +22,19 @@
 
         <a
           class="btn-bg btn-color block py1 px2 button relative overflow-hidden rounded shadow ms3 my3"
-          title="Login to EliteCupid.com"
+          title="Login"
           @click="$router.push({ name: 'login' })"
+          v-if="user.email"
         >
           Login
+        </a>
+        <a
+          class="btn-bg btn-color block py1 px2 button relative overflow-hidden rounded shadow ms3 my3"
+          title="Logout"
+          v-else
+          @click="logout"
+        >
+          Logout
         </a>
       </div>
     </div>
@@ -325,10 +334,16 @@ export default {
     };
   },
   watch: {},
+  computed: {
+    user() {
+      return this.$store.state.user.user;
+    },
+  },
   methods: {
     finishRegister() {
       this.isDisplayRegisterServey = false;
     },
+    logout() {},
   },
 };
 </script>
