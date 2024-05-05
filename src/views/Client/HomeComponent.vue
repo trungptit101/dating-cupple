@@ -182,6 +182,12 @@
     <div class="footer py3 px4">
       <div class="clearfix">
         <div class="col col-2">
+          <div class="h3 mt2 mb1 color-dark-grey">Jenny Official</div>
+          <a class="block">Address: S271032</a>
+          <a class="block">UEN: 53484643B</a>
+          <a class="block">Phone Number: +65 98881336</a>
+        </div>
+        <div class="col col-2">
           <div class="h3 mt2 mb1 color-dark-grey">Company</div>
           <a
             class="block"
@@ -311,7 +317,6 @@
         Holdings Pty Ltd and used with permission by Cupid Media Pty Ltd.
       </h5>
     </div>
-    {{ isDisplayRegisterServey }}
     <el-dialog :visible.sync="isDisplayRegisterServey">
       <RegisterServey />
     </el-dialog>
@@ -319,12 +324,12 @@
 </template>
 
 <script>
-import RegisterServey from '@/components/RegisterServey.vue'
+import RegisterServey from "@/components/RegisterServey.vue";
 export default {
   components: { RegisterServey },
   data() {
     return {
-      isDisplayRegisterServey: false
+      isDisplayRegisterServey: false,
     };
   },
   watch: {},

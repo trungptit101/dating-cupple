@@ -24,39 +24,7 @@
                   English
                   <div class="arrow inline-block" />
                 </a>
-                <ul class="p0 pt1">
-                  <!-- <li>
-                    <a class="p1 block" href="/fr/auth/login">Français</a>
-                  </li>
-
-                  <li><a class="p1 block" href="/es/auth/login">Español</a></li>
-
-                  <li><a class="p1 block" href="/ar/auth/login">العربية</a></li>
-
-                  <li><a class="p1 block" href="/no/auth/login">Norsk</a></li>
-
-                  <li><a class="p1 block" href="/sv/auth/login">Svenska</a></li>
-
-                  <li><a class="p1 block" href="/ja/auth/login">日本語</a></li>
-
-                  <li>
-                    <a class="p1 block" href="/nl/auth/login">Nederlands</a>
-                  </li>
-
-                  <li><a class="p1 block" href="/de/auth/login">Deutsch</a></li>
-
-                  <li>
-                    <a class="p1 block" href="/it/auth/login">Italiano</a>
-                  </li>
-
-                  <li>
-                    <a
-                      class="p1 block"
-                      style="border: 0"
-                      href="/fi/auth/login"
-                    >Suomi</a>
-                  </li> -->
-                </ul>
+                <ul class="p0 pt1"></ul>
               </li>
             </ul>
           </div>
@@ -71,7 +39,7 @@
           <h1 class="center" style="font-size: 34px">Members Login</h1>
           <div class="loginform">
             <el-form
-              ref="ruleFormRef"
+              ref="loginForm"
               :model="form"
               :rules="rules"
               label-position="top"
@@ -116,6 +84,7 @@
             class="h3 rounded py1 px2 btn-color btn-bg border-none col-12 relative overflow-hidden shadow"
             tabindex="3"
             data-disable-on-click="true"
+            @click="login"
           >
             Login
           </button>
@@ -200,12 +169,13 @@
 </template>
 
 <script>
+import { Message } from "element-ui";
 export default {
   data() {
     return {
       form: {
-        email: null,
-        password: null,
+        email: "trungptit7@gmail.com",
+        password: "123456",
       },
       rules: {
         email: [
@@ -226,7 +196,33 @@ export default {
     };
   },
   watch: {},
-  methods: {},
+  methods: {
+    login() {
+      this.$refs.loginForm.validate((valid) => {
+        if (valid) {
+          this.loading = true;
+          this.$store
+            .dispatch("user/login", this.form)
+            .then((res) => {
+              console.log("alooooo", res);
+              Message({
+                message: "Đăng nhập thành công",
+                type: "success",
+                duration: 1000,
+              });
+              this.$router.push({ path: this.redirect || "/" });
+              this.loading = false;
+            })
+            .catch(() => {
+              this.loading = false;
+            });
+        } else {
+          console.log("error submit!!");
+          return false;
+        }
+      });
+    },
+  },
 };
 </script>
 <style lang="scss">
