@@ -24,7 +24,7 @@
           class="btn-bg btn-color block py1 px2 button relative overflow-hidden rounded shadow ms3 my3"
           title="Login"
           @click="$router.push({ name: 'login' })"
-          v-if="user.email"
+          v-if="!user.email"
         >
           Login
         </a>
@@ -326,6 +326,7 @@
 
 <script>
 import RegisterServey from "@/components/RegisterServey.vue";
+import { clearCookie } from "@/utils/auth";
 export default {
   components: { RegisterServey },
   data() {
@@ -343,7 +344,10 @@ export default {
     finishRegister() {
       this.isDisplayRegisterServey = false;
     },
-    logout() {},
+    logout() {
+      clearCookie();
+      this.$router.push({ path: "/login" });
+    },
   },
 };
 </script>
