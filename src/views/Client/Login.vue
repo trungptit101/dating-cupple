@@ -76,15 +76,14 @@
             >
           </p>
 
-          <button
+          <el-button
             type="submit"
             class="h3 rounded py1 px2 btn-color btn-bg border-none col-12 relative overflow-hidden shadow"
-            tabindex="3"
-            data-disable-on-click="true"
+            :loading="loading"
             @click="login"
           >
             Login
-          </button>
+          </el-button>
 
           <div class="mt2 white">
             <p class="center m0 mb1">Help spread the word about EliteCupid!</p>
@@ -170,6 +169,7 @@ import { Message } from "element-ui";
 export default {
   data() {
     return {
+      loading: false,
       form: {
         email: "trungptit7@gmail.com",
         password: "123456",
