@@ -1,29 +1,27 @@
 import Cookies from "js-cookie";
 
-const TokenKey = "vue_admin_template_token";
+const TokenKey = "token";
 
 export function getToken() {
-  return Cookies.get(TokenKey);
+  return localStorage.getItem(TokenKey);
 }
 
 export function setToken(token) {
-  return Cookies.set(TokenKey, token);
+  return localStorage.setItem(TokenKey, token);
 }
 
 export function setUser(user) {
-  return Cookies.set("user", user);
+  return localStorage.setItem("user", JSON.stringify(user));
 }
 
-export function getUser(user) {
-  return Cookies.get("user", user);
+export function getUser() {
+  return localStorage.getItem("user");
 }
 
 export function removeToken() {
-  return Cookies.remove(TokenKey);
+  return localStorage.remove(TokenKey);
 }
 
-export function clearCookie() {
-  Object.keys(Cookies.get()).forEach((key) => {
-    Cookies.remove(key);
-  });
+export function clearStoreage() {
+  localStorage.clear();
 }

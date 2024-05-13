@@ -1,7 +1,7 @@
 import axios from "axios";
 import { MessageBox, Message } from "element-ui";
 import store from "@/store";
-import { getToken, clearCookie } from "@/utils/auth";
+import { getToken, clearStoreage } from "@/utils/auth";
 
 // create an axios instance
 const service = axios.create({
@@ -45,7 +45,7 @@ service.interceptors.response.use(
   },
   (error) => {
     if (error.response.status == 401) {
-      clearCookie();
+      clearStoreage();
       window.location("/");
       return;
     }

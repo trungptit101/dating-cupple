@@ -43,7 +43,7 @@
         <div class="p0 intro">
           <div class="intro-text center reveal">
             <h1 class="h1 white relative m0 mb1 line-height-3 max-width-3">
-              Meet Elite Singlessss
+              Meet Elite Singles
             </h1>
             <h2 class="h2 white relative my2 line-height-4 max-width-2 mx-auto">
               For people that value their career and time. Date like-minded
@@ -51,6 +51,7 @@
             </h2>
             <div
               class="intro-join mt1 center flex items-start justify-center col-12 mx-auto reveal"
+              v-if="!user.email"
             >
               <a class="header-color" @click="isDisplayRegisterServey = true">
                 <h3
@@ -326,7 +327,7 @@
 
 <script>
 import RegisterServey from "@/components/RegisterServey.vue";
-import { clearCookie } from "@/utils/auth";
+import { clearStoreage } from "@/utils/auth";
 export default {
   components: { RegisterServey },
   data() {
@@ -345,7 +346,7 @@ export default {
       this.isDisplayRegisterServey = false;
     },
     logout() {
-      clearCookie();
+      clearStoreage();
       this.$router.push({ path: "/login" });
     },
   },

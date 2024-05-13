@@ -63,14 +63,8 @@
                 >
               </div>
             </el-form>
-            <div class="h3 center mt3 link-color">
-              Not a member?
-              <a href="/en/registration/showstep1"
-                ><strong>Join Now!</strong></a
-              >
-            </div>
           </div>
-          <p class="p0 mt0 mb3">
+          <p class="p0 mt2 mb3">
             <em
               >Don't check this box if you're at a public or shared computer</em
             >
@@ -84,6 +78,12 @@
           >
             Login
           </el-button>
+          <div class="h3 center mt3 link-color">
+            Not a member?
+            <a @click="$router.push({ path: '/' })"
+              ><strong>Join Now!</strong></a
+            >
+          </div>
 
           <div class="mt2 white">
             <p class="center m0 mb1">Help spread the word about EliteCupid!</p>
@@ -171,8 +171,8 @@ export default {
     return {
       loading: false,
       form: {
-        email: "trungptit7@gmail.com",
-        password: "123456",
+        email: "",
+        password: "",
       },
       rules: {
         email: [
