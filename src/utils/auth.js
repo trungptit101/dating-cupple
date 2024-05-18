@@ -19,7 +19,7 @@ export function getUser() {
 }
 
 export function removeToken() {
-  return localStorage.remove(TokenKey);
+  return localStorage.clear();
 }
 
 export function clearStoreage() {

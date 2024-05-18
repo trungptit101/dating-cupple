@@ -4,3 +4,8 @@ export const QuestionType = {
   BreakScreen: 3,
   EnterOption: 4,
 };
+
+export const UserRole = {
+  Admin: 1,
+  Candidate: 0,
+};

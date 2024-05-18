@@ -1,45 +1,12 @@
 <template>
   <div>
-    <div class="header flex items-center justify-between" role="menu">
-      <div class="flex-auto">
-        <a
-          data-headersitelogo=""
-          href="/en/home/showMenu"
-          class="flex items-center white text-decoration-none z2 ms2"
-          aria-label="Home"
-        >
-          <svg class="logo-heart site-logo">
-            <use xlink:href="#icon-logoheart" />
-          </svg>
-
-          <svg class="logo-domain mx1 hide-on-iPad">
-            <use xlink:href="#site-logo-elitecupid" />
-          </svg>
-        </a>
-      </div>
-    </div>
     <form
       id="upgradeForm"
       name="upgradeForm"
       method="post"
-      action="https://www.EliteCupid.com/en/payment/order"
       novalidate=""
       data-form-show-spinner="true"
     >
-      <div class="header-strip height-auto px2 pt2 flex justify-center">
-        <div class="max-width my1 mx-auto flex items-center justify-center">
-          <div class="flex items-center selected">
-            <p>Choose Membership</p>
-          </div>
-          <div class="flex items-center opacity-3">
-            <p>Personal Details</p>
-          </div>
-          <div class="flex opacity-3 items-center">
-            <p>Receipt</p>
-          </div>
-        </div>
-      </div>
-
       <div class="tailwind" style="animation: fade-in 1s">
         <div id="upgrade-page-experimental">
           <div class="bg-white lg:bg-[#F8F8F8] lg:pt-16 pt-8">
@@ -62,31 +29,30 @@
                         class="rounded-2xl border lg:p-[54px] lg:pb-10 pt-3.5 pb-3 p- w-full lg:bg-white border-transparent bg-[#FFFDF8] svelte-13k5u6r"
                       >
                         <div class="hidden lg:block absolute top-5 right-5">
-                          <label
-                            class="text-[#323232]"
-                          ><div
-                             role="button"
-                             tabindex="0"
-                             aria-label="radio"
-                             class="w-6 h-6 transition-all bg-white rounded-full border-2 p-[3px] border-[#D6AD60] h-8 w-8 border-[3px] !p-1 border-[#797C7E]"
-                           >
-                             <div
-                               class="checked w-full transition-all h-full rounded-full bg-[#D6AD60]"
-                             />
-                           </div>
+                          <label class="text-[#323232]"
+                            ><div
+                              role="button"
+                              tabindex="0"
+                              aria-label="radio"
+                              class="w-6 h-6 transition-all bg-white rounded-full border-2 p-[3px] border-[#D6AD60] h-8 w-8 border-[3px] !p-1 border-[#797C7E]"
+                            >
+                              <div
+                                class="checked w-full transition-all h-full rounded-full bg-[#D6AD60]"
+                              />
+                            </div>
                             <input
                               type="radio"
                               name="light"
                               class="sr-only peer"
-                            ></label>
+                          /></label>
                         </div>
                         <h2
                           class="lg:mb-6 mb-3 lg:text-2xl text-xl font-normal text-[#323232] svelte-13k5u6r"
                         >
-                          Diamond <br class="lg:hidden">
-                          <span
-                            class="bold text-[#232E4D] svelte-13k5u6r"
-                          >LIGHT</span>
+                          Diamond <br class="lg:hidden" />
+                          <span class="bold text-[#232E4D] svelte-13k5u6r"
+                            >LIGHT</span
+                          >
                         </h2>
                         <p
                           class="text-[#323232] lg:text-xl text-base font-normal lg:mb-6 svelte-13k5u6r"
@@ -116,9 +82,9 @@
                                   d="M18.7796 7.17795L9.18124 16.7763C8.76392 17.1936 8.22141 17.4127 7.64759 17.4127C7.07378 17.4127 6.53126 17.1936 6.11395 16.7763L1.22088 11.8832C0.803565 11.4659 0.584473 10.9234 0.584473 10.3496C0.584473 9.77575 0.803565 9.23324 1.22088 8.81592C1.6382 8.3986 2.18072 8.17951 2.75453 8.17951C3.32834 8.17951 3.87086 8.3986 4.28818 8.81592L7.65803 12.1858L15.7331 4.11065C16.1505 3.69334 16.693 3.47424 17.2668 3.47424C17.8406 3.47424 18.3831 3.69334 18.8004 4.11065C19.6142 4.97659 19.6142 6.34331 18.7796 7.17795Z"
                                 />
                               </svg>
-                              <span
-                                class="font-normal ml-3 text-[#505656]"
-                              >Unlimited communications</span>
+                              <span class="font-normal ml-3 text-[#505656]"
+                                >Unlimited communications</span
+                              >
                             </li>
                             <li
                               class="flex items-center font-normal text-base mb-2"
@@ -128,9 +94,9 @@
                                   d="M18.7796 7.17795L9.18124 16.7763C8.76392 17.1936 8.22141 17.4127 7.64759 17.4127C7.07378 17.4127 6.53126 17.1936 6.11395 16.7763L1.22088 11.8832C0.803565 11.4659 0.584473 10.9234 0.584473 10.3496C0.584473 9.77575 0.803565 9.23324 1.22088 8.81592C1.6382 8.3986 2.18072 8.17951 2.75453 8.17951C3.32834 8.17951 3.87086 8.3986 4.28818 8.81592L7.65803 12.1858L15.7331 4.11065C16.1505 3.69334 16.693 3.47424 17.2668 3.47424C17.8406 3.47424 18.3831 3.69334 18.8004 4.11065C19.6142 4.97659 19.6142 6.34331 18.7796 7.17795Z"
                                 />
                               </svg>
-                              <span
-                                class="font-normal ml-3 text-[#505656]"
-                              >Advanced matching algorithms</span>
+                              <span class="font-normal ml-3 text-[#505656]"
+                                >Advanced matching algorithms</span
+                              >
                             </li>
                             <li
                               class="flex items-center font-normal text-base mb-2"
@@ -140,9 +106,9 @@
                                   d="M18.7796 7.17795L9.18124 16.7763C8.76392 17.1936 8.22141 17.4127 7.64759 17.4127C7.07378 17.4127 6.53126 17.1936 6.11395 16.7763L1.22088 11.8832C0.803565 11.4659 0.584473 10.9234 0.584473 10.3496C0.584473 9.77575 0.803565 9.23324 1.22088 8.81592C1.6382 8.3986 2.18072 8.17951 2.75453 8.17951C3.32834 8.17951 3.87086 8.3986 4.28818 8.81592L7.65803 12.1858L15.7331 4.11065C16.1505 3.69334 16.693 3.47424 17.2668 3.47424C17.8406 3.47424 18.3831 3.69334 18.8004 4.11065C19.6142 4.97659 19.6142 6.34331 18.7796 7.17795Z"
                                 />
                               </svg>
-                              <span
-                                class="font-normal ml-3 text-[#505656]"
-                              >Ads-free experience</span>
+                              <span class="font-normal ml-3 text-[#505656]"
+                                >Ads-free experience</span
+                              >
                             </li>
                             <li
                               class="flex items-center font-normal text-base mb-2"
@@ -152,9 +118,9 @@
                                   d="M18.7796 7.17795L9.18124 16.7763C8.76392 17.1936 8.22141 17.4127 7.64759 17.4127C7.07378 17.4127 6.53126 17.1936 6.11395 16.7763L1.22088 11.8832C0.803565 11.4659 0.584473 10.9234 0.584473 10.3496C0.584473 9.77575 0.803565 9.23324 1.22088 8.81592C1.6382 8.3986 2.18072 8.17951 2.75453 8.17951C3.32834 8.17951 3.87086 8.3986 4.28818 8.81592L7.65803 12.1858L15.7331 4.11065C16.1505 3.69334 16.693 3.47424 17.2668 3.47424C17.8406 3.47424 18.3831 3.69334 18.8004 4.11065C19.6142 4.97659 19.6142 6.34331 18.7796 7.17795Z"
                                 />
                               </svg>
-                              <span
-                                class="font-normal ml-3 text-[#505656]"
-                              >Anonymous browsing</span>
+                              <span class="font-normal ml-3 text-[#505656]"
+                                >Anonymous browsing</span
+                              >
                             </li>
                             <li
                               class="flex items-center font-normal text-base mb-2"
@@ -164,9 +130,9 @@
                                   d="M18.7796 7.17795L9.18124 16.7763C8.76392 17.1936 8.22141 17.4127 7.64759 17.4127C7.07378 17.4127 6.53126 17.1936 6.11395 16.7763L1.22088 11.8832C0.803565 11.4659 0.584473 10.9234 0.584473 10.3496C0.584473 9.77575 0.803565 9.23324 1.22088 8.81592C1.6382 8.3986 2.18072 8.17951 2.75453 8.17951C3.32834 8.17951 3.87086 8.3986 4.28818 8.81592L7.65803 12.1858L15.7331 4.11065C16.1505 3.69334 16.693 3.47424 17.2668 3.47424C17.8406 3.47424 18.3831 3.69334 18.8004 4.11065C19.6142 4.97659 19.6142 6.34331 18.7796 7.17795Z"
                                 />
                               </svg>
-                              <span
-                                class="font-normal ml-3 text-[#505656]"
-                              >Instant messages translation</span>
+                              <span class="font-normal ml-3 text-[#505656]"
+                                >Instant messages translation</span
+                              >
                             </li>
                             <li
                               class="flex items-center font-normal text-base mb-2"
@@ -176,9 +142,9 @@
                                   d="M18.7796 7.17795L9.18124 16.7763C8.76392 17.1936 8.22141 17.4127 7.64759 17.4127C7.07378 17.4127 6.53126 17.1936 6.11395 16.7763L1.22088 11.8832C0.803565 11.4659 0.584473 10.9234 0.584473 10.3496C0.584473 9.77575 0.803565 9.23324 1.22088 8.81592C1.6382 8.3986 2.18072 8.17951 2.75453 8.17951C3.32834 8.17951 3.87086 8.3986 4.28818 8.81592L7.65803 12.1858L15.7331 4.11065C16.1505 3.69334 16.693 3.47424 17.2668 3.47424C17.8406 3.47424 18.3831 3.69334 18.8004 4.11065C19.6142 4.97659 19.6142 6.34331 18.7796 7.17795Z"
                                 />
                               </svg>
-                              <span
-                                class="font-normal ml-3 text-[#505656]"
-                              >Ranking above other members</span>
+                              <span class="font-normal ml-3 text-[#505656]"
+                                >Ranking above other members</span
+                              >
                             </li>
                             <li
                               class="flex items-center font-normal text-base mb-2"
@@ -188,9 +154,9 @@
                                   d="M18.7796 7.17795L9.18124 16.7763C8.76392 17.1936 8.22141 17.4127 7.64759 17.4127C7.07378 17.4127 6.53126 17.1936 6.11395 16.7763L1.22088 11.8832C0.803565 11.4659 0.584473 10.9234 0.584473 10.3496C0.584473 9.77575 0.803565 9.23324 1.22088 8.81592C1.6382 8.3986 2.18072 8.17951 2.75453 8.17951C3.32834 8.17951 3.87086 8.3986 4.28818 8.81592L7.65803 12.1858L15.7331 4.11065C16.1505 3.69334 16.693 3.47424 17.2668 3.47424C17.8406 3.47424 18.3831 3.69334 18.8004 4.11065C19.6142 4.97659 19.6142 6.34331 18.7796 7.17795Z"
                                 />
                               </svg>
-                              <span
-                                class="font-normal ml-3 text-[#505656]"
-                              >Exclusive search filters</span>
+                              <span class="font-normal ml-3 text-[#505656]"
+                                >Exclusive search filters</span
+                              >
                             </li>
                             <li
                               class="flex items-center font-normal text-base mb-2"
@@ -200,9 +166,9 @@
                                   d="M18.7796 7.17795L9.18124 16.7763C8.76392 17.1936 8.22141 17.4127 7.64759 17.4127C7.07378 17.4127 6.53126 17.1936 6.11395 16.7763L1.22088 11.8832C0.803565 11.4659 0.584473 10.9234 0.584473 10.3496C0.584473 9.77575 0.803565 9.23324 1.22088 8.81592C1.6382 8.3986 2.18072 8.17951 2.75453 8.17951C3.32834 8.17951 3.87086 8.3986 4.28818 8.81592L7.65803 12.1858L15.7331 4.11065C16.1505 3.69334 16.693 3.47424 17.2668 3.47424C17.8406 3.47424 18.3831 3.69334 18.8004 4.11065C19.6142 4.97659 19.6142 6.34331 18.7796 7.17795Z"
                                 />
                               </svg>
-                              <span
-                                class="font-normal ml-3 text-[#505656]"
-                              >Premium customer support</span>
+                              <span class="font-normal ml-3 text-[#505656]"
+                                >Premium customer support</span
+                              >
                             </li>
                           </ul>
                         </div>
@@ -220,31 +186,30 @@
                           Recommended
                         </div>
                         <div class="hidden lg:block absolute top-5 right-5">
-                          <label
-                            class="text-[#323232]"
-                          ><div
-                             role="button"
-                             tabindex="0"
-                             aria-label="radio"
-                             class="w-6 h-6 transition-all bg-white rounded-full border-2 p-[3px] border-[#313B59] h-8 w-8 border-[3px] !p-1 border-[#797C7E]"
-                           >
-                             <div
-                               class="checked w-full transition-all h-full rounded-full bg-transparent"
-                             />
-                           </div>
+                          <label class="text-[#323232]"
+                            ><div
+                              role="button"
+                              tabindex="0"
+                              aria-label="radio"
+                              class="w-6 h-6 transition-all bg-white rounded-full border-2 p-[3px] border-[#313B59] h-8 w-8 border-[3px] !p-1 border-[#797C7E]"
+                            >
+                              <div
+                                class="checked w-full transition-all h-full rounded-full bg-transparent"
+                              />
+                            </div>
                             <input
                               type="radio"
                               name="extra"
                               class="sr-only peer"
-                            ></label>
+                          /></label>
                         </div>
                         <h2
                           class="lg:mb-6 mb-3 lg:text-2xl text-xl font-normal text-[#797C7E] svelte-13k5u6r"
                         >
-                          Diamond <br class="lg:hidden">
-                          <span
-                            class="bold text-[#505656] svelte-13k5u6r"
-                          >EXTRA</span>
+                          Diamond <br class="lg:hidden" />
+                          <span class="bold text-[#505656] svelte-13k5u6r"
+                            >EXTRA</span
+                          >
                         </h2>
                         <p
                           class="text-[#505656] lg:text-xl text-base font-normal lg:mb-6 svelte-13k5u6r"
@@ -258,7 +223,8 @@
                             454.000 ₫ VND / month
                             <span
                               class="ml-2 lg:font-medium bold text-[#7faf41] uppercase svelte-13k5u6r"
-                            >SAVE 62%</span>
+                              >SAVE 62%</span
+                            >
                           </p>
                           <p
                             class="lg:mb-6 mb-5 font-normal text-sm lg:text-[#797C7E] text-[#505656] svelte-13k5u6r"
@@ -277,9 +243,9 @@
                                   d="M18.7796 7.17795L9.18124 16.7763C8.76392 17.1936 8.22141 17.4127 7.64759 17.4127C7.07378 17.4127 6.53126 17.1936 6.11395 16.7763L1.22088 11.8832C0.803565 11.4659 0.584473 10.9234 0.584473 10.3496C0.584473 9.77575 0.803565 9.23324 1.22088 8.81592C1.6382 8.3986 2.18072 8.17951 2.75453 8.17951C3.32834 8.17951 3.87086 8.3986 4.28818 8.81592L7.65803 12.1858L15.7331 4.11065C16.1505 3.69334 16.693 3.47424 17.2668 3.47424C17.8406 3.47424 18.3831 3.69334 18.8004 4.11065C19.6142 4.97659 19.6142 6.34331 18.7796 7.17795Z"
                                 />
                               </svg>
-                              <span
-                                class="font-normal ml-3 text-[#797C7E]"
-                              >Unlimited communications</span>
+                              <span class="font-normal ml-3 text-[#797C7E]"
+                                >Unlimited communications</span
+                              >
                             </li>
                             <li
                               class="flex items-center font-normal text-base mb-2"
@@ -289,9 +255,9 @@
                                   d="M18.7796 7.17795L9.18124 16.7763C8.76392 17.1936 8.22141 17.4127 7.64759 17.4127C7.07378 17.4127 6.53126 17.1936 6.11395 16.7763L1.22088 11.8832C0.803565 11.4659 0.584473 10.9234 0.584473 10.3496C0.584473 9.77575 0.803565 9.23324 1.22088 8.81592C1.6382 8.3986 2.18072 8.17951 2.75453 8.17951C3.32834 8.17951 3.87086 8.3986 4.28818 8.81592L7.65803 12.1858L15.7331 4.11065C16.1505 3.69334 16.693 3.47424 17.2668 3.47424C17.8406 3.47424 18.3831 3.69334 18.8004 4.11065C19.6142 4.97659 19.6142 6.34331 18.7796 7.17795Z"
                                 />
                               </svg>
-                              <span
-                                class="font-normal ml-3 text-[#797C7E]"
-                              >Advanced matching algorithms</span>
+                              <span class="font-normal ml-3 text-[#797C7E]"
+                                >Advanced matching algorithms</span
+                              >
                             </li>
                             <li
                               class="flex items-center font-normal text-base mb-2"
@@ -301,9 +267,9 @@
                                   d="M18.7796 7.17795L9.18124 16.7763C8.76392 17.1936 8.22141 17.4127 7.64759 17.4127C7.07378 17.4127 6.53126 17.1936 6.11395 16.7763L1.22088 11.8832C0.803565 11.4659 0.584473 10.9234 0.584473 10.3496C0.584473 9.77575 0.803565 9.23324 1.22088 8.81592C1.6382 8.3986 2.18072 8.17951 2.75453 8.17951C3.32834 8.17951 3.87086 8.3986 4.28818 8.81592L7.65803 12.1858L15.7331 4.11065C16.1505 3.69334 16.693 3.47424 17.2668 3.47424C17.8406 3.47424 18.3831 3.69334 18.8004 4.11065C19.6142 4.97659 19.6142 6.34331 18.7796 7.17795Z"
                                 />
                               </svg>
-                              <span
-                                class="font-normal ml-3 text-[#797C7E]"
-                              >Ads-free experience</span>
+                              <span class="font-normal ml-3 text-[#797C7E]"
+                                >Ads-free experience</span
+                              >
                             </li>
                             <li
                               class="flex items-center font-normal text-base mb-2"
@@ -313,9 +279,9 @@
                                   d="M18.7796 7.17795L9.18124 16.7763C8.76392 17.1936 8.22141 17.4127 7.64759 17.4127C7.07378 17.4127 6.53126 17.1936 6.11395 16.7763L1.22088 11.8832C0.803565 11.4659 0.584473 10.9234 0.584473 10.3496C0.584473 9.77575 0.803565 9.23324 1.22088 8.81592C1.6382 8.3986 2.18072 8.17951 2.75453 8.17951C3.32834 8.17951 3.87086 8.3986 4.28818 8.81592L7.65803 12.1858L15.7331 4.11065C16.1505 3.69334 16.693 3.47424 17.2668 3.47424C17.8406 3.47424 18.3831 3.69334 18.8004 4.11065C19.6142 4.97659 19.6142 6.34331 18.7796 7.17795Z"
                                 />
                               </svg>
-                              <span
-                                class="font-normal ml-3 text-[#797C7E]"
-                              >Anonymous browsing</span>
+                              <span class="font-normal ml-3 text-[#797C7E]"
+                                >Anonymous browsing</span
+                              >
                             </li>
                             <li
                               class="flex items-center font-normal text-base mb-2"
@@ -325,9 +291,9 @@
                                   d="M18.7796 7.17795L9.18124 16.7763C8.76392 17.1936 8.22141 17.4127 7.64759 17.4127C7.07378 17.4127 6.53126 17.1936 6.11395 16.7763L1.22088 11.8832C0.803565 11.4659 0.584473 10.9234 0.584473 10.3496C0.584473 9.77575 0.803565 9.23324 1.22088 8.81592C1.6382 8.3986 2.18072 8.17951 2.75453 8.17951C3.32834 8.17951 3.87086 8.3986 4.28818 8.81592L7.65803 12.1858L15.7331 4.11065C16.1505 3.69334 16.693 3.47424 17.2668 3.47424C17.8406 3.47424 18.3831 3.69334 18.8004 4.11065C19.6142 4.97659 19.6142 6.34331 18.7796 7.17795Z"
                                 />
                               </svg>
-                              <span
-                                class="font-normal ml-3 text-[#797C7E]"
-                              >Instant messages translation</span>
+                              <span class="font-normal ml-3 text-[#797C7E]"
+                                >Instant messages translation</span
+                              >
                             </li>
                             <li
                               class="flex items-center font-normal text-base mb-2"
@@ -337,9 +303,9 @@
                                   d="M18.7796 7.17795L9.18124 16.7763C8.76392 17.1936 8.22141 17.4127 7.64759 17.4127C7.07378 17.4127 6.53126 17.1936 6.11395 16.7763L1.22088 11.8832C0.803565 11.4659 0.584473 10.9234 0.584473 10.3496C0.584473 9.77575 0.803565 9.23324 1.22088 8.81592C1.6382 8.3986 2.18072 8.17951 2.75453 8.17951C3.32834 8.17951 3.87086 8.3986 4.28818 8.81592L7.65803 12.1858L15.7331 4.11065C16.1505 3.69334 16.693 3.47424 17.2668 3.47424C17.8406 3.47424 18.3831 3.69334 18.8004 4.11065C19.6142 4.97659 19.6142 6.34331 18.7796 7.17795Z"
                                 />
                               </svg>
-                              <span
-                                class="font-normal ml-3 text-[#797C7E]"
-                              >Ranking above other members</span>
+                              <span class="font-normal ml-3 text-[#797C7E]"
+                                >Ranking above other members</span
+                              >
                             </li>
                             <li
                               class="flex items-center font-normal text-base mb-2"
@@ -349,9 +315,9 @@
                                   d="M18.7796 7.17795L9.18124 16.7763C8.76392 17.1936 8.22141 17.4127 7.64759 17.4127C7.07378 17.4127 6.53126 17.1936 6.11395 16.7763L1.22088 11.8832C0.803565 11.4659 0.584473 10.9234 0.584473 10.3496C0.584473 9.77575 0.803565 9.23324 1.22088 8.81592C1.6382 8.3986 2.18072 8.17951 2.75453 8.17951C3.32834 8.17951 3.87086 8.3986 4.28818 8.81592L7.65803 12.1858L15.7331 4.11065C16.1505 3.69334 16.693 3.47424 17.2668 3.47424C17.8406 3.47424 18.3831 3.69334 18.8004 4.11065C19.6142 4.97659 19.6142 6.34331 18.7796 7.17795Z"
                                 />
                               </svg>
-                              <span
-                                class="font-normal ml-3 text-[#797C7E]"
-                              >Exclusive search filters</span>
+                              <span class="font-normal ml-3 text-[#797C7E]"
+                                >Exclusive search filters</span
+                              >
                             </li>
                             <li
                               class="flex items-center font-normal text-base mb-2"
@@ -361,9 +327,9 @@
                                   d="M18.7796 7.17795L9.18124 16.7763C8.76392 17.1936 8.22141 17.4127 7.64759 17.4127C7.07378 17.4127 6.53126 17.1936 6.11395 16.7763L1.22088 11.8832C0.803565 11.4659 0.584473 10.9234 0.584473 10.3496C0.584473 9.77575 0.803565 9.23324 1.22088 8.81592C1.6382 8.3986 2.18072 8.17951 2.75453 8.17951C3.32834 8.17951 3.87086 8.3986 4.28818 8.81592L7.65803 12.1858L15.7331 4.11065C16.1505 3.69334 16.693 3.47424 17.2668 3.47424C17.8406 3.47424 18.3831 3.69334 18.8004 4.11065C19.6142 4.97659 19.6142 6.34331 18.7796 7.17795Z"
                                 />
                               </svg>
-                              <span
-                                class="font-normal ml-3 text-[#797C7E]"
-                              >Premium customer support</span>
+                              <span class="font-normal ml-3 text-[#797C7E]"
+                                >Premium customer support</span
+                              >
                             </li>
                             <li
                               class="flex items-center font-normal text-base mb-2"
@@ -373,9 +339,9 @@
                                   d="M18.7796 7.17795L9.18124 16.7763C8.76392 17.1936 8.22141 17.4127 7.64759 17.4127C7.07378 17.4127 6.53126 17.1936 6.11395 16.7763L1.22088 11.8832C0.803565 11.4659 0.584473 10.9234 0.584473 10.3496C0.584473 9.77575 0.803565 9.23324 1.22088 8.81592C1.6382 8.3986 2.18072 8.17951 2.75453 8.17951C3.32834 8.17951 3.87086 8.3986 4.28818 8.81592L7.65803 12.1858L15.7331 4.11065C16.1505 3.69334 16.693 3.47424 17.2668 3.47424C17.8406 3.47424 18.3831 3.69334 18.8004 4.11065C19.6142 4.97659 19.6142 6.34331 18.7796 7.17795Z"
                                 />
                               </svg>
-                              <span
-                                class="font-medium ml-3 text-[#505656]"
-                              >Most popular plan!</span>
+                              <span class="font-medium ml-3 text-[#505656]"
+                                >Most popular plan!</span
+                              >
                             </li>
                           </ul>
                         </div>
@@ -421,7 +387,7 @@
                       checked="checked"
                       data-only-show="reset"
                       class="touched"
-                    >
+                    />
                     <div
                       class="icon icon-40 flex-none circle relative diamond"
                     />
@@ -429,12 +395,12 @@
                       <h3 class="m0 color-medium-grey">3 Months</h3>
                       <div class="flex-none">
                         <strong>
-                          <span
-                            data-currency-price="Diamond3"
-                          >967.000 ₫ VND</span>
-                          <span
-                            class="regular color-medium-grey"
-                          >per month</span>
+                          <span data-currency-price="Diamond3"
+                            >967.000 ₫ VND</span
+                          >
+                          <span class="regular color-medium-grey"
+                            >per month</span
+                          >
                         </strong>
                       </div>
                     </div>
@@ -442,9 +408,9 @@
                   <div class="col-12 my2">
                     <div class="opacity-8" data-billed="">
                       Billed in one payment of
-                      <span
-                        data-currency-price="Diamond3_2"
-                      >2.901.000 ₫ VND</span>
+                      <span data-currency-price="Diamond3_2"
+                        >2.901.000 ₫ VND</span
+                      >
                     </div>
                   </div>
                 </label>
@@ -460,7 +426,7 @@
                       value="39"
                       data-only-show="reset"
                       class="touched"
-                    >
+                    />
                     <div
                       class="icon icon-40 flex-none circle relative diamond"
                     />
@@ -468,12 +434,12 @@
                       <h3 class="m0 color-medium-grey">12 Months</h3>
                       <div class="flex-none">
                         <strong>
-                          <span
-                            data-currency-price="Diamond12"
-                          >454.000 ₫ VND</span>
-                          <span
-                            class="regular color-medium-grey"
-                          >per month</span>
+                          <span data-currency-price="Diamond12"
+                            >454.000 ₫ VND</span
+                          >
+                          <span class="regular color-medium-grey"
+                            >per month</span
+                          >
                         </strong>
                       </div>
                     </div>
@@ -481,9 +447,9 @@
                   <div class="col-12 my2">
                     <div class="opacity-8" data-billed="">
                       Billed in one payment of
-                      <span
-                        data-currency-price="Diamond12_2"
-                      >5.448.000 ₫ VND</span>
+                      <span data-currency-price="Diamond12_2"
+                        >5.448.000 ₫ VND</span
+                      >
                     </div>
                   </div>
                   <div class="center white rounded my1 py1 px2 bg-diamond h4">
@@ -514,7 +480,7 @@
                       class="changeCurrency"
                       value="1,1"
                       checked="checked"
-                    >
+                    />
                     <div
                       class="icon icon-40 flex-none circle relative green upgrade-experiment payment-selector-wrapper"
                     />
@@ -598,14 +564,14 @@
                 name="sdgCoRegSiteID"
                 value="1001"
                 hidden=""
-              >
+              />
               <input
                 id="incSDGCoReg"
                 type="checkbox"
                 name="incSDGCoReg"
                 value="1001"
                 class="hide"
-              >
+              />
               <div
                 class="icon icon-30 relative green pl1 upgrade-experiment sdv-co-reg-checkbox"
               />
@@ -619,12 +585,12 @@
                 <a
                   href="https://www.Dating.com/terms-and-conditions/##"
                   target="_blank"
-                >Terms</a>
+                  >Terms</a
+                >
                 and
-                <a
-                  href="https://www.Dating.com/policy/##"
-                  target="_blank"
-                >Privacy Policy</a>
+                <a href="https://www.Dating.com/policy/##" target="_blank"
+                  >Privacy Policy</a
+                >
                 of Dating.com
               </div>
             </label>
@@ -649,10 +615,9 @@
             This will ensure continuous access to all the benefits of a premium
             membership so you can enjoy uninterrupted communications with all
             your potential matches. You can opt out of auto renewal at any time.
-            <span
-              class="highlight pointer"
-              data-cm-modal-btn="renew_learnmore"
-            >Learn more</span>
+            <span class="highlight pointer" data-cm-modal-btn="renew_learnmore"
+              >Learn more</span
+            >
           </div>
         </div>
 
@@ -661,28 +626,28 @@
             <div class="m2 center">
               <h1>Automatic Renewal</h1>
               <p>
-                <b>Automatic Renewal - Continuous Service</b><br>
+                <b>Automatic Renewal - Continuous Service</b><br />
                 There is nothing worse than losing touch with a potential match
                 when all you want to do is continue your conversation! To avoid
                 this interruption, your membership on EliteCupid.com will be
                 automatically renewed. After your initial membership period
                 expires, your membership will be automatically renewed for an
                 additional equivalent period, at the same price. Your
-                credit/debit card will be automatically charged.<br><br>
-                <b>Billing Details</b><br>
+                credit/debit card will be automatically charged.<br /><br />
+                <b>Billing Details</b><br />
 
                 The charge on your billing statement or card will appear as
                 "EliteCupid.com Southport AU". You are being billed by Cupid
                 Media Pty Ltd, Suite 2502, 5 Lawson Street, Southport, QLD 4215,
-                Australia.<br><br>
+                Australia.<br /><br />
 
-                <b>Cancel Any Time</b><br>
+                <b>Cancel Any Time</b><br />
                 We don't want to interrupt your conversations so we offer a
                 continuous service. However, if you want to discontinue the
                 service, you can opt out of auto renewal at any time. Simply
                 select 'Billing' from the Settings menu to change your billing
-                preferences.<br><br>
-                <b>Customer Service</b><br>
+                preferences.<br /><br />
+                <b>Customer Service</b><br />
                 Need more help or information? Feel free to contact our
                 <a href="/en/general/contact">customer service team</a>.
               </p>
@@ -860,7 +825,7 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script>
 </script>
 <style lang="scss">
 </style>

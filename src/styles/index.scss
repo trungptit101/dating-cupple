@@ -73,10 +73,15 @@ div:focus {
 .app-container {
   padding: 20px;
 }
-.menu-admin {
+.menu-admin,
+.el-menu--popup {
   .el-menu-item {
     display: flex;
     align-items: center;
+  }
+  .el-tooltip {
+    display: flex !important;
+    align-items: center !important;
   }
 }
 .el-form-item__label {

@@ -1,4 +1,4 @@
-import { login, register, logout, getInfo } from "@/api/user";
+import { login, register, logout, getUserDetail } from "@/api/user";
 import { getToken, setToken, removeToken, setUser } from "@/utils/auth";
 import { resetRouter } from "@/router";
 
@@ -48,6 +48,14 @@ const actions = {
     });
   },
 
+  getInfo({ commit }, id) {
+    getUserDetail(id)
+      .then((response) => {
+        setUser(response);
+        commit("SET_USER", response);
+      });
+  },
+
   register({ commit }, user) {
     return new Promise((resolve, reject) => {
       register(user)
@@ -63,42 +71,13 @@ const actions = {
     });
   },
 
-  // get user info
-  getInfo({ commit, state }) {
-    return new Promise((resolve, reject) => {
-      getInfo(state.token)
-        .then((response) => {
-          const { data } = response;
-
-          if (!data) {
-            return reject("Verification failed, please Login again.");
-          }
-
-          const { name, avatar } = data;
-
-          commit("SET_NAME", name);
-          commit("SET_AVATAR", avatar);
-          resolve(data);
-        })
-        .catch((error) => {
-          reject(error);
-        });
-    });
-  },
-
   // user logout
   logout({ commit, state }) {
     return new Promise((resolve, reject) => {
-      logout(state.token)
-        .then(() => {
-          removeToken(); // must remove  token  first
-          resetRouter();
-          commit("RESET_STATE");
-          resolve();
-        })
-        .catch((error) => {
-          reject(error);
-        });
+      removeToken(); // must remove  token  first
+      resetRouter();
+      commit("RESET_STATE");
+      resolve();
     });
   },
 

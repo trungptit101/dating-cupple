@@ -60,7 +60,13 @@
             class="flex justify-center items-center lg:py-4 py-3 px-8 text-[16px] lg:text-[20px] font-medium rounded-[4px] transition opacity-95 text-white fill-white pr-0 md:ml-4 ml-2 w-full bg-[#D6AD60]"
             @click="nextQuestion"
           >
-            {{ currentStep == 0 ? "Start" : "Next" }}
+            {{
+              currentStep == 0
+                ? "Start"
+                : currentStep == questionsList.length - 1
+                ? "Finish"
+                : "Next"
+            }}
           </button>
         </div>
       </div>
@@ -69,9 +75,15 @@
 </template>
 
 <script>
-import { getListQuestionUser, updateQuestionaireUser } from "@/api/question";
+import {
+  getListQuestionUser,
+  updateQuestionaireUser,
+  finishSurveyQuestion,
+} from "@/api/question";
 import { QuestionType } from "@/define/index";
 import QuestionItem from "@/components/QuestionItem.vue";
+import { Message } from "element-ui";
+import store from "@/store";
 export default {
   components: { QuestionItem },
   data() {
@@ -86,9 +98,13 @@ export default {
       if (!this.questionsList[this.currentStep + 1]) return false;
       return this.questionsList[this.currentStep].answers.length;
     },
+    user() {
+      return store.getters.user;
+    },
   },
   created() {
-    this.getList();
+    if (!this.user.is_complete_survey) this.getList();
+    else this.$router.push({ path: "/payment/upgrade" });
   },
   methods: {
     getList() {
@@ -96,7 +112,13 @@ export default {
         this.questionsList = data;
         const questionHasAnswer =
           data.filter((e) => e.answers.length > 0) || [];
-        this.currentStep = questionHasAnswer.length;
+        if (questionHasAnswer.length) {
+          const lastQuestionHasAnswer =
+            questionHasAnswer[questionHasAnswer.length - 1];
+          this.currentStep = this.questionsList.findIndex(
+            (question) => question.id == lastQuestionHasAnswer.id
+          );
+        }
       });
     },
     updateAnswer(answers) {
@@ -113,6 +135,17 @@ export default {
           },
           this.questionsList[this.currentStep].id
         );
+      if (this.currentStep == this.questionsList.length - 1) {
+        finishSurveyQuestion().then(() => {
+          Message({
+            message: "Congratulations on completing the survey!",
+            type: "success",
+            duration: 5 * 1000,
+          });
+          this.$router.push({ path: "/payment/upgrade" });
+        });
+        return;
+      }
       this.currentStep++;
     },
     prevQuestion() {

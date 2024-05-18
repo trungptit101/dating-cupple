@@ -38,6 +38,13 @@ export function updateQuestionaireUser(data, id) {
   });
 }
 
+export function finishSurveyQuestion() {
+  return request({
+    url: "/question/finish-survey",
+    method: "post",
+  });
+}
+
 export function deleteQuestion(id) {
   return request({
     url: `/question/delete/${id}`,

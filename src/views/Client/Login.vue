@@ -202,15 +202,20 @@ export default {
             .dispatch("user/login", this.form)
             .then((res) => {
               Message({
-                message: "Đăng nhập thành công",
+                message: "Login successfully!",
                 type: "success",
                 duration: 1000,
               });
               this.$router.push({ path: this.redirect || "/" });
               this.loading = false;
             })
-            .catch(() => {
+            .catch((error) => {
               this.loading = false;
+              Message({
+                message: error.response.data.message,
+                type: "error",
+                duration: 5 * 1000,
+              });
             });
         } else {
           console.log("error submit!!");

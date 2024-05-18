@@ -16,17 +16,17 @@ export function register(data) {
   });
 }
 
-export function getInfo(token) {
+export function getListCandidate(params) {
   return request({
-    url: "/vue-admin-template/user/info",
+    url: "/candidate/list",
     method: "get",
-    params: { token },
+    params: params,
   });
 }
 
-export function logout() {
+export function getUserDetail(id) {
   return request({
-    url: "/vue-admin-template/user/logout",
-    method: "post",
+    url: `/user/detail/${id}`,
+    method: "get",
   });
 }

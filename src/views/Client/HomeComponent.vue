@@ -327,7 +327,6 @@
 
 <script>
 import RegisterServey from "@/components/RegisterServey.vue";
-import { clearStoreage } from "@/utils/auth";
 export default {
   components: { RegisterServey },
   data() {
@@ -345,9 +344,9 @@ export default {
     finishRegister() {
       this.isDisplayRegisterServey = false;
     },
-    logout() {
-      clearStoreage();
-      this.$router.push({ path: "/login" });
+    async logout() {
+      await this.$store.dispatch('user/logout')
+      this.$router.push(`/login?redirect=${this.$route.fullPath}`)
     },
   },
 };
