@@ -5,7 +5,12 @@
     >
       <img
         src="@/assets/images/logo.png"
-        style="width: 150px; cursor: pointer"
+        style="
+          cursor: pointer;
+          height: 70px;
+          object-fit: contain;
+          margin-left: 2rem;
+        "
       />
 
       <div class="mx3 flex items-center">
@@ -345,8 +350,8 @@ export default {
       this.isDisplayRegisterServey = false;
     },
     async logout() {
-      await this.$store.dispatch('user/logout')
-      this.$router.push(`/login?redirect=${this.$route.fullPath}`)
+      await this.$store.dispatch("user/logout");
+      this.$router.push(`/login?redirect=${this.$route.fullPath}`);
     },
   },
 };

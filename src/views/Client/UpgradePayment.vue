@@ -1,6 +1,6 @@
 <template>
   <div class="upgrade-payment">
-    <div class="header-strip height-auto px2 pt2 flex justify-center">
+    <!-- <div class="header-strip height-auto px2 pt2 flex justify-center">
       <div class="max-width my1 mx-auto flex items-center justify-center">
         <div
           class="flex items-center opacity-3"
@@ -29,17 +29,20 @@
           <p>Receipt</p>
         </div>
       </div>
-    </div>
-    <component :is="componentName" @upgradePayment="upgradePayment" />
+    </div> -->
+    <Header />
+    <component :is="componentName" />
   </div>
 </template>
 
 <script>
 import ChooseMemberShip from "./payment/ChooseMemberShip.vue";
 import PersonalDetail from "./payment/PersonalDetail.vue";
+import Header from "@/layout/components/Header.vue";
 import Receipt from "./payment/Receipt.vue";
+import { createOrder } from "@/api/order";
 export default {
-  components: { ChooseMemberShip, PersonalDetail, Receipt },
+  components: { ChooseMemberShip, PersonalDetail, Receipt, Header },
   data() {
     return {
       step: 1,
@@ -68,17 +71,14 @@ export default {
       return "ChooseMemberShip";
     },
   },
-  methods: {
-    upgradePayment() {
-      this.step++;
-    },
-  },
+  methods: {},
 };
 </script>
 
 
 <style lang="scss">
 .upgrade-payment {
+  min-height: 100vh;
   background: #fff;
   .payment-content-max-width {
     max-width: 980px;

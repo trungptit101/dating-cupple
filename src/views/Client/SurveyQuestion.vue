@@ -1,17 +1,6 @@
 <template>
   <div class="svelte-questionnaire">
-    <div
-      class="svelte-questionnaire-header"
-      style="position: sticky; top: 0; z-index: 2"
-    >
-      <div class="bg-[#232E4D] lg:p-4 p-2">
-        <img
-          src="@/assets/images/logo.png"
-          style="width: 100px; cursor: pointer"
-          @click="$router.push({ path: '/' })"
-        />
-      </div>
-    </div>
+    <Header />
     <div
       class="svelte-questionnaire-body w-full overflow-hidden bg-[#F8F8F8] custom-height"
     >
@@ -84,8 +73,9 @@ import { QuestionType } from "@/define/index";
 import QuestionItem from "@/components/QuestionItem.vue";
 import { Message } from "element-ui";
 import store from "@/store";
+import Header from "@/layout/components/Header.vue";
 export default {
-  components: { QuestionItem },
+  components: { QuestionItem, Header },
   data() {
     return {
       QuestionType,
@@ -159,15 +149,6 @@ export default {
 
 <style lang="scss" scoped>
 .svelte-questionnaire {
-  .svelte-questionnaire-header {
-    position: sticky;
-    top: 0;
-    z-index: 2;
-    .bg-\[\#232E4D\] {
-      --tw-bg-opacity: 1;
-      background-color: rgb(35 46 77 / var(--tw-bg-opacity));
-    }
-  }
   .bg-white {
     --tw-bg-opacity: 1;
     background-color: rgb(255 255 255 / var(--tw-bg-opacity));

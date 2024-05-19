@@ -912,10 +912,6 @@ body {
 [lang="my"] body {
   line-height: 1.4rem;
 }
-body,
-html {
-  min-width: 768px;
-}
 footer {
   font-size: 14px;
   font-weight: 300;
@@ -1063,7 +1059,8 @@ svg {
 .mb3 {
   margin-bottom: 2rem;
 }
-.me4, .ms4 {
+.me4,
+.ms4 {
   margin-right: 4rem;
 }
 @media (max-width: 1614px) {
@@ -1203,13 +1200,14 @@ svg {
   fill: #ec9e18;
 }
 .bg-gold {
-  background-color: #ec9e18;
+  background-color: #ec9e18 !important;
 }
 .bg-yellow {
-  background-color: #ecce45;
+  background-color: #ecce45 !important;
 }
 .bg-green {
-  background-color: #7faf41;
+  background-color: #7faf41 !important;
+  color: white !important;
   -webkit-print-color-adjust: exact;
 }
 .bg-platinum {
@@ -3572,6 +3570,8 @@ body.returnToMobileHeader .header-strip {
   height: 100%;
   display: block;
   position: fixed;
+  background-color: #4a4a4a82;
+  background-blend-mode: multiply;
   background-image: url(/images/homepage.jpg);
   background-size: cover;
   background-position: 65%;
@@ -4996,4 +4996,18 @@ html.modal-open {
 .hover\:bg-\[\#FFFDF8\]:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(255 253 248 / var(--tw-bg-opacity));
+}
+.el-radio__inner::after {
+  width: 10px;
+  height: 10px;
+  left: 49%;
+  top: 52%;
+}
+.el-radio__inner {
+  width: 25px;
+  height: 25px;
+}
+.spinner {
+  -webkit-animation: cm-spinY 2s infinite;
+  animation: cm-spinY 2s infinite;
 }

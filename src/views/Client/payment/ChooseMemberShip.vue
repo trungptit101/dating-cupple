@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="choose-member-ship">
     <div class="upgradebanner">
       <el-carousel :interval="5000" arrow="always">
         <el-carousel-item v-for="(item, index) in carouselsList" :key="index">
@@ -29,17 +29,31 @@
       <div id="paymentOptions" data-membership-selected="37">
         <div class="mb3" data-toggle-membershipoptionstab="Diamond">
           <div class="flex justify-around">
-            <div class="me3">
+            <div
+              class="me3"
+              v-for="(packPayment, index) in list"
+              :key="index"
+              @click="choosePackPayment(packPayment)"
+            >
               <label class="col-12 pointer" for="DiamondMonth3">
                 <div class="flex items-center flex-none">
+                  <el-radio
+                    class="pack-payment-price"
+                    v-model="packageSelected"
+                    :label="packPayment.id"
+                  ></el-radio>
                   <div class="ms1">
-                    <h3 class="m0 color-medium-grey">6 Months</h3>
+                    <h3 class="m0 color-medium-grey">
+                      {{ packPayment.months }} Months
+                    </h3>
                     <div class="flex-none">
                       <strong>
-                        <span data-currency-price="Diamond3"
-                          >1.063.700 ₫ VND</span
+                        <span data-currency-price="Diamond3">{{
+                          caculatePermonth(packPayment)
+                        }}</span>
+                        <span class="regular color-medium-grey">
+                          per month</span
                         >
-                        <span class="regular color-medium-grey">per month</span>
                       </strong>
                     </div>
                   </div>
@@ -47,59 +61,20 @@
                 <div class="col-12 my2">
                   <div class="opacity-8" data-billed="">
                     Billed in one payment of
-                    <span data-currency-price="Diamond3_2"
-                      >3.191.100 ₫ VND</span
-                    >
+                    <span data-currency-price="Diamond3_2">{{
+                      packPayment.price.toLocaleString("it-IT", {
+                        style: "currency",
+                        currency: packPayment.unit,
+                      })
+                    }}</span>
                   </div>
                 </div>
-              </label>
-            </div>
-
-            <div class="mb3">
-              <label class="col-12 pointer" for="DiamondMonth12">
-                <div class="flex items-center flex-none">
-                  <input
-                    type="radio"
-                    name="product"
-                    id="DiamondMonth12"
-                    value="39"
-                    data-only-show="reset"
-                    class="touched"
-                  />
-                  <div class="icon icon-40 flex-none circle relative diamond">
-                    <svg class="icon-40 absolute circle unchecked">
-                      <use
-                        xlink:href="/assets/desktop/icons/icons.svg#icon-radio-off"
-                      ></use>
-                    </svg>
-                    <svg class="icon-40 absolute circle checked">
-                      <use
-                        xlink:href="/assets/desktop/icons/icons.svg#icon-radio-on"
-                      ></use>
-                    </svg>
-                  </div>
-                  <div class="ms1">
-                    <h3 class="m0 color-medium-grey">12 Months</h3>
-                    <div class="flex-none">
-                      <strong>
-                        <span data-currency-price="Diamond12"
-                          >499.400 ₫ VND</span
-                        >
-                        <span class="regular color-medium-grey">per month</span>
-                      </strong>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 my2">
-                  <div class="opacity-8" data-billed="">
-                    Billed in one payment of
-                    <span data-currency-price="Diamond12_2"
-                      >5.992.800 ₫ VND</span
-                    >
-                  </div>
-                </div>
-                <div class="center white rounded my1 py1 px2 bg-diamond h4">
-                  SAVE <span>62</span>%
+                <div
+                  class="center white rounded my1 py1 px2 bg-diamond h4"
+                  v-if="index != 0"
+                >
+                  SAVE <span>{{ saleOffPackage(packPayment) }}</span
+                  >%
                 </div>
               </label>
             </div>
@@ -119,28 +94,7 @@
             <div class="flex items-center justify-between col-12">
               <label for="credit" class="pointer col-12">
                 <div class="flex items-center">
-                  <input
-                    type="radio"
-                    name="paymentMethod"
-                    class="changeCurrency"
-                    id="credit"
-                    value="1,1"
-                    checked="checked"
-                  />
-                  <div
-                    class="icon icon-40 flex-none circle relative green upgrade-experiment payment-selector-wrapper"
-                  >
-                    <svg class="icon-40 absolute circle unchecked">
-                      <use
-                        xlink:href="/assets/desktop/icons/icons.svg#icon-radio-off"
-                      ></use>
-                    </svg>
-                    <svg class="icon-40 absolute circle checked">
-                      <use
-                        xlink:href="/assets/desktop/icons/icons.svg#icon-radio-on"
-                      ></use>
-                    </svg>
-                  </div>
+                  <el-radio checked></el-radio>
                   <div class="col-3 me2">
                     <div class="ms1 upgrade-experiment payment-variant-text">
                       Credit / Debit Card
@@ -261,13 +215,14 @@
         </div>
 
         <div class="col-12 center my2">
-          <button
+          <el-button
             type="submit"
             class="upgrade-experiment upgrade-button relative bg-green white h4 py2 px4 my2 rounded shadow border-none upper-case pointer"
+            :loading="isLoading"
             @click="upgradePayment"
           >
             Upgrade Now
-          </button>
+          </el-button>
         </div>
 
         <div
@@ -474,6 +429,10 @@
 </template>
 
 <script>
+import { getAllPaymentPackage } from "@/api/payment-package";
+import { createOrder } from "@/api/order";
+import { detailOrder } from "@/api/order";
+import { OrderStatus } from "@/define/index";
 export default {
   data() {
     return {
@@ -507,29 +466,86 @@ export default {
             "Diamond members will appear at the top of all results and have all their messages prioritised above others.",
         },
       ],
+      packageSelected: null,
+      isLoading: false,
+      list: [],
     };
   },
-  watch: {},
+  created() {
+    this.isLoading = true;
+    detailOrder()
+      .then((res) => {})
+      .catch((err) => {
+        if (
+          err.response.data.order.payment_status !=
+          OrderStatus.PAYMENT_STATUS_COMPLETE
+        )
+          this.getList();
+        else this.$router.push({ path: "/partner/suggest" });
+      });
+  },
   methods: {
     upgradePayment() {
-      this.$emit('upgradePayment')
-    }
+      this.isLoading = true;
+      createOrder({
+        id: this.packageSelected,
+        returnUrl: window.location.origin,
+      })
+        .then((res) => {
+          this.isLoading = false;
+          window.location.href = res.vnp_Url;
+        })
+        .catch(() => {
+          this.isLoading = false;
+        });
+    },
+    caculatePermonth(packPayment) {
+      return (packPayment.price / packPayment.months).toLocaleString("it-IT", {
+        style: "currency",
+        currency: packPayment.unit,
+      });
+    },
+    saleOffPackage(packPayment) {
+      if (!this.list.length) return;
+      const permonth = packPayment.price / packPayment.months;
+      const permonthMin = this.list[0].price / this.list[0].months;
+      return (1 - Math.round((permonth / permonthMin) * 100) / 100) * 100;
+    },
+    getList() {
+      getAllPaymentPackage().then((res) => {
+        this.isLoading = false;
+        this.list = res.data;
+        if (!this.list.length) returnl;
+        this.packageSelected = this.list[0].id;
+      });
+    },
+    choosePackPayment(packPayment) {
+      this.packageSelected = packPayment.id;
+    },
   },
 };
 </script>
 <style lang="scss">
-.upgradebanner {
-  .el-carousel__container {
-    height: 150px;
-    background-color: #e5e5e5;
+.choose-member-ship {
+  .upgradebanner {
+    .el-carousel__container {
+      height: 150px;
+      background-color: #e5e5e5;
+    }
+    .el-carousel__item {
+      display: flex;
+      justify-content: center;
+    }
   }
-  .el-carousel__item {
-    display: flex;
-    justify-content: center;
+  .payment-content-max-width {
+    max-width: 980px;
+    margin: 0px auto;
   }
-}
-.payment-content-max-width {
-  max-width: 980px;
-  margin: 0px auto;
+  .pack-payment-price {
+    .el-radio__label {
+      display: none;
+    }
+    margin-right: 10px;
+  }
 }
 </style>

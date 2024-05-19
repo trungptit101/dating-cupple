@@ -45,6 +45,14 @@ export const constantRoutes = [
     component: () => import("@/views/Client/UpgradePayment.vue"),
   },
   {
+    path: "/payment/complete",
+    component: () => import("@/views/Client/PaymentComplete.vue"),
+  },
+  {
+    path: "/partner/suggest",
+    component: () => import("@/views/Client/PartnerSuggestion.vue"),
+  },
+  {
     path: "/survey-question",
     component: () => import("@/views/Client/SurveyQuestion.vue"),
   },

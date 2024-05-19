@@ -9,3 +9,9 @@ export const UserRole = {
   Admin: 1,
   Candidate: 0,
 };
+
+export const OrderStatus = {
+  PAYMENT_STATUS_INPROGRESS: 1,
+  PAYMENT_STATUS_CANCEL: 2,
+  PAYMENT_STATUS_COMPLETE: 3,
+};
