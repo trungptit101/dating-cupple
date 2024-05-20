@@ -69,7 +69,7 @@ export const constantRoutes = [
         path: "list",
         name: "survey-list",
         component: () => import("@/views/survey-question/index"),
-        meta: { title: "Survey question", icon: "table", requireAdmin: true },
+        meta: { title: "Survey question", icon: "list", requireAdmin: true },
       },
     ],
   },

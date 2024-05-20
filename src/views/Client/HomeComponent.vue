@@ -22,15 +22,12 @@
         >
           Login
         </a>
-        <AvatarUser class="py1 px2" :size="45" v-else />
-        <!-- <a
-          class="btn-bg btn-color block py1 px2 button relative overflow-hidden rounded shadow ms3 my3"
-          title="Logout"
+        <AvatarUser
+          class="py1 ms2 px2"
+          :size="45"
           v-else
-          @click="logout"
-        >
-          Logout
-        </a> -->
+          @settingProfile="settingProfile"
+        />
       </div>
     </div>
     <div class="section-top relative">
@@ -275,6 +272,14 @@
     <el-dialog :visible.sync="isDisplayRegisterServey">
       <RegisterServey @finish="finishRegister" />
     </el-dialog>
+    <el-dialog
+      :close-on-click-modal="false"
+      title="Settings Profile"
+      :visible.sync="isDisplaySettingsProfile"
+      top="5vh"
+    >
+      <SettingsProfile @closeDialog="isDisplaySettingsProfile = false" />
+    </el-dialog>
   </div>
 </template>
 
@@ -282,11 +287,13 @@
 import RegisterServey from "@/components/RegisterServey.vue";
 import Footer from "@/layout/components/Footer.vue";
 import AvatarUser from "@/components/AvatarUser.vue";
+import SettingsProfile from "@/components/SettingsProfile.vue";
 export default {
-  components: { RegisterServey, Footer, AvatarUser },
+  components: { RegisterServey, Footer, AvatarUser, SettingsProfile },
   data() {
     return {
       isDisplayRegisterServey: false,
+      isDisplaySettingsProfile: false,
     };
   },
   watch: {},
@@ -296,6 +303,9 @@ export default {
     },
   },
   methods: {
+    settingProfile() {
+      this.isDisplaySettingsProfile = true;
+    },
     finishRegister() {
       this.isDisplayRegisterServey = false;
     },

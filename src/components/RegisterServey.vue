@@ -1,6 +1,6 @@
 <template>
   <el-form :model="form" ref="ruleFormRef" :rules="rules" label-position="top">
-    <el-form-item label="name" prop="name">
+    <el-form-item label="Name" prop="name">
       <el-input size="large" v-model="form.name"></el-input>
     </el-form-item>
     <el-row>
@@ -261,7 +261,7 @@ export default {
             .dispatch("user/register", this.form)
             .then((res) => {
               Message({
-                message: "Đăng ký thành công",
+                message: "Register User Successfully!",
                 type: "success",
                 duration: 1000,
               });

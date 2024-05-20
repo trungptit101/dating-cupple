@@ -6,7 +6,7 @@
       @toggleClick="toggleSideBar"
     />
 
-    <breadcrumb class="breadcrumb-container" />
+    <!-- <breadcrumb class="breadcrumb-container" /> -->
 
     <div class="right-menu">
       <el-dropdown class="avatar-container" trigger="click">

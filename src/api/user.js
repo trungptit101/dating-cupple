@@ -30,3 +30,11 @@ export function getUserDetail(id) {
     method: "get",
   });
 }
+
+export function updateUserProfile(data) {
+  return request({
+    url: "/user/profile",
+    method: "post",
+    data,
+  });
+}

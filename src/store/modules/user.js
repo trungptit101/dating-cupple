@@ -1,5 +1,17 @@
-import { login, register, logout, getUserDetail } from "@/api/user";
-import { getToken, setToken, removeToken, setUser, clearStoreage } from "@/utils/auth";
+import {
+  login,
+  register,
+  logout,
+  getUserDetail,
+  updateUserProfile,
+} from "@/api/user";
+import {
+  getToken,
+  setToken,
+  removeToken,
+  setUser,
+  clearStoreage,
+} from "@/utils/auth";
 import { resetRouter } from "@/router";
 
 const getDefaultState = () => {
@@ -49,11 +61,10 @@ const actions = {
   },
 
   getInfo({ commit }, id) {
-    getUserDetail(id)
-      .then((response) => {
-        setUser(response);
-        commit("SET_USER", response);
-      });
+    getUserDetail(id).then((response) => {
+      setUser(response);
+      commit("SET_USER", response);
+    });
   },
 
   register({ commit }, user) {
@@ -64,6 +75,20 @@ const actions = {
           setToken(response.access_token);
           commit("SET_USER", response.user);
           setUser(response.user);
+          resolve(response);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
+  },
+
+  updateUserDetail({ commit }, user) {
+    return new Promise((resolve, reject) => {
+      updateUserProfile(user)
+        .then((response) => {
+          commit("SET_USER", response);
+          setUser(response);
           resolve(response);
         })
         .catch((error) => {

@@ -10,7 +10,7 @@
         @click="$router.push({ path: '/' })"
       />
       <div class="nav-header py1 px2">
-        <AvatarUser :size="40" />
+        <AvatarUser :size="40" @settingProfile="settingProfile" />
       </div>
     </div>
   </div>
@@ -32,6 +32,9 @@ export default {
     async logout() {
       await this.$store.dispatch("user/logout");
       this.$router.push(`/login?redirect=${this.$route.fullPath}`);
+    },
+    settingProfile() {
+      this.$emit("settingProfile");
     },
   },
 };

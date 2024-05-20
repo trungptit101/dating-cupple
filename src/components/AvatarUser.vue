@@ -7,9 +7,9 @@
       <router-link to="/survey/list">
         <el-dropdown-item>Manager</el-dropdown-item>
       </router-link>
-      <router-link to="/">
-        <el-dropdown-item>Settings</el-dropdown-item>
-      </router-link>
+      <el-dropdown-item @click.native="settingProfile"
+        >Settings</el-dropdown-item
+      >
       <el-dropdown-item divided @click.native="logout">
         <span style="display: block">Log Out</span>
       </el-dropdown-item>
@@ -21,7 +21,7 @@
 import { GenderUser } from "@/define/index";
 import store from "@/store";
 export default {
-  props: ["size", "user"],
+  props: ["size"],
   data() {
     return {};
   },
@@ -49,6 +49,9 @@ export default {
       await this.$store.dispatch("user/logout");
       this.$router.push(`/login?redirect=${this.$route.fullPath}`);
     },
+    settingProfile() {
+      this.$emit("settingProfile");
+    },
   },
 };
 </script>
@@ -56,6 +59,7 @@ export default {
 .avatar-user {
   img {
     cursor: pointer;
+    max-width: 100%;
   }
 }
 .menu-user {
