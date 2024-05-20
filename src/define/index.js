@@ -10,6 +10,11 @@ export const UserRole = {
   Candidate: 0,
 };
 
+export const GenderUser = {
+  Male: "male",
+  Female: "female",
+};
+
 export const OrderStatus = {
   PAYMENT_STATUS_INPROGRESS: 1,
   PAYMENT_STATUS_CANCEL: 2,

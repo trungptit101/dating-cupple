@@ -280,18 +280,6 @@
           </div>
         </div>
       </div>
-      <div
-        id="progress-spinner"
-        class="overlay flex justify-center items-center col-12 fixed z4 top-0 right-0 left-0 bottom-0 white"
-        data-text="Processing now, please wait ..."
-        hidden=""
-      >
-        <svg class="icon-large heart-icon spinner m1 logo-heart site-logo">
-          <use xlink:href="#icon-logoheart"></use>
-        </svg>
-        <span>Processing now, please wait ...</span>
-      </div>
-
       <div class="col-12 flex items-center mb1"></div>
 
       <h2 class="bold body-font-color mt3">Your Diamond features</h2>

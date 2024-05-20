@@ -98,7 +98,7 @@
 </template>
 
 <script>
-import { getListCandidate, deleteQuestion } from "@/api/user";
+import { getListCandidate } from "@/api/user";
 import { Message } from "element-ui";
 
 export default {

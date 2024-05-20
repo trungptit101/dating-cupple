@@ -1348,7 +1348,9 @@ svg {
 }
 .btn-bg,
 .btn-bg:hover,
-.btn-bg:active {
+.btn-bg:active,
+.btn-bg:focus {
+  cursor: pointer;
   background-color: #d6ad60;
   border: 1px solid #d6ad60;
 }

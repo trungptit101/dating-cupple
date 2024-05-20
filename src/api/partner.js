@@ -6,3 +6,11 @@ export function getPartnerSuggestion() {
     method: "get",
   });
 }
+
+export function processDating(data) {
+  return request({
+    url: "/partner/process/dating",
+    method: "post",
+    data,
+  });
+}
