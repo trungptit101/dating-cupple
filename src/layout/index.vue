@@ -51,7 +51,7 @@ export default {
   },
   created() {
     if (!this.user.is_complete_survey) this.getList();
-    else this.$router.push({ path: "/payment/upgrade" });
+    else this.$router.push({ path: "/" });
   },
   methods: {
     handleClickOutside() {

@@ -7,13 +7,19 @@
     >
       <a href="/" class="flex items-center white text-decoration-none m3">
         <img
-          src="@/assets/images/logo.png"
-          style="cursor: pointer; height: 50px; object-fit: contain"
+          src="@/assets/images/logo-text-white.png"
+          style="
+            cursor: pointer;
+            object-fit: contain;
+            margin-left: 1rem;
+            margin-top: 1rem;
+            width: 70px;
+          "
         />
       </a>
 
-      <div class="mx3 flex items-center">
-        <div class="membernav">
+      <div class="mx2 flex items-center">
+        <!-- <div class="membernav">
           <ul dir="ltr">
             <li class="py1 px2 rounded">
               <a class="flex items-center border-none">
@@ -24,7 +30,7 @@
               <ul class="p0 pt1"></ul>
             </li>
           </ul>
-        </div>
+        </div> -->
       </div>
     </div>
     <div class="relative white flex">
@@ -33,12 +39,12 @@
       >
         <div class="sitelogo-autologin p1">
           <img
-            src="@/assets/images/logo.png"
-            style="width: 120px"
+            src="@/assets/images/logo-text-white.png"
+            style="object-fit: contain; width: 90px"
             class="spinner"
           />
         </div>
-        <div class="text-white" style="font-size: 22px">{{ message }}</div>
+        <div class="text-white" style="font-size: 20px">{{ message }}</div>
       </div>
     </div>
   </div>

@@ -11,12 +11,12 @@
       />
     </div>
     <footer class="calc-footer sticky bottom-0 w-full z-30 bg-white">
-      <div aria-hidden="true">
+      <div
+        class="percentage-question"
+        :style="`width: ${caculatorPercentage}%`"
+      >
         <div class="overflow-hidden bg-[#C5CBDC4D]">
-          <div
-            class="transition-all lg:h-3 h-1 bg-[#D6AD60]"
-            style="width: 3.37079%"
-          ></div>
+          <div class="transition-all lg:h-3 h-1 bg-[#D6AD60]"></div>
         </div>
       </div>
       <div class="flex justify-center items-center p-6">
@@ -84,6 +84,9 @@ export default {
     };
   },
   computed: {
+    caculatorPercentage() {
+      return Math.round((this.currentStep / this.questionsList.length) * 100);
+    },
     isDisableBtnNext() {
       if (!this.questionsList[this.currentStep + 1]) return false;
       return this.questionsList[this.currentStep].answers.length;
@@ -154,7 +157,8 @@ export default {
     background-color: rgb(255 255 255 / var(--tw-bg-opacity));
   }
   .svelte-questionnaire-body {
-    height: calc(100vh - 70px - 103px);
+    height: calc(100vh - 70px - 118px);
+    padding: 0 20px;
     overflow: auto;
   }
 }

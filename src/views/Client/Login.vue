@@ -5,15 +5,15 @@
       <div
         class="absolute top-0 left-0 col-12 z2 flex items-center justify-between"
       >
-        <a href="/" class="flex items-center white text-decoration-none m3">
+        <a href="/" class="flex items-center white text-decoration-none m2">
           <img
-            src="@/assets/images/logo.png"
-            style="cursor: pointer; height: 50px; object-fit: contain"
+            src="@/assets/images/logo-text-white.png"
+            style="cursor: pointer; object-fit: contain; width: 90px"
           />
         </a>
 
-        <div class="mx3 flex items-center">
-          <div class="membernav">
+        <div class="mx2 flex items-center">
+          <!-- <div class="membernav">
             <ul dir="ltr">
               <li class="py1 px2 rounded">
                 <a class="flex items-center border-none">
@@ -24,7 +24,7 @@
                 <ul class="p0 pt1"></ul>
               </li>
             </ul>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -46,6 +46,7 @@
                   v-model="form.email"
                   size="large"
                   placeholder="email@example.com"
+                  @keyup.enter="login"
                 />
               </el-form-item>
               <el-form-item class="form-login" label="Password" prop="password">
@@ -55,6 +56,7 @@
                   size="large"
                   type="password"
                   show-password
+                  @keyup.enter="login"
                 />
               </el-form-item>
               <div class="flex justify-end">
@@ -86,7 +88,7 @@
           </div>
 
           <div class="mt2 white">
-            <p class="center m0 mb1">Help spread the word about EliteCupid!</p>
+            <p class="center m0 mb1">Help spread the word about Visicupid!</p>
             <div class="flex justify-center">
               <a
                 href="https://www.facebook.com/elitecupid"
@@ -154,7 +156,7 @@
         >
       </div>
 
-      <div class="center trademark white">
+      <div class="center white">
         <p>
           Cupid Media, the Cupid Media Logo are registered trademarks of Ecom
           Holdings Pty Ltd and used with permission by Cupid Media Pty Ltd.

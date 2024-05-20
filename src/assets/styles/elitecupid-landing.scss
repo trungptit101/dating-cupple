@@ -3768,6 +3768,7 @@ select {
   cursor: none;
   opacity: 0.6;
   overflow: hidden;
+  border: none;
   border-color: transparent;
   background-color: transparent;
 }
@@ -5012,4 +5013,8 @@ html.modal-open {
 .spinner {
   -webkit-animation: cm-spinY 2s infinite;
   animation: cm-spinY 2s infinite;
+}
+.percentage-question {
+  background: #d6ad60;
+  height: 6px;
 }

@@ -14,3 +14,10 @@ export function processDating(data) {
     data,
   });
 }
+
+export function getProcessDatingDetail() {
+  return request({
+    url: "/partner/process/detail",
+    method: "get",
+  });
+}

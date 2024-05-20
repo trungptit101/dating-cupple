@@ -53,6 +53,10 @@ export const constantRoutes = [
     component: () => import("@/views/Client/PartnerSuggestion.vue"),
   },
   {
+    path: "/partner/suggest/complete",
+    component: () => import("@/views/Client/PartnerSuggestionComplete.vue"),
+  },
+  {
     path: "/survey-question",
     component: () => import("@/views/Client/SurveyQuestion.vue"),
   },
@@ -91,7 +95,7 @@ export const constantRoutes = [
         path: "business-sales",
         name: "business-sales",
         component: () => import("@/views/business-sales/index"),
-        meta: { title: "Manager business sales", icon: "table", requireAdmin: true },
+        meta: { title: "Manager business sales", icon: "dashboard", requireAdmin: true },
       },
     ],
   },

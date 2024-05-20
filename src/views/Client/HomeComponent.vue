@@ -4,27 +4,16 @@
       class="flex justify-between items-center absolute top-0 left-0 col-12 z2"
     >
       <img
-        src="@/assets/images/logo.png"
+        src="@/assets/images/logo-text-white.png"
         style="
           cursor: pointer;
-          height: 70px;
+          height: 90px;
           object-fit: contain;
-          margin-left: 2rem;
+          margin-left: 1rem;
         "
       />
 
-      <div class="mx3 flex items-center">
-        <div class="membernav">
-          <ul dir="ltr">
-            <li class="py1 px2 rounded">
-              <a class="flex items-center border-none"> English </a>
-              <!-- <ul class="p0 pt1">
-              <li><a class="p1 block" href="../fr.html">Việt Nam</a></li>
-            </ul> -->
-            </li>
-          </ul>
-        </div>
-
+      <div class="flex items-center">
         <a
           class="btn-bg btn-color block py1 px2 button relative overflow-hidden rounded shadow ms3 my3"
           title="Login"
@@ -33,14 +22,15 @@
         >
           Login
         </a>
-        <a
+        <AvatarUser class="py1 px2" :size="45" v-else />
+        <!-- <a
           class="btn-bg btn-color block py1 px2 button relative overflow-hidden rounded shadow ms3 my3"
           title="Logout"
           v-else
           @click="logout"
         >
           Logout
-        </a>
+        </a> -->
       </div>
     </div>
     <div class="section-top relative">
@@ -48,7 +38,7 @@
         <div class="p0 intro">
           <div class="intro-text center reveal">
             <h1 class="h1 white relative m0 mb1 line-height-3 max-width-3">
-              Meet Elite Singles
+              Meet Visicupid Singles
             </h1>
             <h2 class="h2 white relative my2 line-height-4 max-width-2 mx-auto">
               For people that value their career and time. Date like-minded
@@ -82,7 +72,7 @@
           </div>
           <div class="flex-auto mx2 flex items-center justify-center">
             <div class="flex-none m1 dot dot-highlight circle" />
-            Trusted site backed by Cupid Media
+            Trusted site backed by Visicupid Media
           </div>
         </div>
       </div>
@@ -98,23 +88,23 @@
         <p>
           Are you looking for someone to walk through life with? Are you
           searching for a connection that transcends? If you''re interested in
-          dating internationally, EliteCupid is here! We bring like-minded
+          dating internationally, Visicupid is here! We bring like-minded
           individuals together from around the world. We pride ourselves on
           success and know you do too.
         </p>
       </div>
       <div class="col-3">
-        <h2>Why EliteCupid?</h2>
+        <h2>Why Visicupid?</h2>
         <p>
-          EliteCupid is the latest offering from Cupid Media, one of the
-          world''s largest dating networks. Our dream? Make love possible, no
-          matter where you live or whom you love.
+          Visicupid is the latest offering from Cupid Media, one of the world''s
+          largest dating networks. Our dream? Make love possible, no matter
+          where you live or whom you love.
         </p>
       </div>
       <div class="col-3">
         <h2>Find your perfect match.</h2>
         <p>
-          EliteCupid is for individuals seeking long-term relationships with
+          Visicupid is for individuals seeking long-term relationships with
           someone who is their equal. We focus on bringing accomplished and
           affluent singles together. Our comprehensive personality assessment
           matches users based on their values, aspirations, and lifestyles, thus
@@ -125,7 +115,7 @@
     <div class="section bg-white how-it-works p4 center landing-bg-grey">
       <h2 class="mb1 highlight">How It Works</h2>
       <h4 class="mt1 mb3">
-        Get started on EliteCupid.com today in 3 simple steps:
+        Get started on Visicupid.com today in 3 simple steps:
       </h4>
       <div class="flex justify-around">
         <div class="flex-none block m2 col-2 relative">
@@ -196,29 +186,10 @@
         </div>
         <div class="col col-2">
           <div class="h3 mt2 mb1 color-dark-grey">Company</div>
-          <a
-            class="block"
-            href="https://www.cupidmedia.com/our-story/"
-            rel="nofollow"
-            target="_blank"
-            >About Us</a
-          >
-          <a
-            class="block"
-            href="https://www.cupidmedia.com/our-sites/"
-            target="_blank"
-            >Other Sites</a
-          >
-          <a class="block" href="https://www.cupidmedia.com/" target="_blank"
-            >Corporate</a
-          >
-          <a
-            class="block"
-            href="https://www.cupidmedia.com/affiliates/"
-            target="_blank"
-            rel="nofollow"
-            >Affiliates</a
-          >
+          <a class="block" rel="nofollow">About Us</a>
+          <a class="block">Other Sites</a>
+          <a class="block">Corporate</a>
+          <a class="block" rel="nofollow">Affiliates</a>
         </div>
         <div class="col col-2">
           <div class="h3 mt2 mb1 color-dark-grey">Information</div>
@@ -226,15 +197,10 @@
           <a class="block" href="general/success.html" rel="nofollow"
             >Success Stories</a
           >
-
           <a class="block" href="general/contact.html" rel="nofollow"
             >Contact Us</a
           >
-
-          <a class="block" href="general/datingsafety.html" target="_blank"
-            >Dating Safety</a
-          >
-
+          <a class="block" href="general/datingsafety.html">Dating Safety</a>
           <a class="block" href="general/sitemap.html" rel="nofollow"
             >Site Map</a
           >
@@ -263,11 +229,7 @@
         </div>
         <div class="col col-4">
           <div class="h3 mt2 mb1 color-dark-grey">Follow Us</div>
-
-          <a
-            class="inline-block"
-            href="https://www.facebook.com/elitecupid"
-            target="_blank"
+          <a class="inline-block"
             ><img
               src="@/assets/images/fb.png"
               width="50"
@@ -277,10 +239,7 @@
               class="network"
           /></a>
 
-          <a
-            class="inline-block"
-            href="https://www.twitter.com/elitecupid_"
-            target="_blank"
+          <a class="inline-block"
             ><img
               src="@/assets/images/twt.png"
               width="50"
@@ -290,10 +249,7 @@
               class="network"
           /></a>
 
-          <a
-            class="inline-block"
-            href="https://www.instagram.com/elitecupid/"
-            target="_blank"
+          <a class="inline-block"
             ><img
               src="@/assets/images/instagram.png"
               width="50"
@@ -303,10 +259,7 @@
               class="network"
           /></a>
 
-          <a
-            class="inline-block"
-            href="https://www.youtube.com/channel/UCpHjDYdw9yzsE8L5LhrHc5A"
-            target="_blank"
+          <a class="inline-block"
             ><img
               src="@/assets/images/ytube.png"
               width="50"
@@ -318,12 +271,7 @@
         </div>
       </div>
     </div>
-    <div class="trademark p1 center">
-      <h5>
-        Cupid Media, the Cupid Media Logo are registered trademarks of Ecom
-        Holdings Pty Ltd and used with permission by Cupid Media Pty Ltd.
-      </h5>
-    </div>
+    <Footer />
     <el-dialog :visible.sync="isDisplayRegisterServey">
       <RegisterServey @finish="finishRegister" />
     </el-dialog>
@@ -332,8 +280,10 @@
 
 <script>
 import RegisterServey from "@/components/RegisterServey.vue";
+import Footer from "@/layout/components/Footer.vue";
+import AvatarUser from "@/components/AvatarUser.vue";
 export default {
-  components: { RegisterServey },
+  components: { RegisterServey, Footer, AvatarUser },
   data() {
     return {
       isDisplayRegisterServey: false,

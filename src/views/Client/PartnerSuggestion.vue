@@ -11,7 +11,7 @@
           <div class="title">Partners Suggestion</div>
           <button
             class="btn-bg btn-color py1 px2 rounded shadow"
-            @click="proccessDating"
+            @click="processDating"
             :disabled="loadingProcess"
           >
             <i
@@ -47,24 +47,24 @@
           </el-col>
         </el-row>
       </div>
-      <div class="trademark p1 center">
-        <h5>
-          Cupid Media, the Cupid Media Logo are registered trademarks of Ecom
-          Holdings Pty Ltd and used with permission by Cupid Media Pty Ltd.
-        </h5>
-      </div>
+      <Footer />
     </div>
   </div>
 </template>
 
 <script>
 import Header from "@/layout/components/Header.vue";
+import Footer from "@/layout/components/Footer.vue";
 import LoadingComponent from "@/layout/components/LoadingComponent.vue";
-import { getPartnerSuggestion, processDating } from "@/api/partner";
+import {
+  getPartnerSuggestion,
+  processDating,
+  getProcessDatingDetail,
+} from "@/api/partner";
 import Avatar from "@/components/Avatar.vue";
 import { Message } from "element-ui";
 export default {
-  components: { Header, LoadingComponent, Avatar },
+  components: { Header, LoadingComponent, Avatar, Footer },
   data() {
     return {
       isLoading: true,
@@ -74,9 +74,18 @@ export default {
     };
   },
   created() {
-    this.getList();
+    this.getDetail();
   },
   methods: {
+    async getDetail() {
+      const response = await getProcessDatingDetail();
+      if (response.process) {
+        console.log("vafooo");
+        this.$router.push({ path: "/partner/suggest/complete" });
+        return;
+      }
+      this.getList();
+    },
     getList() {
       getPartnerSuggestion()
         .then((res) => {
@@ -104,7 +113,7 @@ export default {
       }
       this.partnersSelected.push(partner.id);
     },
-    async proccessDating() {
+    async processDating() {
       if (this.partnersSelected.length == 0) {
         Message({
           message: "Please choose at least 1 partner!",
@@ -114,7 +123,9 @@ export default {
         return;
       }
       this.loadingProcess = true;
-      const response = await processDating(this.partnersSelected);
+      await processDating({
+        partnersId: this.partnersSelected,
+      });
       this.loadingProcess = false;
     },
   },

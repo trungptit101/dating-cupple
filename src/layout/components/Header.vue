@@ -5,34 +5,21 @@
       style="padding: 12.5px; height: 79px"
     >
       <img
-        src="@/assets/images/logo.png"
-        style="cursor: pointer; height: 50px; object-fit: contain"
+        src="@/assets/images/logo-text.png"
+        style="cursor: pointer; object-fit: contain; height: 100%"
         @click="$router.push({ path: '/' })"
       />
-      <div class="nav-header">
-        <a
-          class="btn-bg btn-color block py1 px2 button relative overflow-hidden rounded shadow ms3 my3"
-          title="Login"
-          v-if="!user.email"
-          @click="$router.push({ name: 'login' })"
-        >
-          Login
-        </a>
-        <a
-          class="btn-bg btn-color block py1 px2 button relative overflow-hidden rounded shadow ms3 my3"
-          title="Logout"
-          v-else
-          @click="logout"
-        >
-          Logout
-        </a>
+      <div class="nav-header py1 px2">
+        <AvatarUser :size="40" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import AvatarUser from "@/components/AvatarUser.vue";
 export default {
+  components: { AvatarUser },
   data() {
     return {};
   },

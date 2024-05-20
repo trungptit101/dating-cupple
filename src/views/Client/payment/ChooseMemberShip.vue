@@ -252,7 +252,7 @@
               <b>Automatic Renewal - Continuous Service</b><br />
               There is nothing worse than losing touch with a potential match
               when all you want to do is continue your conversation! To avoid
-              this interruption, your membership on EliteCupid.com will be
+              this interruption, your membership on Visicupid.com will be
               automatically renewed. After your initial membership period
               expires, your membership will be automatically renewed for an
               additional equivalent period, at the same price. Your credit/debit
@@ -260,7 +260,7 @@
               <b>Billing Details</b><br />
 
               The charge on your billing statement or card will appear as
-              "EliteCupid.com Southport AU". You are being billed by Cupid Media
+              "Visicupid.com Southport AU". You are being billed by Cupid Media
               Pty Ltd, Suite 2502, 5 Lawson Street, Southport, QLD 4215,
               Australia.<br /><br />
 
@@ -460,16 +460,17 @@ export default {
     };
   },
   created() {
-    this.isLoading = true;
     detailOrder()
       .then((res) => {})
       .catch((err) => {
         if (
-          err.response.data.order.payment_status !=
-          OrderStatus.PAYMENT_STATUS_COMPLETE
-        )
+          !err.response.data.order ||
+          (err.response.data.order &&
+            err.response.data.order.payment_status !=
+              OrderStatus.PAYMENT_STATUS_COMPLETE)
+        ) {
           this.getList();
-        else this.$router.push({ path: "/partner/suggest" });
+        } else this.$router.push({ path: "/partner/suggest" });
       });
   },
   methods: {

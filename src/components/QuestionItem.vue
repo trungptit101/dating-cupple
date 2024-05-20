@@ -6,11 +6,12 @@
       style="padding-bottom: 40px"
     >
       <div class="w-full">
-        <h2
-          class="lg:text-7xl text-6xl sm:mb-6 mb-2 text-[#D6AD60] font-semibold text-center"
+        <div
+          class="text-[#D6AD60] font-semibold text-center"
+          style="font-size: 35px; margin-top: 20px"
         >
           {{ currentStep }}
-        </h2>
+        </div>
         <div class="sm:mb-14 mb-4 text-center">
           <h1
             class="lg:text-2xl text-xl lg:font-normal font-semibold text-[#323232]"
@@ -157,11 +158,5 @@ export default {
   color: rgb(50 50 50 / 1);
   font-weight: 400;
   margin-left: 10px;
-}
-input[type="radio"]:checked ~ .check {
-  border: 5px solid #0dff92;
-}
-input[type="radio"]:checked ~ .check::before {
-  background: #0dff92;
 }
 </style>

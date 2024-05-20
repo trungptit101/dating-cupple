@@ -15,6 +15,11 @@ export const GenderUser = {
   Female: "female",
 };
 
+export const ProcessDatingStatus = {
+  InProgress: 0,
+  Complete: 1,
+};
+
 export const OrderStatus = {
   PAYMENT_STATUS_INPROGRESS: 1,
   PAYMENT_STATUS_CANCEL: 2,

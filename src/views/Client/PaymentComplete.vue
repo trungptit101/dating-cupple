@@ -53,23 +53,19 @@
           </button>
         </div>
       </div>
-      <div class="trademark p1 center">
-        <h5>
-          Cupid Media, the Cupid Media Logo are registered trademarks of Ecom
-          Holdings Pty Ltd and used with permission by Cupid Media Pty Ltd.
-        </h5>
-      </div>
+      <Footer />
     </div>
   </div>
 </template>
 
 <script>
 import Header from "@/layout/components/Header.vue";
+import Footer from "@/layout/components/Footer.vue";
 import LoadingComponent from "@/layout/components/LoadingComponent.vue";
 import { detailOrder } from "@/api/order";
 import { OrderStatus } from "@/define/index";
 export default {
-  components: { Header, LoadingComponent },
+  components: { Header, LoadingComponent, Footer },
   data() {
     return {
       orderDetail: {},

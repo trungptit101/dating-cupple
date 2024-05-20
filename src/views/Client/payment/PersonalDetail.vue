@@ -110,7 +110,7 @@
             >
             and
             <a href="../general/paymentrefund" target="_blank">Refund Policy</a>
-            and authorize EliteCupid to charge your credit/debit card now, and
+            and authorize Visicupid to charge your credit/debit card now, and
             at the beginning of any subsequent renewals. You can cancel
             auto-renewal payments on the Settings -&gt; Billing page, at any
             time.
@@ -124,7 +124,7 @@
             >
             and
             <a href="../general/paymentrefund" target="_blank">Refund Policy</a>
-            and authorize EliteCupid to securely store and charge your
+            and authorize Visicupid to securely store and charge your
             credit/debit card now, and at the beginning of any subsequent
             renewals. You can cancel auto-renewal payments on the Settings -&gt;
             Billing page, at any time.
@@ -141,13 +141,13 @@
 
         <p data-country-not-in-eu="" class="mb2">
           The charge on your billing statement or card will appear as
-          "EliteCupid". You are being billed by Cupid Media Pty Ltd, Suite 2502,
+          "Visicupid". You are being billed by Cupid Media Pty Ltd, Suite 2502,
           5 Lawson Street, Southport, QLD 4215, Australia. Your billing currency
           is VND.
         </p>
         <p data-country-in-eu="" class="highlight-a hide">
           The charge on your billing statement or card will appear as
-          "EliteCupid". You are being billed by SOL Networks Ltd, Malta. Your
+          "Visicupid". You are being billed by SOL Networks Ltd, Malta. Your
           billing currency is VND.
         </p>
       </div>
