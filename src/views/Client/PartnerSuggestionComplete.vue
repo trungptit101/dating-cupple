@@ -63,7 +63,7 @@ export default {
   background: #fff;
   .container-partner-suggestion-complete {
     min-height: calc(100vh - 80px - 65px);
-    padding-top: 20%;
+    padding-top: 10%;
     max-width: 980px;
     margin: 0px auto;
     text-align: center;

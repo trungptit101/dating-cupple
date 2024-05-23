@@ -169,7 +169,7 @@
         size="large"
         :loading="loading"
         @click="submitForm('ruleFormRef')"
-        >View Singles Now</el-button
+        >Find Your Beloved</el-button
       >
     </el-form-item>
   </el-form>

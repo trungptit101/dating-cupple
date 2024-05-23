@@ -30,16 +30,16 @@
         />
       </div>
     </div>
-    <div class="section-top relative">
+    <div class="section-top flex relative">
       <div class="flex items-center justify-center height-97 col-6">
         <div class="p0 intro">
           <div class="intro-text center reveal">
             <h1 class="h1 white relative m0 mb1 line-height-3 max-width-3">
-              Meet Visicupid Singles
+              Meet your other half💘
             </h1>
             <h2 class="h2 white relative my2 line-height-4 max-width-2 mx-auto">
-              For people that value their career and time. Date like-minded
-              individuals!
+              Privacy and Confidentiality, your Journey let our professional
+              matchmaker behalf🤝
             </h2>
             <div
               class="intro-join mt1 center flex items-start justify-center col-12 mx-auto reveal"
@@ -49,7 +49,7 @@
                 <h3
                   class="btn-bg btn-color block py1 px2 button relative overflow-hidden rounded shadow"
                 >
-                  Begin Application
+                  Find Your Beloved
                 </h3>
               </a>
             </div>

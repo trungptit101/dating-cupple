@@ -4,7 +4,10 @@
       <img slot="reference" :src="urlAvatar" :style="styles" />
     </div>
     <el-dropdown-menu slot="dropdown" class="menu-user">
-      <router-link to="/survey/list">
+      <router-link to="/survey-question">
+        <el-dropdown-item>Survey Question</el-dropdown-item>
+      </router-link>
+      <router-link to="/survey/list" v-if="user.role == UserRole.Admin">
         <el-dropdown-item>Manager</el-dropdown-item>
       </router-link>
       <el-dropdown-item @click.native="settingProfile"
@@ -18,12 +21,12 @@
 </template>
 
 <script>
-import { GenderUser } from "@/define/index";
+import { GenderUser, UserRole } from "@/define/index";
 import store from "@/store";
 export default {
   props: ["size"],
   data() {
-    return {};
+    return { UserRole };
   },
   computed: {
     user() {
@@ -64,6 +67,6 @@ export default {
 }
 .menu-user {
   padding: 10px 0;
-  width: 120px;
+  width: 150px;
 }
 </style>

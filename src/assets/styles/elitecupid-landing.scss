@@ -4587,7 +4587,7 @@ html.modal-open {
 }
 .section-top:before {
   content: "";
-  background-color: #4a4a4a82;
+  background-color: #00000082;
   background-blend-mode: multiply;
   width: 100%;
   min-height: 97.5vh;
@@ -4610,8 +4610,8 @@ html.modal-open {
   background-image: url(//cdn.elitecupid.com/assets/images/landing/v2/43/landing.jpg);
 }
 .section-top:before {
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
+  // -webkit-transform: scaleX(-1);
+  // transform: scaleX(-1);
 }
 [data-device="tablet"] .section-top:before {
   background-attachment: scroll;

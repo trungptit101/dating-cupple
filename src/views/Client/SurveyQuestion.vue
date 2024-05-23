@@ -157,8 +157,7 @@ export default {
     background-color: rgb(255 255 255 / var(--tw-bg-opacity));
   }
   .svelte-questionnaire-body {
-    height: calc(100vh - 70px - 118px);
-    padding: 0 20px;
+    height: calc(100vh - 70px - 110px);
     overflow: auto;
   }
 }
