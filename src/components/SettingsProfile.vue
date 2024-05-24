@@ -60,6 +60,18 @@
         </el-row>
         <el-row :gutter="24">
           <el-col :span="12">
+            <el-form-item label="Phone" prop="phone">
+              <el-input
+                size="large"
+                placeholder="Phone"
+                v-model="form.phone"
+              ></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="12"> </el-col>
+        </el-row>
+        <el-row :gutter="24">
+          <el-col :span="12">
             <el-form-item label="Favorite" prop="favorite">
               <el-input
                 size="large"
@@ -160,6 +172,13 @@ export default {
           {
             required: true,
             message: "Please enter your age",
+            trigger: "blur",
+          },
+        ],
+        phone: [
+          {
+            required: true,
+            message: "Please enter your phone number",
             trigger: "blur",
           },
         ],

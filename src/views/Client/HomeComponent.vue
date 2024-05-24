@@ -269,7 +269,11 @@
       </div>
     </div>
     <Footer />
-    <el-dialog :visible.sync="isDisplayRegisterServey">
+    <el-dialog
+      top="5vh"
+      :close-on-click-modal="false"
+      :visible.sync="isDisplayRegisterServey"
+    >
       <RegisterServey @finish="finishRegister" />
     </el-dialog>
     <el-dialog

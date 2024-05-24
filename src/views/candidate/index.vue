@@ -42,6 +42,29 @@
           <span>{{ scope.row.lookingGender }}</span>
         </template>
       </el-table-column>
+      <el-table-column
+        class-name="status-col"
+        label="Action"
+        width="110"
+        align="center"
+      >
+        <template slot-scope="scope">
+          <el-tooltip
+            class="item"
+            effect="dark"
+            content="Delete"
+            placement="top"
+          >
+            <el-button
+              type="danger"
+              icon="el-icon-delete"
+              size="mini"
+              circle
+              @click="deleteItem(scope.row.id)"
+            ></el-button>
+          </el-tooltip>
+        </template>
+      </el-table-column>
     </el-table>
     <div class="text-center" style="padding: 20px 0">
       <el-pagination
@@ -59,7 +82,8 @@
 </template>
 
 <script>
-import { getListCandidate } from "@/api/user";
+import { getListCandidate, deleteCandidate } from "@/api/user";
+import { Message } from "element-ui";
 
 export default {
   components: {},
@@ -84,11 +108,29 @@ export default {
         page: this.page,
         perPage: this.perPage,
       };
-      getListCandidate(params).then((response) => {
-        this.list = response.data.data;
-        this.totalCount = response.data.total;
-        this.loading = false;
-      });
+      getListCandidate(params)
+        .then((response) => {
+          this.list = response.data.data;
+          this.totalCount = response.data.total;
+          this.loading = false;
+        })
+        .catch(() => {
+          this.loading = false;
+        });
+    },
+    deleteItem(id) {
+      this.$confirm("Are you sure to delete this candidate?")
+        .then((_) => {
+          deleteCandidate(id).then((res) => {
+            Message({
+              message: res.message,
+              type: "success",
+              duration: 1000,
+            });
+            this.getList();
+          });
+        })
+        .catch((_) => {});
     },
     handleSizeChange(val) {
       this.perPage = val;

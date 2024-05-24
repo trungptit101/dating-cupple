@@ -7,7 +7,7 @@
       <router-link to="/survey-question" v-if="user.role == UserRole.Candidate">
         <el-dropdown-item>Survey Question</el-dropdown-item>
       </router-link>
-      <router-link to="/survey/list" v-if="user.role == UserRole.Admin">
+      <router-link to="/analysic" v-if="user.role == UserRole.Admin">
         <el-dropdown-item>Manager</el-dropdown-item>
       </router-link>
       <el-dropdown-item @click.native="settingProfile"

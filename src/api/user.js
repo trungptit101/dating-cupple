@@ -24,6 +24,13 @@ export function getListCandidate(params) {
   });
 }
 
+export function deleteCandidate(id) {
+  return request({
+    url: `/candidate/delete/${id}`,
+    method: "delete",
+  });
+}
+
 export function getUserDetail(id) {
   return request({
     url: `/user/detail/${id}`,
@@ -36,5 +43,19 @@ export function updateUserProfile(data) {
     url: "/user/profile",
     method: "post",
     data,
+  });
+}
+
+export function getListRequestDating() {
+  return request({
+    url: "/candidate/dating-requests/list",
+    method: "get",
+  });
+}
+
+export function updateProcessDating(id) {
+  return request({
+    url: `/candidate/dating-process/update/${id}`,
+    method: "post",
   });
 }

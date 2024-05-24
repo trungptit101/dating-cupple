@@ -10,3 +10,7 @@ export function convertBase64(file) {
     };
   });
 }
+
+export function convertDatetimeFormat(time) {
+  return `${new Date(time).toLocaleDateString()} ${new Date(time).toLocaleTimeString()}`
+}

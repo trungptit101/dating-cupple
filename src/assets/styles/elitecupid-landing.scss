@@ -981,6 +981,11 @@ svg {
     min-height: 55vh;
   }
 }
+@media (max-width: 1200px) {
+  .el-dialog {
+    width: 90% !important;
+  }
+}
 .min-height-490 {
   min-height: 490px;
 }
@@ -5020,4 +5025,10 @@ html.modal-open {
 }
 .el-dialog__body {
   padding: 20px;
+}
+.el-table__header {
+  th {
+    background: #304156;
+    color: #ffff;
+  }
 }

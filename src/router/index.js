@@ -61,6 +61,19 @@ export const constantRoutes = [
     component: () => import("@/views/Client/SurveyQuestion.vue"),
   },
   {
+    path: "/analysic",
+    component: Layout,
+    meta: { icon: "el-icon-s-help" },
+    children: [
+      {
+        path: "",
+        name: "business-sales",
+        component: () => import("@/views/business-sales/index"),
+        meta: { title: "Manager business sales", icon: "dashboard", requireAdmin: true },
+      },
+    ],
+  },
+  {
     path: "/survey",
     component: Layout,
     meta: { title: "Survey", icon: "el-icon-s-help" },
@@ -76,26 +89,19 @@ export const constantRoutes = [
   {
     path: "/manager",
     component: Layout,
-    meta: { icon: "el-icon-s-help" },
+    meta: { title: "Manager", icon: "el-icon-s-help" },
     children: [
       {
         path: "candidate",
         name: "candidate",
         component: () => import("@/views/candidate/index"),
-        meta: { title: "Manager candidate", icon: "table", requireAdmin: true },
+        meta: { title: "Candidate", icon: "user", requireAdmin: true },
       },
-    ],
-  },
-  {
-    path: "/analysic",
-    component: Layout,
-    meta: { icon: "el-icon-s-help" },
-    children: [
       {
-        path: "business-sales",
-        name: "business-sales",
-        component: () => import("@/views/business-sales/index"),
-        meta: { title: "Manager business sales", icon: "dashboard", requireAdmin: true },
+        path: "dating",
+        name: "user-dating",
+        component: () => import("@/views/manager-dating/index"),
+        meta: { title: "Dating", icon: "wechat", requireAdmin: true },
       },
     ],
   },

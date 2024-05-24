@@ -140,6 +140,13 @@
         placeholder="email@example.com"
       />
     </el-form-item>
+    <el-form-item label="Phone Number" prop="phone">
+      <el-input
+        v-model="form.phone"
+        size="large"
+        placeholder="Phone Number"
+      />
+    </el-form-item>
     <el-form-item label="Password" prop="password">
       <el-input
         v-model="form.password"
@@ -187,6 +194,7 @@ export default {
         password: null,
         privacy: null,
         gender: null,
+        phone: null,
         lookingGender: null,
       },
       rules: {
@@ -201,6 +209,13 @@ export default {
           {
             required: true,
             message: "Please enter your age",
+            trigger: "blur",
+          },
+        ],
+        phone: [
+          {
+            required: true,
+            message: "Please enter your phone number",
             trigger: "blur",
           },
         ],
