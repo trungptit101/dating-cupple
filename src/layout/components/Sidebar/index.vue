@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ 'has-logo': showLogo }">
+  <div :class="{ 'has-logo': true }">
     <logo :collapse="isCollapse" />
     <el-scrollbar wrap-class="scrollbar-wrapper" class="menu-admin">
       <el-menu

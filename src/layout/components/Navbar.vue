@@ -9,33 +9,27 @@
     <!-- <breadcrumb class="breadcrumb-container" /> -->
 
     <div class="right-menu">
-      <el-dropdown class="avatar-container" trigger="click">
+      <AvatarUser :size="40" @settingProfile="settingProfile" />
+      <!-- <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
-          <img :src="avatar + '?imageView2/1/w/80/h/80'" class="user-avatar" />
+          <img :src="urlAvatar" class="user-avatar" />
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown">
-          <router-link to="/">
-            <el-dropdown-item> Home </el-dropdown-item>
-          </router-link>
-          <a
-            target="_blank"
-            href="https://github.com/PanJiaChen/vue-admin-template/"
-          >
-            <el-dropdown-item>Github</el-dropdown-item>
-          </a>
-          <a
-            target="_blank"
-            href="https://panjiachen.github.io/vue-element-admin-site/#/"
-          >
-            <el-dropdown-item>Docs</el-dropdown-item>
-          </a>
           <el-dropdown-item divided @click.native="logout">
             <span style="display: block">Log Out</span>
           </el-dropdown-item>
         </el-dropdown-menu>
-      </el-dropdown>
+      </el-dropdown> -->
     </div>
+    <el-dialog
+      :close-on-click-modal="false"
+      title="Settings Profile"
+      :visible.sync="isDisplaySettingsProfile"
+      top="5vh"
+    >
+      <SettingsProfile @closeDialog="isDisplaySettingsProfile = false" />
+    </el-dialog>
   </div>
 </template>
 
@@ -43,18 +37,41 @@
 import { mapGetters } from "vuex";
 import Breadcrumb from "@/components/Breadcrumb";
 import Hamburger from "@/components/Hamburger";
+import { GenderUser } from "@/define/index";
+import AvatarUser from "@/components/AvatarUser.vue";
+import store from "@/store";
+import SettingsProfile from "@/components/SettingsProfile.vue";
 
 export default {
   components: {
     Breadcrumb,
     Hamburger,
+    AvatarUser,
+    SettingsProfile,
+  },
+  data() {
+    return {
+      isDisplaySettingsProfile: false,
+    };
   },
   computed: {
     ...mapGetters(["sidebar", "avatar"]),
+    user() {
+      return store.getters.user;
+    },
+    urlAvatar() {
+      if (this.user.avatar) return this.user.avatar;
+      if (this.user.gender == GenderUser.Male)
+        return require("@/assets/images/avatar-male.png");
+      return require("@/assets/images/avatar-female.svg");
+    },
   },
   methods: {
+    settingProfile() {
+      this.isDisplaySettingsProfile = true;
+    },
     toggleSideBar() {
-      this.$store.dispatch('app/toggleSideBar')
+      this.$store.dispatch("app/toggleSideBar");
     },
     async logout() {
       await this.$store.dispatch("user/logout");
@@ -93,6 +110,8 @@ export default {
     float: right;
     height: 100%;
     line-height: 50px;
+    padding-right: 15px;
+    padding-top: 5px;
 
     &:focus {
       outline: none;

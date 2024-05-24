@@ -1,9 +1,7 @@
 <template>
   <div class="app-container">
     <el-row class="flex items-center">
-      <el-col :span="12">
-        <h2>List Candidates</h2>
-      </el-col>
+      <el-col :span="12"> </el-col>
       <el-col :span="12">
         <div class="text-right">
           <el-button type="primary" size="medium" @click="addQuestion"

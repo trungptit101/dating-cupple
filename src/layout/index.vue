@@ -18,6 +18,7 @@
 <script>
 import { Navbar, Sidebar, AppMain } from "./components";
 import ResizeMixin from "./mixin/ResizeHandler";
+import { UserRole } from "@/define/index";
 
 export default {
   name: "Layout",
@@ -50,8 +51,8 @@ export default {
     },
   },
   created() {
-    if (!this.user.is_complete_survey) this.getList();
-    else this.$router.push({ path: "/" });
+    if (!this.user.is_complete_survey && this.user.role == UserRole.Candidate)
+      this.$router.push({ path: "/" });
   },
   methods: {
     handleClickOutside() {

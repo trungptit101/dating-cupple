@@ -4,7 +4,7 @@
       <img slot="reference" :src="urlAvatar" :style="styles" />
     </div>
     <el-dropdown-menu slot="dropdown" class="menu-user">
-      <router-link to="/survey-question">
+      <router-link to="/survey-question" v-if="user.role == UserRole.Candidate">
         <el-dropdown-item>Survey Question</el-dropdown-item>
       </router-link>
       <router-link to="/survey/list" v-if="user.role == UserRole.Admin">

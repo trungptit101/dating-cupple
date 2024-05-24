@@ -28,10 +28,25 @@
             :key="index"
             class="partner-item"
           >
-            <div class="flex" @click="choosePartner(partner)">
-              <Avatar :size="50" :user="partner" url="" />
+            <div class="flex items-center" @click="choosePartner(partner)">
+              <Avatar :size="50" :user="partner" :url="partner.avatar" />
               <div class="partner-info">
-                <div class="name">{{ partner.name }}</div>
+                <div class="name">{{ partner.name }} - {{ partner.age }}</div>
+                <el-row :gutter="20">
+                  <el-col :span="8">
+                    <div class="">Blood Group</div>
+                    <div>{{ partner.blood_group }}</div>
+                  </el-col>
+                  <el-col :span="8">
+                    <div>Eye Color</div>
+                    <div>{{ partner.eye_color }}</div>
+                  </el-col>
+                  <el-col :span="8">
+                    <div>Skin Color</div>
+                    <div>{{ partner.skin_color }}</div>
+                  </el-col>
+                </el-row>
+                <div>Favorite: {{ partner.favorite }}</div>
                 <img
                   src="@/assets/images/heart-red.png"
                   class="icon-heart"
@@ -63,6 +78,7 @@ import {
 } from "@/api/partner";
 import Avatar from "@/components/Avatar.vue";
 import { Message } from "element-ui";
+import { detailOrder } from "@/api/order";
 export default {
   components: { Header, LoadingComponent, Avatar, Footer },
   data() {
@@ -80,11 +96,15 @@ export default {
     async getDetail() {
       const response = await getProcessDatingDetail();
       if (response.process) {
-        console.log("vafooo");
         this.$router.push({ path: "/partner/suggest/complete" });
         return;
       }
-      this.getList();
+      try {
+        await detailOrder();
+        this.getList();
+      } catch (error) {
+        this.$router.push("/");
+      }
     },
     getList() {
       getPartnerSuggestion()
@@ -156,8 +176,13 @@ export default {
         width: calc(100% - 100px);
         .name {
           font-weight: 500;
-          font-size: 15px;
+          font-size: 16px;
         }
+      }
+      .partner-info > div {
+        padding: 5px 0;
+        font-size: 14px;
+        font-weight: 500;
       }
       .icon-heart {
         width: 20px;

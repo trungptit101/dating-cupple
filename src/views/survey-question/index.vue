@@ -1,10 +1,15 @@
 <template>
   <div class="app-container">
-    <div class="text-right" style="margin-bottom: 10px">
-      <el-button type="primary" size="medium" @click="addQuestion"
-        >Add</el-button
-      >
-    </div>
+    <el-row class="flex items-center" style="margin-bottom: 10px">
+      <el-col :span="12">
+        <h2>List Survey Questions</h2>
+      </el-col>
+      <el-col :span="12" class="text-right">
+        <el-button type="primary" size="medium" @click="addQuestion"
+          >Add</el-button
+        >
+      </el-col>
+    </el-row>
     <el-table
       v-loading="loading"
       :data="list"
