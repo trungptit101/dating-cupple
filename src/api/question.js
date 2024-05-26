@@ -1,9 +1,32 @@
 import request from "@/utils/request";
 
-export function getListQuestion() {
+export function getListQuestion(params) {
   return request({
     url: "/question/list",
     method: "get",
+    params: params,
+  });
+}
+
+export function settingsFilter() {
+  return request({
+    url: "/question/settings-filter",
+    method: "get",
+  });
+}
+
+export function questionsSettings() {
+  return request({
+    url: "/question/questions/settings",
+    method: "get",
+  });
+}
+
+export function updateSettingsFilter(data) {
+  return request({
+    url: "/question/up-sert-settings-filter",
+    method: "post",
+    data,
   });
 }
 

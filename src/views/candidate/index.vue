@@ -1,8 +1,55 @@
 <template>
-  <div class="app-container">
+  <div class="app-container manager-candidate">
+    <div class="filter-search">
+      <el-row :gutter="20">
+        <el-col
+          :span="12"
+          v-for="(question, index) in questionsSettings"
+          :key="index"
+          class="question-item-filter"
+        >
+          <div class="label">{{ question.question }}</div>
+          <el-select
+            class="setting-filter"
+            v-if="
+              [QuestionType.OnlyOption, QuestionType.MultipleOption].includes(
+                question.type
+              )
+            "
+            clearable
+            v-model="filterSearch[question.id]"
+            :multiple="question.type == QuestionType.MultipleOption"
+            :placeholder="question.question"
+          >
+            <el-option
+              v-for="option in question.options"
+              :key="option.key"
+              :label="option.text"
+              :value="option.key"
+            >
+            </el-option>
+          </el-select>
+          <el-input
+            v-else
+            clearable
+            :placeholder="question.question"
+            v-model="filterSearch[question.id]"
+          ></el-input>
+        </el-col>
+      </el-row>
+    </div>
     <el-row class="flex items-center">
       <el-col :span="12">
         <h2>List Candidates</h2>
+      </el-col>
+      <el-col :span="12" class="text-right">
+        <el-button
+          type="primary"
+          icon="el-icon-search"
+          size="medium"
+          @click="search"
+          >Search</el-button
+        >
       </el-col>
     </el-row>
     <el-table
@@ -15,7 +62,7 @@
     >
       <el-table-column align="center" label="No" width="95">
         <template slot-scope="scope">
-          {{ scope.$index + 1 }}
+          {{ scope.$index + 1 + (page - 1) * perPage }}
         </template>
       </el-table-column>
       <el-table-column label="Name">
@@ -30,7 +77,7 @@
       </el-table-column>
       <el-table-column class-name="status-col" label="Gender" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.gender }}</span>
+          <span :class="scope.row.gender">{{ scope.row.gender }}</span>
         </template>
       </el-table-column>
       <el-table-column
@@ -39,7 +86,28 @@
         align="center"
       >
         <template slot-scope="scope">
-          <span>{{ scope.row.lookingGender }}</span>
+          <span :class="scope.row.lookingGender">{{
+            scope.row.lookingGender
+          }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column
+        class-name="status-col"
+        label="Status Dating"
+        align="center"
+      >
+        <template slot-scope="scope">
+          <el-tag
+            effect="dark"
+            v-if="scope.row.dating"
+            :type="scope.row.dating.isComplete ? 'success' : 'warning'"
+          >
+            {{
+              scope.row.dating.isComplete
+                ? "InProgress Dating"
+                : "Complete Dating"
+            }}
+          </el-tag>
         </template>
       </el-table-column>
       <el-table-column
@@ -83,12 +151,15 @@
 
 <script>
 import { getListCandidate, deleteCandidate } from "@/api/user";
+import { questionsSettings } from "@/api/question";
 import { Message } from "element-ui";
+import { QuestionType } from "@/define/index";
 
 export default {
   components: {},
   data() {
     return {
+      QuestionType,
       list: null,
       loading: false,
       itemId: null,
@@ -96,18 +167,55 @@ export default {
       totalCount: 0,
       page: 1,
       perPage: 20,
+      questionsSettings: [],
+      filterSearch: {},
     };
   },
   created() {
     this.getList();
+    this.getQuestionsSettings();
   },
   methods: {
+    search() {
+      this.getList();
+    },
+    formatFilter() {
+      const filter = {};
+      Object.keys(this.filterSearch).forEach((key) => {
+        if (
+          this.filterSearch[key] &&
+          typeof this.filterSearch[key] == "string" &&
+          this.filterSearch[key]
+        )
+          filter[key] = [this.filterSearch[key]];
+        if (
+          this.filterSearch[key] &&
+          typeof this.filterSearch[key] == "object" &&
+          this.filterSearch[key].length
+        )
+          filter[key] = this.filterSearch[key];
+        filter[key] = JSON.stringify(filter[key]);
+      });
+      return filter;
+    },
+    getQuestionsSettings() {
+      questionsSettings().then((res) => {
+        this.questionsSettings = res.questions;
+        this.questionsSettings.forEach((question) => {
+          if (question.type == QuestionType.MultipleOption)
+            this.$set(this.filterSearch, question.id, []);
+          else this.$set(this.filterSearch, question.id, null);
+        });
+      });
+    },
     getList() {
+      const filter = this.formatFilter();
       this.loading = true;
       const params = {
         page: this.page,
         perPage: this.perPage,
       };
+      if (Object.keys(filter).length > 0) params.filter = filter;
       getListCandidate(params)
         .then((response) => {
           this.list = response.data.data;
@@ -143,3 +251,29 @@ export default {
   },
 };
 </script>
+<style lang="scss" scoped>
+.manager-candidate {
+  .filter-search {
+    padding-bottom: 10px;
+    .question-item-filter {
+      padding: 10px 0;
+      .label {
+        padding: 5px 0;
+        font-weight: 500;
+        font-size: 15px;
+      }
+      .setting-filter {
+        width: 100%;
+      }
+    }
+  }
+  .male {
+    font-weight: 600;
+    color: #67c23a;
+  }
+  .female {
+    font-weight: 600;
+    color: #f56c6c;
+  }
+}
+</style>

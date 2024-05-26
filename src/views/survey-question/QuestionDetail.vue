@@ -22,7 +22,14 @@
         />
       </el-select>
     </el-form-item>
-    <el-form-item label="option" v-if="form.type != QuestionType.BreakScreen">
+    <el-form-item
+      label="option"
+      v-if="
+        ![QuestionType.BreakScreen, QuestionType.EnterOption].includes(
+          form.type
+        )
+      "
+    >
       <el-row
         v-for="(option, index) in optionsList"
         :key="index"
@@ -90,7 +97,7 @@
         ></el-button>
       </div>
     </el-form-item>
-    <div v-else>
+    <div v-else-if="form.type == QuestionType.BreakScreen">
       <el-form-item label="Description" prop="description">
         <el-input
           type="textarea"
