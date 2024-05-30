@@ -20,7 +20,14 @@
           </h1>
         </div>
       </div>
-      <div class="m-auto w-full">
+      <div
+        class="m-auto w-full"
+        v-if="
+          [QuestionType.MultipleOption, QuestionType.OnlyOption].includes(
+            question.type
+          )
+        "
+      >
         <p
           class="text-md font-normal text-[#323232] text-center sm:mb-5 mb-4"
           v-if="question.type == QuestionType.MultipleOption"
@@ -58,6 +65,20 @@
           <span class="option-text">{{ option.text }}</span>
         </div>
       </div>
+      <div
+        class="m-auto w-full"
+        v-if="[QuestionType.InputAnswer].includes(question.type)"
+      >
+        <el-input
+          type="textarea"
+          :autosize="{ minRows: 8 }"
+          placeholder="Input Answer"
+          style="margin-top: 30px"
+          v-model="inputTextAnswer"
+          @blur="changeTextAnswer"
+        >
+        </el-input>
+      </div>
     </div>
     <div v-else>
       <div class="relative" style="">
@@ -93,6 +114,7 @@ export default {
   props: ["question", "currentStep"],
   data() {
     return {
+      inputTextAnswer: null,
       QuestionType,
       checkedAnswers: [],
       checkedOnlyAnswer: null,
@@ -108,6 +130,8 @@ export default {
       handler(val) {
         if (val.answers) {
           this.checkedAnswers = val.answers;
+          if (val.type == QuestionType.InputAnswer)
+            this.inputTextAnswer = val.answers[0];
         }
       },
       deep: true,
@@ -123,6 +147,9 @@ export default {
         this.checkedAnswers = [key];
       }
       this.$emit("updateAnswer", this.checkedAnswers);
+    },
+    changeTextAnswer(e) {
+      this.$emit("updateAnswer", [e.target.value]);
     },
   },
 };

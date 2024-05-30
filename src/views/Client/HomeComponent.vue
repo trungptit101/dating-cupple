@@ -175,20 +175,20 @@
     </div>
     <div class="footer py3 px4">
       <div class="clearfix">
-        <div class="col col-2">
+        <div class="col col-2" style="float: left">
           <div class="h3 mt2 mb1 color-dark-grey">Jenny Official</div>
           <a class="block">Address: S271032</a>
           <a class="block">UEN: 53484643B</a>
           <a class="block">Phone Number: +65 98881336</a>
         </div>
-        <div class="col col-2">
+        <div class="col col-2" style="float: left">
           <div class="h3 mt2 mb1 color-dark-grey">Company</div>
           <a class="block" rel="nofollow">About Us</a>
           <a class="block">Other Sites</a>
           <a class="block">Corporate</a>
           <a class="block" rel="nofollow">Affiliates</a>
         </div>
-        <div class="col col-2">
+        <div class="col col-2" style="float: left">
           <div class="h3 mt2 mb1 color-dark-grey">Information</div>
 
           <a class="block" href="general/success.html" rel="nofollow"
@@ -202,7 +202,7 @@
             >Site Map</a
           >
         </div>
-        <div class="col col-2">
+        <div class="col col-2" style="float: left">
           <div class="h3 mt2 mb1 color-dark-grey">Legal</div>
           <a class="block" href="general/termsofuse.html" rel="nofollow"
             >Terms of Use</a
@@ -224,7 +224,7 @@
             >Community Guidelines</a
           >
         </div>
-        <div class="col col-4">
+        <div class="col col-2" style="float: left">
           <div class="h3 mt2 mb1 color-dark-grey">Follow Us</div>
           <a class="inline-block"
             ><img

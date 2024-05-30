@@ -2,7 +2,7 @@ export const QuestionType = {
   OnlyOption: 1,
   MultipleOption: 2,
   BreakScreen: 3,
-  EnterOption: 4,
+  InputAnswer: 4,
 };
 
 export const UserRole = {

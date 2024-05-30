@@ -1,189 +1,253 @@
 <template>
-  <div class="app-container">
-    <el-row class="flex items-center">
-      <el-col :span="12"> </el-col>
-      <el-col :span="12">
-        <div class="text-right">
-          <el-button type="primary" size="medium" @click="addQuestion"
-            >Add</el-button
+  <div class="analysic-dashboard app-container">
+    <div class="filter-search">
+      <el-row :gutter="20" style="display: flex; align-items: flex-end">
+        <el-col :span="6" class="question-item-filter">
+          <div class="label">Select year for statistics</div>
+        </el-col>
+        <el-col :span="8" class="question-item-filter">
+          <el-select
+            v-model="yearSelected"
+            placeholder="Select"
+            style="width: 100%"
+            size="large"
           >
-        </div>
+            <el-option
+              v-for="item in optionsYears"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            />
+          </el-select>
+        </el-col>
+        <el-col :span="8" class="question-item-filter">
+          <el-button
+            type="primary"
+            icon="el-icon-search"
+            size="medium"
+            :loading="loading"
+            @click="search"
+            >Search</el-button
+          >
+        </el-col>
+      </el-row>
+    </div>
+    <h2 class="text-center">
+      Statistical chart of registered users by months in {{ yearSelected }}
+    </h2>
+    <VueApexCharts
+      type="bar"
+      height="450"
+      :options="options"
+      :series="dataUsersAnalysic"
+    ></VueApexCharts>
+
+    <el-row :gutter="20" style="display: flex; align-items: flex-end">
+      <el-col :xs="24" :md="12">
+        <h2 class="text-center">
+          Monthly sales unit VND statistics chart in {{ yearSelected }}
+        </h2>
+        <VueApexCharts
+          type="bar"
+          height="450"
+          :options="optionsSale"
+          :series="dataSalesAnalysicVND"
+        ></VueApexCharts>
+      </el-col>
+      <el-col :xs="24" :md="12">
+        <h2 class="text-center">
+          Monthly sales unit USD statistics chart in {{ yearSelected }}
+        </h2>
+        <VueApexCharts
+          type="bar"
+          height="450"
+          :options="optionsSale"
+          :series="dataSalesAnalysicUSD"
+        ></VueApexCharts>
       </el-col>
     </el-row>
-    <el-table
-      v-loading="loading"
-      :data="list"
-      element-loading-text="Loading"
-      border
-      fit
-      highlight-current-row
-    >
-      <el-table-column align="center" label="No" width="95">
-        <template slot-scope="scope">
-          {{ scope.$index + 1 }}
-        </template>
-      </el-table-column>
-      <el-table-column label="Name">
-        <template slot-scope="scope">
-          {{ scope.row.name }}
-        </template>
-      </el-table-column>
-      <el-table-column class-name="status-col" label="Email" align="center">
-        <template slot-scope="scope">
-          <span>{{ scope.row.email }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column class-name="status-col" label="Gender" align="center">
-        <template slot-scope="scope">
-          <span>{{ scope.row.gender }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column
-        class-name="status-col"
-        label="Looking Gender"
-        align="center"
-      >
-        <template slot-scope="scope">
-          <span>{{ scope.row.lookingGender }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column
-        class-name="status-col"
-        label="Action"
-        width="110"
-        align="center"
-      >
-        <template slot-scope="scope">
-          <el-tooltip class="item" effect="dark" content="Edit" placement="top">
-            <el-button
-              type="primary"
-              icon="el-icon-edit"
-              size="mini"
-              circle
-              @click="editQuestion(scope.row, scope.row.id)"
-            ></el-button>
-          </el-tooltip>
-          <el-tooltip
-            class="item"
-            effect="dark"
-            content="Delete"
-            placement="top"
-          >
-            <el-button
-              type="danger"
-              icon="el-icon-delete"
-              size="mini"
-              circle
-              @click="deleteItem(scope.row.id)"
-            ></el-button>
-          </el-tooltip>
-        </template>
-      </el-table-column>
-    </el-table>
-    <div class="text-center" style="padding: 20px 0">
-      <el-pagination
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-        :current-page.sync="page"
-        :page-sizes="[20, 30, 40, 50]"
-        :page-size="perPage"
-        layout="total, sizes, prev, pager, next"
-        :total="totalCount"
-      >
-      </el-pagination>
-    </div>
   </div>
 </template>
 
 <script>
-import { getListCandidate } from "@/api/user";
-import { Message } from "element-ui";
+import VueApexCharts from "vue-apexcharts";
+import { getAnalysic } from "@/api/analysic";
 
 export default {
-  components: {},
-  filters: {
-    statusFilter(status) {
-      const statusMap = {
-        1: "only 1 answer",
-        2: "mutiple answers",
-        3: "Break screen",
-        4: "Enter answer",
-      };
-      return statusMap[status];
-    },
-  },
+  components: { VueApexCharts },
   data() {
     return {
-      list: null,
+      yearSelected: new Date().getFullYear().toString(),
+      optionsYears: [
+        {
+          value: "2024",
+          label: "2024",
+        },
+        {
+          value: "2025",
+          label: "2025",
+        },
+        {
+          value: "2026",
+          label: "2026",
+        },
+        {
+          value: "2027",
+          label: "2027",
+        },
+        {
+          value: "2028",
+          label: "2028",
+        },
+        {
+          value: "2029",
+          label: "2029",
+        },
+        {
+          value: "2030",
+          label: "2030",
+        },
+      ],
       loading: false,
-      isQuestionDetail: false,
-      itemId: null,
-      formData: {},
-      totalCount: 0,
-      page: 1,
-      perPage: 20,
+      options: {
+        chart: {
+          id: "vuechart-users",
+        },
+        xaxis: {
+          categories: [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December",
+          ],
+        },
+      },
+      optionsSale: {
+        chart: {
+          id: "vuechart-sales",
+        },
+        xaxis: {
+          categories: [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+          ],
+        },
+      },
+      dataUsersAnalysic: [
+        {
+          name: "Users",
+          data: [],
+        },
+      ],
+      dataSalesAnalysicVND: [
+        {
+          name: "Sales",
+          data: [],
+        },
+      ],
+      dataSalesAnalysicUSD: [
+        {
+          name: "Sales",
+          data: [],
+        },
+      ],
     };
   },
   created() {
-    this.getList();
+    this.getChart();
   },
   methods: {
-    getListOptions(answerStr) {
-      if (!answerStr) return [];
-      return JSON.parse(answerStr) || [];
-    },
-    getList() {
+    search() {
       this.loading = true;
+      this.getChart();
+    },
+    getChart() {
       const params = {
-        page: this.page,
-        perPage: this.perPage,
+        year: this.yearSelected,
       };
-      getListCandidate(params).then((response) => {
-        this.list = response.data.data;
-        this.totalCount = response.data.total;
-        this.loading = false;
-      });
-    },
-    handleSizeChange(val) {
-      this.perPage = val;
-      this.getList();
-    },
-    handleCurrentChange(val) {
-      this.page = val;
-      this.getList();
-    },
-
-    deleteItem(id) {
-      this.$confirm("Are you sure to delete this question?")
-        .then((_) => {
-          deleteQuestion(id).then((res) => {
-            Message({
-              message: res.message,
-              type: "success",
-              duration: 1000,
-            });
-            this.getList();
-          });
+      getAnalysic(params)
+        .then((res) => {
+          this.loading = false;
+          if (res.users) {
+            const data = [];
+            Object.keys(res.users).forEach((key) => data.push(res.users[key]));
+            this.dataUsersAnalysic = [
+              {
+                name: "Users",
+                data: data,
+              },
+            ];
+          }
+          if (res.ordersDataVND) {
+            const data = [];
+            Object.keys(res.ordersDataVND).forEach((key) =>
+              data.push(res.ordersDataVND[key])
+            );
+            this.dataSalesAnalysicVND = [
+              {
+                name: "Sales",
+                data: data,
+              },
+            ];
+          }
+          if (res.ordersDataUSD) {
+            const data = [];
+            Object.keys(res.ordersDataUSD).forEach((key) =>
+              data.push(res.ordersDataUSD[key])
+            );
+            this.dataSalesAnalysicUSD = [
+              {
+                name: "Sales",
+                data: data,
+              },
+            ];
+          }
         })
-        .catch((_) => {});
-    },
-    closeCreateDialog() {
-      this.isQuestionDetail = false;
-      this.getList();
-    },
-    addQuestion() {
-      this.formData = {};
-      this.isQuestionDetail = true;
-      this.itemId = null;
-    },
-    editQuestion(form, id) {
-      this.isQuestionDetail = true;
-      this.itemId = id;
-      this.formData = JSON.parse(JSON.stringify(form));
-    },
-    closeDialog() {
-      this.isQuestionDetail = false;
+        .catch(() => (this.loading = false));
     },
   },
 };
 </script>
+<style lang="scss">
+.analysic-dashboard {
+  .filter-search {
+    padding-bottom: 10px;
+    .question-item-filter {
+      padding: 10px 0;
+      .label {
+        line-height: 40px;
+        font-weight: 500;
+        font-size: 15px;
+      }
+      .setting-filter {
+        width: 100%;
+      }
+    }
+  }
+  .apexcharts-yaxis,
+  .apexcharts-xaxis-texts-g {
+    text {
+      font-weight: 600;
+      font-size: 14px;
+    }
+  }
+}
+</style>

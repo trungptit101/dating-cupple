@@ -25,7 +25,7 @@
     <el-form-item
       label="option"
       v-if="
-        ![QuestionType.BreakScreen, QuestionType.EnterOption].includes(
+        ![QuestionType.BreakScreen, QuestionType.InputAnswer].includes(
           form.type
         )
       "
@@ -179,8 +179,8 @@ export default {
       QuestionType,
       optionTypes: [
         {
-          label: "Enter option",
-          value: QuestionType.EnterOption,
+          label: "Input answer",
+          value: QuestionType.InputAnswer,
         },
         {
           label: "Only 1 option",

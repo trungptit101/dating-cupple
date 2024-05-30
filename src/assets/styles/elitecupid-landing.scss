@@ -1362,9 +1362,6 @@ svg {
 .btn-color {
   color: #fff;
 }
-[disabled].btn-color {
-  color: #a19e9e;
-}
 .btn-bg-dark {
   background-color: #232e4d;
 }
@@ -3767,20 +3764,6 @@ select.filter {
 select {
   background-position: 0 100%;
 }
-.disabled,
-[disabled],
-[disabled]:empty {
-  cursor: none;
-  opacity: 0.6;
-  overflow: hidden;
-  border: none;
-  border-color: transparent;
-  background-color: transparent;
-}
-[disabled] ~ .icon .unchecked,
-[disabled] ~ span {
-  cursor: none;
-}
 [type="submit"]:invalid,
 [type="submit"]:valid {
   border: 0;
@@ -3789,9 +3772,6 @@ select {
 }
 [type="submit"]:valid {
   cursor: pointer;
-}
-select[disabled] {
-  background-image: none;
 }
 .unit-right {
   right: 1em;

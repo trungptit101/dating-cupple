@@ -47,10 +47,18 @@
       <el-table-column class-name="status-col" label="Options">
         <template slot-scope="scope">
           <div
-            v-for="(option, index) in getListOptions(scope.row.options)"
-            :key="index"
+            v-if="
+              ![QuestionType.BreakScreen, QuestionType.InputAnswer].includes(
+                scope.row.type
+              )
+            "
           >
-            {{ option.text }}
+            <div
+              v-for="(option, index) in getListOptions(scope.row.options)"
+              :key="index"
+            >
+              {{ option.text }}
+            </div>
           </div>
         </template>
       </el-table-column>
@@ -163,13 +171,14 @@ export default {
         1: "only 1 answer",
         2: "mutiple answers",
         3: "Break screen",
-        4: "Enter answer",
+        4: "Input answer",
       };
       return statusMap[status];
     },
   },
   data() {
     return {
+      QuestionType,
       list: null,
       loading: false,
       isQuestionDetail: false,
