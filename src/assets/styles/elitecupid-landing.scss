@@ -4583,6 +4583,12 @@ html.modal-open {
   background-position: 50% 65%;
   background-attachment: fixed;
 }
+.section-top-others:before {
+  min-height: 76.7vh !important;
+}
+.height-top-other {
+  min-height: 76.8vh !important;
+}
 .section-top-crosssite:before {
   min-height: 100vh;
 }
@@ -4608,6 +4614,9 @@ html.modal-open {
 }
 .section-top {
   min-height: 97.5vh;
+}
+.section-top-others {
+  min-height: 70vh !important;
 }
 .section-top-crosssite {
   min-height: 100vh;

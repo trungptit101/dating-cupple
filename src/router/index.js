@@ -36,6 +36,10 @@ export const constantRoutes = [
     component: () => import("@/views/Client/HomeComponent.vue"),
   },
   {
+    path: "/about-us",
+    component: () => import("@/views/Client/AboutUs.vue"),
+  },
+  {
     path: "/login",
     name: "login",
     component: () => import("@/views/Client/Login.vue"),
@@ -114,7 +118,20 @@ export const constantRoutes = [
         path: "payment-package",
         name: "payment-package",
         component: () => import("@/views/payment-package/index"),
-        meta: { title: "Payment package", icon: "table", requireAdmin: true },
+        meta: { title: "Payment package", icon: "money", requireAdmin: true },
+      },
+    ],
+  },
+  {
+    path: "/contact",
+    component: Layout,
+    meta: { icon: "el-icon-s-help" },
+    children: [
+      {
+        path: "list",
+        name: "contacts",
+        component: () => import("@/views/contacts/index"),
+        meta: { title: "Contact List", icon: "tree-table", requireAdmin: true },
       },
     ],
   },

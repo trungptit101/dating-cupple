@@ -1,79 +1,9 @@
 <template>
   <div>
-    <div
-      class="flex justify-between items-center absolute top-0 left-0 col-12 z2"
-    >
-      <img
-        src="@/assets/images/logo-text-white.png"
-        style="
-          cursor: pointer;
-          height: 90px;
-          object-fit: contain;
-          margin-left: 1rem;
-        "
-      />
-
-      <div class="flex items-center">
-        <a
-          class="btn-bg btn-color block py1 px2 button relative overflow-hidden rounded shadow ms3 my3"
-          title="Login"
-          @click="$router.push({ name: 'login' })"
-          v-if="!user.email"
-        >
-          Login
-        </a>
-        <AvatarUser
-          class="py1 ms2 px2"
-          :size="45"
-          v-else
-          @settingProfile="settingProfile"
-        />
-      </div>
-    </div>
-    <div class="section-top flex relative">
-      <div class="flex items-center justify-center height-97 col-6">
-        <div class="p0 intro">
-          <div class="intro-text center reveal">
-            <h1 class="h1 white relative m0 mb1 line-height-3 max-width-3">
-              Meet your other half💘
-            </h1>
-            <h2 class="h2 white relative my2 line-height-4 max-width-2 mx-auto">
-              Privacy and Confidentiality, your Journey let our professional
-              matchmaker behalf🤝
-            </h2>
-            <div
-              class="intro-join mt1 center flex items-start justify-center col-12 mx-auto reveal"
-              v-if="!user.email"
-            >
-              <a class="header-color" @click="isDisplayRegisterServey = true">
-                <h3
-                  class="btn-bg btn-color block py1 px2 button relative overflow-hidden rounded shadow"
-                >
-                  Find Your Beloved
-                </h3>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="landing-benefits absolute left-0 bottom-0 col-12">
-        <div class="flex items-center justify-center my2">
-          <div class="flex-auto mx2 flex items-center justify-center">
-            <div class="flex-none m1 dot dot-highlight circle" />
-            Superior Matching Algorithms
-          </div>
-          <div class="flex-auto mx2 flex items-center justify-center">
-            <div class="flex-none m1 dot dot-highlight circle" />
-            In-depth Profiling
-          </div>
-          <div class="flex-auto mx2 flex items-center justify-center">
-            <div class="flex-none m1 dot dot-highlight circle" />
-            Trusted site backed by Visicupid Media
-          </div>
-        </div>
-      </div>
-    </div>
+    <TopBanner
+      @openFormRegister="openFormRegister"
+      @settingProfile="settingProfile"
+    />
 
     <div
       class="section landing-bg-grey testimonial-section py2 center flex items-center justify-center"
@@ -183,7 +113,12 @@
         </div>
         <div class="col col-2" style="float: left">
           <div class="h3 mt2 mb1 color-dark-grey">Company</div>
-          <a class="block" rel="nofollow">About Us</a>
+          <a
+            class="block"
+            rel="nofollow"
+            @click="$router.push({ path: '/about-us' })"
+            >About Us</a
+          >
           <a class="block">Other Sites</a>
           <a class="block">Corporate</a>
           <a class="block" rel="nofollow">Affiliates</a>
@@ -290,10 +225,17 @@
 <script>
 import RegisterServey from "@/components/RegisterServey.vue";
 import Footer from "@/layout/components/Footer.vue";
+import TopBanner from "@/layout/components/TopBanner.vue";
 import AvatarUser from "@/components/AvatarUser.vue";
 import SettingsProfile from "@/components/SettingsProfile.vue";
 export default {
-  components: { RegisterServey, Footer, AvatarUser, SettingsProfile },
+  components: {
+    RegisterServey,
+    Footer,
+    AvatarUser,
+    SettingsProfile,
+    TopBanner,
+  },
   data() {
     return {
       isDisplayRegisterServey: false,
@@ -307,6 +249,9 @@ export default {
     },
   },
   methods: {
+    openFormRegister() {
+      this.isDisplayRegisterServey = true;
+    },
     settingProfile() {
       this.isDisplaySettingsProfile = true;
     },
