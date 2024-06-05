@@ -142,7 +142,10 @@
           <a class="block" href="general/termsofuse.html" rel="nofollow"
             >Terms of Use</a
           >
-          <a class="block" href="general/privacystatement.html" rel="nofollow"
+          <a
+            class="block"
+            @click="$router.push({ path: '/privacy-statement' })"
+            rel="nofollow"
             >Privacy Statement</a
           >
           <a class="block" href="general/paymentRefund.html" rel="nofollow"

@@ -40,6 +40,10 @@ export const constantRoutes = [
     component: () => import("@/views/Client/AboutUs.vue"),
   },
   {
+    path: "/privacy-statement",
+    component: () => import("@/views/Client/PrivacyStatement.vue"),
+  },
+  {
     path: "/login",
     name: "login",
     component: () => import("@/views/Client/Login.vue"),
