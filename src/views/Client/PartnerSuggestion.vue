@@ -100,10 +100,15 @@ export default {
         return;
       }
       try {
-        await detailOrder();
-        this.getList();
+        detailOrder()
+          .then(() => {
+            this.getList();
+          })
+          .catch(() => {
+            this.getList();
+          });
       } catch (error) {
-        this.$router.push("/");
+        // this.$router.push("/");
       }
     },
     getList() {

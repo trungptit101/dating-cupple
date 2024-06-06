@@ -21,92 +21,99 @@
         >
       </el-col>
     </el-row>
-    <el-table
-      v-loading="loading"
-      :data="list"
-      element-loading-text="Loading"
-      border
-      fit
-      highlight-current-row
-    >
-      <el-table-column align="center" label="No" width="95">
-        <template slot-scope="scope">
-          {{ scope.$index + 1 + (page - 1) * perPage }}
-        </template>
-      </el-table-column>
-      <el-table-column label="Question">
-        <template slot-scope="scope">
-          {{ scope.row.question }}
-        </template>
-      </el-table-column>
-      <el-table-column class-name="status-col" label="Type" align="center">
-        <template slot-scope="scope">
-          <span>{{ scope.row.type | statusFilter }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column class-name="status-col" label="Options">
-        <template slot-scope="scope">
-          <div
-            v-if="
-              ![QuestionType.BreakScreen, QuestionType.InputAnswer].includes(
-                scope.row.type
-              )
-            "
-          >
-            <div
-              v-for="(option, index) in getListOptions(scope.row.options)"
-              :key="index"
-            >
-              {{ option.text }}
+    <table class="design-table" v-if="list.length > 0">
+      <thead>
+        <th class="header-table-design" style="width: 60px; text-align: center">
+          No
+        </th>
+        <th class="header-table-design" style="width: 30%">Question</th>
+        <th
+          class="header-table-design"
+          style="width: 150px; text-align: center"
+        >
+          Type
+        </th>
+        <th class="header-table-design">Options</th>
+        <th
+          class="header-table-design"
+          style="width: 100px; text-align: center"
+        >
+          Action
+        </th>
+      </thead>
+
+      <draggable
+        v-model="list"
+        tag="tbody"
+        @start="drag = true"
+        @end="endDragAction"
+      >
+        <tr v-for="(item, index) in list" :key="index" class="body-row-table">
+          <td style="width: 60px; text-align: center">
+            <div class="value-column" style="padding-left: 0">
+              {{ index + 1 }}
             </div>
-          </div>
-        </template>
-      </el-table-column>
-      <el-table-column
-        class-name="status-col"
-        label="Action"
-        width="110"
-        align="center"
-      >
-        <template slot-scope="scope">
-          <el-tooltip class="item" effect="dark" content="Edit" placement="top">
-            <el-button
-              type="primary"
-              icon="el-icon-edit"
-              size="mini"
-              circle
-              @click="editQuestion(scope.row, scope.row.id)"
-            ></el-button>
-          </el-tooltip>
-          <el-tooltip
-            class="item"
-            effect="dark"
-            content="Delete"
-            placement="top"
-          >
-            <el-button
-              type="danger"
-              icon="el-icon-delete"
-              size="mini"
-              circle
-              @click="deleteItem(scope.row.id)"
-            ></el-button>
-          </el-tooltip>
-        </template>
-      </el-table-column>
-    </el-table>
-    <div class="text-center" style="padding: 20px 0">
-      <el-pagination
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-        :current-page.sync="page"
-        :page-sizes="[10, 20, 30, 40, 50]"
-        :page-size="perPage"
-        layout="total, sizes, prev, pager, next"
-        :total="totalCount"
-      >
-      </el-pagination>
-    </div>
+          </td>
+          <td style="width: 30%">
+            <div class="value-column">{{ item.question }}</div>
+          </td>
+          <td>
+            <div class="value-column" style="width: 150px; text-align: center">
+              {{ item.type | statusFilter }}
+            </div>
+          </td>
+          <td>
+            <div
+              v-if="
+                ![QuestionType.BreakScreen, QuestionType.InputAnswer].includes(
+                  item.type
+                )
+              "
+              class="value-column"
+            >
+              <ul>
+                <li
+                  v-for="(option, index) in getListOptions(item.options)"
+                  :key="index"
+                >
+                  {{ option.text }}
+                </li>
+              </ul>
+            </div>
+          </td>
+          <td style="width: 100px; text-align: center">
+            <el-tooltip
+              class="item"
+              effect="dark"
+              content="Edit"
+              placement="top"
+            >
+              <el-button
+                type="primary"
+                icon="el-icon-edit"
+                size="mini"
+                circle
+                @click="editQuestion(item, item.id)"
+              ></el-button>
+            </el-tooltip>
+            <el-tooltip
+              class="item"
+              effect="dark"
+              content="Delete"
+              placement="top"
+            >
+              <el-button
+                type="danger"
+                icon="el-icon-delete"
+                size="mini"
+                circle
+                @click="deleteItem(item.id)"
+              ></el-button>
+            </el-tooltip>
+          </td>
+        </tr>
+      </draggable>
+    </table>
 
     <el-dialog
       :title="itemId == null ? 'Add Question' : 'Edit Question'"
@@ -158,13 +165,15 @@ import {
   deleteQuestion,
   settingsFilter,
   updateSettingsFilter,
+  updateOrderQuestion,
 } from "@/api/question";
 import QuestionDetail from "./QuestionDetail.vue";
 import { QuestionType } from "@/define/index";
 import { Message } from "element-ui";
+import Draggable from "vuedraggable";
 
 export default {
-  components: { QuestionDetail },
+  components: { QuestionDetail, Draggable },
   filters: {
     statusFilter(status) {
       const statusMap = {
@@ -179,7 +188,7 @@ export default {
   data() {
     return {
       QuestionType,
-      list: null,
+      list: [],
       loading: false,
       isQuestionDetail: false,
       isSettingsFilter: false,
@@ -198,6 +207,11 @@ export default {
     this.getSettings();
   },
   methods: {
+    endDragAction() {
+      console.log("@@@@@@@@", this.list);
+      const questionIds = this.list.map((e) => e.id);
+      updateOrderQuestion({ questionIds: questionIds });
+    },
     handleCurrentChange(val) {
       this.page = val;
       this.getList();
@@ -251,7 +265,7 @@ export default {
       };
       getListQuestion(params).then((response) => {
         this.loading = false;
-        this.list = response.data.data;
+        this.list = response.data;
         this.totalCount = response.data.total;
         this.optionsQuestionFilter = this.list
           .filter((q) => q.type != QuestionType.BreakScreen)
@@ -298,7 +312,47 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.setting-filter {
-  width: 100%;
+.app-container {
+  .setting-filter {
+    width: 100%;
+  }
+  .design-table {
+    border-collapse: collapse;
+    background: #ffff;
+    border: 1px solid #ebeef5;
+    border-right: none;
+    border-bottom: none;
+    td {
+      padding: 12px 0;
+      border-right: 1px solid #ebeef5;
+      border-bottom: 1px solid #ebeef5;
+    }
+    th {
+      padding: 12px 0;
+      border-right: 1px solid #ebeef5;
+      border-bottom: 1px solid #ebeef5;
+    }
+    tr:hover {
+      background-color: #f5f7fa;
+    }
+    .header-table-design {
+      padding: 10px 0;
+      background: #304156;
+      color: #ffff;
+    }
+    .value-column {
+      padding-left: 10px;
+    }
+    .body-row-table {
+      padding: 10px 0;
+    }
+    ul {
+      padding-left: 24px;
+      margin: 0;
+      li {
+        padding: 3px 0;
+      }
+    }
+  }
 }
 </style>

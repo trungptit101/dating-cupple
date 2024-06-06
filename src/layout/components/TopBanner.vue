@@ -46,11 +46,10 @@
         <div class="p0 intro">
           <div class="intro-text center reveal">
             <h1 class="h1 white relative m0 mb1 line-height-3 max-width-3">
-              Meet your other half💘
+              We protect your profile as privacy and confidential.
             </h1>
             <h2 class="h2 white relative my2 line-height-4 max-width-2 mx-auto">
-              Privacy and Confidentiality, your Journey let our professional
-              matchmaker behalf🤝
+              Your Journey let out professional matchmaker behalf’s.
             </h2>
             <div
               class="intro-join mt1 center flex items-start justify-center col-12 mx-auto reveal"

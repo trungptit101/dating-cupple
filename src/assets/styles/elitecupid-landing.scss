@@ -3576,7 +3576,7 @@ body.returnToMobileHeader .header-strip {
   position: fixed;
   background-color: #4a4a4a82;
   background-blend-mode: multiply;
-  background-image: url(/images/homepage.jpg);
+  background-image: url(/images/banner.jpg);
   background-size: cover;
   background-position: 65%;
 }
@@ -3785,6 +3785,11 @@ select {
 [type="checkbox"] ~ .icon,
 [type="radio"] ~ .icon {
   cursor: pointer;
+}
+.bg-\[\#D6AD60\]:disabled,
+.bg-\[\#D6AD60\][disabled]{
+  border: none;
+  background-color: rgb(229 201 147);
 }
 [type="checkbox"][disabled] ~ .icon,
 [type="checkbox"][disabled] ~ .icon .unchecked,
@@ -4578,7 +4583,7 @@ html.modal-open {
   min-height: 97.5vh;
   display: block;
   position: absolute;
-  background-image: url(/images/homepage.jpg);
+  background-image: url(/images/banner.jpg);
   background-size: cover;
   background-position: 50% 65%;
   background-attachment: fixed;

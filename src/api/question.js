@@ -30,6 +30,14 @@ export function updateSettingsFilter(data) {
   });
 }
 
+export function updateOrderQuestion(data) {
+  return request({
+    url: "/question/update-order",
+    method: "post",
+    data,
+  });
+}
+
 export function getListQuestionUser() {
   return request({
     url: "/question/questionnaire",

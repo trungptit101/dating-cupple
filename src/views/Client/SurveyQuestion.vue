@@ -45,6 +45,15 @@
         <div class="grid grid-cols-2" v-else>
           <button
             type="submit"
+            class="flex justify-center items-center lg:py-4 py-3 px-8 text-[16px] lg:text-[20px] font-medium rounded-[4px] transition bg-[#C5CBDC] text-[#505656] fill-[#505656] pl-0 md:mr-4 mr-2 opacity-95 w-full"
+            @click="prevQuestion"
+            :disabled="currentStep == 0"
+            v-if="currentStep"
+          >
+            Back
+          </button>
+          <button
+            type="submit"
             style="margin-left: 20px"
             class="flex justify-center items-center lg:py-4 py-3 px-8 text-[16px] lg:text-[20px] font-medium rounded-[4px] transition opacity-95 text-white fill-white pr-0 md:ml-4 ml-2 w-full bg-[#D6AD60]"
             @click="nextQuestion"

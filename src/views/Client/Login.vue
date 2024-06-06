@@ -214,7 +214,7 @@ export default {
             .catch((error) => {
               this.loading = false;
               Message({
-                message: error.response.data.message,
+                message: error.response.data.message[Object.keys(error.response.data.message)[0]][0],
                 type: "error",
                 duration: 5 * 1000,
               });
