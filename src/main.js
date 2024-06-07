@@ -16,6 +16,7 @@ import { getUser } from "@/utils/auth";
 
 import "@/icons"; // icon
 import "@/permission"; // permission control
+import i18n from '@/plugins/i18n';
 
 /**
  * If you don't want to use mock-server
@@ -40,6 +41,7 @@ if (user) {
 
 new Vue({
   el: "#app",
+  i18n,
   router,
   store,
   render: (h) => h(App),

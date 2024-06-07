@@ -21,7 +21,7 @@
       <div class="max-width mx-auto my3">
         <div class="tabs center">
           <h1 class="h1 m0 pb1 bold">
-            Unlock the Benefits of Diamond Membership
+            {{ $t("Unlock the Benefits of Diamond Membership") }}
           </h1>
         </div>
       </div>
@@ -44,7 +44,7 @@
                   ></el-radio>
                   <div class="ms1">
                     <h3 class="m0 color-medium-grey">
-                      {{ packPayment.months }} Months
+                      {{ packPayment.months }} {{ $t("Months") }}
                     </h3>
                     <div class="flex-none">
                       <strong>
@@ -52,7 +52,7 @@
                           caculatePermonth(packPayment)
                         }}</span>
                         <span class="regular color-medium-grey">
-                          per month</span
+                          {{ $t("per month") }}</span
                         >
                       </strong>
                     </div>
@@ -73,7 +73,8 @@
                   class="center white rounded my1 py1 px2 bg-diamond h4"
                   v-if="index != 0"
                 >
-                  SAVE <span>{{ saleOffPackage(packPayment) }}</span
+                  {{ $t("sale off") }}
+                  <span>{{ saleOffPackage(packPayment) }}</span
                   >%
                 </div>
               </label>
@@ -84,7 +85,7 @@
 
       <div data-payment-options="" class="fade-in">
         <h2 class="bold body-font-color upgrade-experiment payment-title">
-          Choose a payment method
+          {{ $t("Choose a payment method") }}
         </h2>
         <div class="mb3">
           <div
@@ -97,8 +98,10 @@
                   <el-radio checked></el-radio>
                   <div class="col-3 me2">
                     <div class="ms1 upgrade-experiment payment-variant-text">
-                      Credit / Debit Card
-                      <div class="green regular h6 m0">Recommended</div>
+                      {{ $t("Credit / Debit Card") }}
+                      <div class="green regular h6 m0">
+                        {{ $t("Recommended") }}
+                      </div>
                     </div>
                   </div>
                   <div class="flex items-center col-8 ms2">
@@ -160,7 +163,7 @@
                 ></path>
               </svg>
             </div>
-            <div class="h4">Please select a payment option</div>
+            <div class="h4">{{ $t("Please select a payment option") }}</div>
           </div>
         </div>
 
@@ -202,14 +205,15 @@
             <div
               class="mt1 highlight-a relative ms2 upgrade-experiment sdv-co-reg-text"
             >
-              By opting in, you receive a free 1-month trial on Dating.com and
-              agree that your profile (including photos, personal and payment
-              data) will be copied to Dating.com (SOL Networks Limited) and you
-              accept
-              <a href="" target="_blank">Terms</a>
-              and
-              <a href="" target="_blank">Privacy Policy</a>
-              of Dating.com
+              {{
+                $t(
+                  "By opting in, you receive a free 1-month trial on Dating.com and agree that your profile (including photos, personal and payment data) will be copied to Dating.com (SOL Networks Limited) and you accept"
+                )
+              }}
+              <a href="" target="_blank">{{ $t("Terms") }}</a>
+              {{ $t("and") }}
+              <a href="" target="_blank">{{ $t("Privacy Policy") }}</a>
+              {{ $t("of") }} visicupid.com/
             </div>
           </label>
         </div>
@@ -221,7 +225,7 @@
             :loading="isLoading"
             @click="upgradePayment"
           >
-            Upgrade Now
+            {{ $t("Upgrade Now") }}
           </el-button>
         </div>
 
@@ -229,13 +233,14 @@
           class="upgrade-experiment auto-renew-text p0 m0 my1 mx-auto max-width-3 highlight-a center opacity-8"
           data-renew-text=""
         >
-          This subscription will be automatically renewed once it expires. This
-          will ensure continuous access to all the benefits of a premium
-          membership so you can enjoy uninterrupted communications with all your
-          potential matches. You can opt out of auto renewal at any time.
-          <span class="highlight pointer" data-cm-modal-btn="renew_learnmore"
-            >Learn more</span
-          >
+          {{
+            $t(
+              "This subscription will be automatically renewed once it expires. This will ensure continuous access to all the benefits of a premium membership so you can enjoy uninterrupted communications with all your potential matches. You can opt out of auto renewal at any time."
+            )
+          }}
+          <span class="highlight pointer" data-cm-modal-btn="renew_learnmore">{{
+            $t("Learn more")
+          }}</span>
         </div>
       </div>
 
@@ -247,42 +252,50 @@
                 xlink:href="/assets/desktop/icons/icons.svg#icon-settings"
               ></use>
             </svg>
-            <h1>Automatic Renewal</h1>
+            <h1>{{ $t("Automatic Renewal") }}</h1>
             <p>
-              <b>Automatic Renewal - Continuous Service</b><br />
-              There is nothing worse than losing touch with a potential match
-              when all you want to do is continue your conversation! To avoid
-              this interruption, your membership on Visicupid.com will be
-              automatically renewed. After your initial membership period
-              expires, your membership will be automatically renewed for an
-              additional equivalent period, at the same price. Your credit/debit
-              card will be automatically charged.<br /><br />
-              <b>Billing Details</b><br />
+              <b>{{ $t("Automatic Renewal - Continuous Service") }}</b
+              ><br />
+              {{
+                $t(
+                  "There is nothing worse than losing touch with a potential match when all you want to do is continue your conversation! To avoid this interruption, your membership on Visicupid.com will be automatically renewed. After your initial membership period expires, your membership will be automatically renewed for an additional equivalent period, at the same price. Your credit/debit card will be automatically charged."
+                )
+              }}<br /><br />
+              <b>{{ $t("Billing Details") }}</b
+              ><br />
 
-              The charge on your billing statement or card will appear as
-              "Visicupid.com Southport AU". You are being billed by Cupid Media
-              Pty Ltd, Suite 2502, 5 Lawson Street, Southport, QLD 4215,
-              Australia.<br /><br />
+              {{
+                $t(
+                  "The charge on your billing statement or card will appear as 'Visicupid.com Southport AU'. You are being billed by Cupid Media Pty Ltd, Suite 2502, 5 Lawson Street, Southport, QLD 4215, Australia."
+                )
+              }}<br /><br />
 
-              <b>Cancel Any Time</b><br />
-              We don't want to interrupt your conversations so we offer a
-              continuous service. However, if you want to discontinue the
-              service, you can opt out of auto renewal at any time. Simply
-              select 'Billing' from the Settings menu to change your billing
-              preferences.<br /><br />
-              <b>Customer Service</b><br />
-              Need more help or information? Feel free to contact our
-              <a href="/en/general/contact">customer service team</a>.
+              <b>{{ $t("Cancel Any Time") }}</b
+              ><br />
+              {{
+                $t(
+                  "We don't want to interrupt your conversations so we offer a continuous service. However, if you want to discontinue the service, you can opt out of auto renewal at any time. Simply select 'Billing' from the Settings menu to change your billing preferences."
+                )
+              }}<br /><br />
+              <b>{{ $t("Customer Service") }}</b
+              ><br />
+              {{
+                $t("Need more help or information? Feel free to contact our")
+              }}
+              <a href="/en/general/contact">{{ $t("customer service team") }}</a
+              >.
             </p>
           </div>
           <div class="flex justify-end">
-            <a class="link" aria-controls="modal">Close</a>
+            <a class="link" aria-controls="modal">{{ $t("Close") }}</a>
           </div>
         </div>
       </div>
       <div class="col-12 flex items-center mb1"></div>
 
-      <h2 class="bold body-font-color mt3">Your Diamond features</h2>
+      <h2 class="bold body-font-color mt3">
+        {{ $t("Your Diamond features") }}
+      </h2>
 
       <div class="max-width mx-auto">
         <div class="col-12 flex flex-wrap">
@@ -426,32 +439,35 @@ export default {
     return {
       carouselsList: [
         {
-          title: "Send Unlimited Communications",
-          description: "Start interacting via instant messenger chat.",
+          title: this.$t("Send Unlimited Communications"),
+          description: this.$t("Start interacting via instant messenger chat."),
         },
         {
-          title: "Access All Your Messages",
-          description: "Send and receive unlimited messages to all members.",
+          title: this.$t("Access All Your Messages"),
+          description: this.$t(
+            "Send and receive unlimited messages to all members."
+          ),
         },
         {
-          title: "Say Goodbye to Ads",
+          title: this.$t("Say Goodbye to Ads"),
+          description: this.$t(
+            "Premium members enjoy no third-party ads in their dating experience. Upgrade now and say goodbye to ads!"
+          ),
+        },
+        {
+          title: this.$t("Double Your Profile Space"),
           description:
-            "Premium members enjoy no third-party ads in their dating experience. Upgrade now and say goodbye to ads!",
+            this.$t("Eligible members get twice the profile space in search results. Upgrade now and enjoy the extra attention from eligible singles."),
         },
         {
-          title: "Double Your Profile Space",
+          title: this.$t("Rank Above Other Members"),
           description:
-            "Eligible members get twice the profile space in search results. Upgrade now and enjoy the extra attention from eligible singles.",
+            this.$t("As a premium member, your profile will rank above standard members in search results."),
         },
         {
-          title: "Rank Above Other Members",
+          title: this.$t("Exclusive Diamond Membership"),
           description:
-            "As a premium member, your profile will rank above standard members in search results.",
-        },
-        {
-          title: "Exclusive Diamond Membership",
-          description:
-            "Diamond members will appear at the top of all results and have all their messages prioritised above others.",
+            this.$t("Diamond members will appear at the top of all results and have all their messages prioritised above others."),
         },
       ],
       packageSelected: null,

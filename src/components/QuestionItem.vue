@@ -32,7 +32,7 @@
           class="text-md font-normal text-[#323232] text-center sm:mb-5 mb-4"
           v-if="question.type == QuestionType.MultipleOption"
         >
-          Select all that apply
+          {{ $t("Select all that apply") }}
         </p>
         <div
           class="flex items-center group space-x-3 p-6 text-base bg-white answer-item"

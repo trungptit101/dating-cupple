@@ -2,13 +2,13 @@
   <div class="partner-suggestion">
     <LoadingComponent
       v-if="isLoading"
-      message="Processing now, please wait ..."
+      :message="$t('Processing now, please wait ...')"
     />
     <div v-else>
       <Header />
       <div class="container-partner-suggestion payment-content-max-width">
         <div class="flex items-center justify-between">
-          <div class="title">Partners Suggestion</div>
+          <div class="title">{{ $t("Partners Suggestion") }}</div>
           <button
             class="btn-bg btn-color py1 px2 rounded shadow"
             @click="processDating"
@@ -19,7 +19,7 @@
               v-if="loadingProcess"
               style="margin-right: 5px"
             />
-            <span>Process Dating</span>
+            <span>{{ $t("Process Dating") }}</span>
           </button>
         </div>
         <el-row :gutter="20">
@@ -34,19 +34,19 @@
                 <div class="name">{{ partner.name }} - {{ partner.age }}</div>
                 <el-row :gutter="20">
                   <el-col :span="8">
-                    <div class="">Blood Group</div>
+                    <div class="">{{ $t("Blood Group") }}</div>
                     <div>{{ partner.blood_group }}</div>
                   </el-col>
                   <el-col :span="8">
-                    <div>Eye Color</div>
+                    <div>{{ $t("Eye Color") }}</div>
                     <div>{{ partner.eye_color }}</div>
                   </el-col>
                   <el-col :span="8">
-                    <div>Skin Color</div>
+                    <div>{{ $t("Skin Color") }}</div>
                     <div>{{ partner.skin_color }}</div>
                   </el-col>
                 </el-row>
-                <div>Favorite: {{ partner.favorite }}</div>
+                <div>{{ $t("Favorite") }}: {{ partner.favorite }}</div>
                 <img
                   src="@/assets/images/heart-red.png"
                   class="icon-heart"
@@ -130,7 +130,7 @@ export default {
       }
       if (this.partnersSelected.length == 3) {
         Message({
-          message: "No more than 3 partners can be selected!",
+          message: this.$t("No more than 3 partners can be selected!"),
           type: "error",
           duration: 1000,
         });
@@ -141,7 +141,7 @@ export default {
     async processDating() {
       if (this.partnersSelected.length == 0) {
         Message({
-          message: "Please choose at least 1 partner!",
+          message: this.$t("Please choose at least 1 partner!"),
           type: "error",
           duration: 1000,
         });

@@ -5,16 +5,16 @@
     </div>
     <el-dropdown-menu slot="dropdown" class="menu-user">
       <router-link to="/survey-question" v-if="user.role == UserRole.Candidate">
-        <el-dropdown-item>Survey Question</el-dropdown-item>
+        <el-dropdown-item>{{ $t("Survey Question") }}</el-dropdown-item>
       </router-link>
       <router-link to="/analysic" v-if="user.role == UserRole.Admin">
-        <el-dropdown-item>Manager</el-dropdown-item>
+        <el-dropdown-item>{{ $t("Manager") }}</el-dropdown-item>
       </router-link>
       <el-dropdown-item @click.native="settingProfile"
-        >Settings</el-dropdown-item
+        >{{ $t("Settings") }}</el-dropdown-item
       >
       <el-dropdown-item divided @click.native="logout">
-        <span style="display: block">Log Out</span>
+        <span style="display: block">{{ $t("Log Out") }}</span>
       </el-dropdown-item>
     </el-dropdown-menu>
   </el-dropdown>

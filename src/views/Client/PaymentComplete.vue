@@ -9,12 +9,12 @@
       <div class="container-payment-complete payment-content-max-width">
         <div class="content text-center" v-if="isComplete">
           <img src="@/assets/images/complete.png" />
-          <div class="title">Payment Successfully!</div>
+          <div class="title">{{ $t("Payment Successfully!") }}</div>
           <div class="info">
-            Order code: <span class="bold">{{ orderDetail.code }}</span>
+            {{ $t("Order code") }}: <span class="bold">{{ orderDetail.code }}</span>
           </div>
           <div class="info">
-            Amount:
+            {{ $t("Amount") }}:
             <span class="bold">{{
               orderDetail.price.toLocaleString("it-IT", {
                 style: "currency",
@@ -23,7 +23,7 @@
             }}</span>
           </div>
           <div class="info">
-            Time:
+            {{ $t("Time") }}:
             <span class="bold">{{
               new Date(orderDetail.created_at).toLocaleString()
             }}</span>
@@ -34,13 +34,13 @@
             class="lg:py-4 py-3 px-8 text-[16px] lg:text-[20px] font-medium rounded-[4px] transition opacity-95 text-white fill-white pr-0 md:ml-4 ml-2 bg-[#D6AD60]"
             @click="completeOrder"
           >
-            Next
+            {{ $t("Next") }}
             <i class="el-icon-right"></i>
           </button>
         </div>
         <div class="content text-center" v-else>
           <img src="@/assets/images/uncheck.jpg" />
-          <div class="title">{{ message }}</div>
+          <div class="title">{{ $t(message) }}</div>
           <button
             type="submit"
             style="margin-top: 20px"
@@ -48,7 +48,7 @@
             @click="processOrder"
           >
             <i class="el-icon-back" v-if="isBackOrder"></i>
-            {{ isBackOrder ? "Back" : "Next" }}
+            {{ isBackOrder ? $t("Back") : $t("Next") }}
             <i class="el-icon-right" v-if="!isBackOrder"></i>
           </button>
         </div>

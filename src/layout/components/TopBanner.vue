@@ -15,13 +15,14 @@
       />
 
       <div class="flex items-center">
+        <MultipleLanguage style="margin-right: -10px" />
         <a
           class="btn-bg btn-color block py1 px2 button relative overflow-hidden rounded shadow ms3 my3"
           title="Login"
           @click="$router.push({ name: 'login' })"
           v-if="!user.email"
         >
-          Login
+          {{ $t("Login") }}
         </a>
         <AvatarUser
           class="py1 ms2 px2"
@@ -46,10 +47,10 @@
         <div class="p0 intro">
           <div class="intro-text center reveal">
             <h1 class="h1 white relative m0 mb1 line-height-3 max-width-3">
-              We protect your profile as privacy and confidential.
+              {{ $t("We protect your profile as privacy and confidential.") }}
             </h1>
             <h2 class="h2 white relative my2 line-height-4 max-width-2 mx-auto">
-              Your Journey let out professional matchmaker behalf’s.
+              {{ $t("Your Journey let out professional matchmaker behalf’s.") }}
             </h2>
             <div
               class="intro-join mt1 center flex items-start justify-center col-12 mx-auto reveal"
@@ -59,7 +60,7 @@
                 <h3
                   class="btn-bg btn-color block py1 px2 button relative overflow-hidden rounded shadow"
                 >
-                  Find Your Beloved
+                  {{ $t("Find Your Beloved") }}
                 </h3>
               </a>
             </div>
@@ -71,15 +72,15 @@
         <div class="flex items-center justify-center my2">
           <div class="flex-auto mx2 flex items-center justify-center">
             <div class="flex-none m1 dot dot-highlight circle" />
-            Superior Matching Algorithms
+            {{ $t("Superior Matching Algorithms") }}
           </div>
           <div class="flex-auto mx2 flex items-center justify-center">
             <div class="flex-none m1 dot dot-highlight circle" />
-            In-depth Profiling
+            {{ $t("In-depth Profiling") }}
           </div>
           <div class="flex-auto mx2 flex items-center justify-center">
             <div class="flex-none m1 dot dot-highlight circle" />
-            Trusted site backed by Visicupid Media
+            {{ $t("Trusted site backed by Visicupid Media") }}
           </div>
         </div>
       </div>
@@ -89,8 +90,9 @@
 
 <script>
 import AvatarUser from "@/components/AvatarUser.vue";
+import MultipleLanguage from "./MultipleLanguage.vue";
 export default {
-  components: { AvatarUser },
+  components: { AvatarUser, MultipleLanguage },
   props: ["otherHome"],
   data() {
     return {};

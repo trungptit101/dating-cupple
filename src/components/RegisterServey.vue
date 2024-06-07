@@ -1,11 +1,11 @@
 <template>
   <el-form :model="form" ref="ruleFormRef" :rules="rules" label-position="top">
-    <el-form-item label="Name" prop="name">
+    <el-form-item :label="$t('Name')" prop="name">
       <el-input size="large" v-model="form.name"></el-input>
     </el-form-item>
     <el-row>
       <el-col :xs="8" :md="8">
-        <el-form-item label="I'm a" prop="gender">
+        <el-form-item :label="$t(`I'm a`)" prop="gender">
           <div class="gender-group flex">
             <input type="hidden" name="seek" value="male" />
             <div class="gender-checkbox gender-male flex-none">
@@ -63,7 +63,7 @@
         </el-form-item>
       </el-col>
       <el-col :xs="8" :md="8">
-        <el-form-item label="I'm looking for">
+        <el-form-item :label="$t(`I'm looking for`)">
           <div class="gender-group flex">
             <div class="gender-checkbox gender-male flex-none">
               <label for="form-registration-gender_w-male">
@@ -116,13 +116,8 @@
         </el-form-item>
       </el-col>
       <el-col :xs="8" :md="8">
-        <el-form-item label="Age" prop="age">
-          <el-select
-            v-model="form.age"
-            placeholder="Select"
-            style="width: 100%"
-            size="large"
-          >
+        <el-form-item :label="$t('Age')" prop="age">
+          <el-select v-model="form.age" style="width: 100%" size="large">
             <el-option
               v-for="item in optionsAge"
               :key="item.value"
@@ -133,24 +128,24 @@
         </el-form-item>
       </el-col>
     </el-row>
-    <el-form-item label="Email" prop="email">
+    <el-form-item :label="$t('Email')" prop="email">
       <el-input
         v-model="form.email"
         size="large"
         placeholder="email@example.com"
       />
     </el-form-item>
-    <el-form-item label="Phone Number" prop="phone">
+    <el-form-item :label="$t('Phone Number')" prop="phone">
       <el-input
         v-model="form.phone"
         size="large"
-        placeholder="Phone Number"
+        :placeholder="$t('Phone Number')"
       />
     </el-form-item>
-    <el-form-item label="Password" prop="password">
+    <el-form-item :label="$t('Password')" prop="password">
       <el-input
         v-model="form.password"
-        placeholder="Your password"
+        :placeholder="$t('Your password')"
         size="large"
         type="password"
         show-password
@@ -162,10 +157,11 @@
           <el-checkbox v-model="form.privacy" size="large" />
         </el-col>
         <el-col :span="23">
-          Yes, I confirm that I am over 18 and agree to the
-          <a class="bold">Terms of Use</a>
-          and
-          <a class="bold">Privacy Statement</a>.
+          {{ $t("Yes, I confirm that I am over 18 and agree to the") }}
+          <a class="bold">{{ $t("Terms of Use") }}</a>
+          {{ $t("and") }}
+          <a class="bold">{{ $t("Privacy Statement") }}</a
+          >.
         </el-col>
       </el-row>
     </el-form-item>
@@ -201,50 +197,51 @@ export default {
         name: [
           {
             required: true,
-            message: "Please enter your name",
+            message: this.$t("Please enter your name"),
             trigger: "blur",
           },
         ],
         age: [
           {
             required: true,
-            message: "Please enter your age",
+            message: this.$t("Please enter your age"),
             trigger: "blur",
           },
         ],
         phone: [
           {
             required: true,
-            message: "Please enter your phone number",
+            message: this.$t("Please enter your phone number"),
             trigger: "blur",
           },
         ],
         gender: [
           {
             required: true,
-            message: "Please select your gender",
+            message: this.$t("Please select your gender"),
             trigger: "blur",
           },
         ],
         email: [
           {
             required: true,
-            message: "Please enter your email",
+            message: this.$t("Please enter your email"),
             trigger: "blur",
           },
         ],
         password: [
           {
             required: true,
-            message: "Please enter your password",
+            message: this.$t("Please enter your password"),
             trigger: "blur",
           },
         ],
         privacy: [
           {
             required: true,
-            message:
-              "You must be over 18 and agree to the Terms of Use and Privacy Statement.",
+            message: this.$t(
+              "You must be over 18 and agree to the Terms of Use and Privacy Statement."
+            ),
             trigger: "blur",
           },
         ],
@@ -276,7 +273,7 @@ export default {
             .dispatch("user/register", this.form)
             .then((res) => {
               Message({
-                message: "Register User Successfully!",
+                message: this.$t("Register User Successfully!"),
                 type: "success",
                 duration: 1000,
               });

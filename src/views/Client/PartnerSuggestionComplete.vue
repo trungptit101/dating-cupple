@@ -2,7 +2,7 @@
   <div class="partner-suggestion-complete">
     <LoadingComponent
       v-if="isLoading"
-      message="Processing now, please wait ..."
+      :message="$t('Processing now, please wait ...')"
     />
     <div v-else>
       <Header />
@@ -18,8 +18,8 @@
         <div class="title">
           {{
             process.isComplete == ProcessDatingStatus.InProgress
-              ? "The connection request is waiting for administrator confirmation. Please wait!"
-              : "The connection request has been confirmed by the administrator. Please wait for the email to connect.!"
+              ? $t("The connection request is waiting for administrator confirmation. Please wait!")
+              : $t("The connection request has been confirmed by the administrator. Please wait for the email to connect.!")
           }}
         </div>
       </div>

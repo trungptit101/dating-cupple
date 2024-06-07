@@ -33,7 +33,9 @@
         class="blackscreen-min-height col-12 flex flex-column items-center justify-center"
       >
         <div class="login relative max-width-1 white mx-auto">
-          <h1 class="center" style="font-size: 34px">Members Login</h1>
+          <h1 class="center" style="font-size: 34px">
+            {{ $t("Members Login") }}
+          </h1>
           <div class="loginform">
             <el-form
               ref="loginForm"
@@ -41,7 +43,11 @@
               :rules="rules"
               label-position="top"
             >
-              <el-form-item class="form-login" label="Email" prop="email">
+              <el-form-item
+                class="form-login"
+                :label="$t('Email')"
+                prop="email"
+              >
                 <el-input
                   v-model="form.email"
                   size="large"
@@ -49,10 +55,14 @@
                   @keyup.enter="login"
                 />
               </el-form-item>
-              <el-form-item class="form-login" label="Password" prop="password">
+              <el-form-item
+                class="form-login"
+                :label="$t('Password')"
+                prop="password"
+              >
                 <el-input
                   v-model="form.password"
-                  placeholder="Your password"
+                  :placeholder="$t('Your password')"
                   size="large"
                   type="password"
                   show-password
@@ -60,16 +70,21 @@
                 />
               </el-form-item>
               <div class="flex justify-end">
-                <a class="white" href="/en/auth/showforgotpassword" tabindex="4"
-                  >Forgot Password</a
+                <a
+                  class="white"
+                  href="/en/auth/showforgotpassword"
+                  tabindex="4"
+                  >{{ $t("Forgot Password") }}</a
                 >
               </div>
             </el-form>
           </div>
           <p class="p0 mt2 mb3">
-            <em
-              >Don't check this box if you're at a public or shared computer</em
-            >
+            <em>{{
+              $t(
+                "Don't check this box if you're at a public or shared computer"
+              )
+            }}</em>
           </p>
 
           <el-button
@@ -78,17 +93,19 @@
             :loading="loading"
             @click="login"
           >
-            Login
+            {{ $t("Login") }}
           </el-button>
           <div class="h3 center mt3 link-color">
-            Not a member?
+            {{ $t("Not a member?") }}
             <a @click="$router.push({ path: '/' })"
-              ><strong>Join Now!</strong></a
+              ><strong>{{ $t("Join Now!") }}</strong></a
             >
           </div>
 
           <div class="mt2 white">
-            <p class="center m0 mb1">Help spread the word about Visicupid!</p>
+            <p class="center m0 mb1">
+              {{ $t("Help spread the word about Visicupid!") }}
+            </p>
             <div class="flex justify-center">
               <a
                 href="https://www.facebook.com/elitecupid"
@@ -117,49 +134,68 @@
     </div>
     <footer class="col-11 p2 mx-auto relative mt1">
       <div class="flex justify-center mb1">
-        <a class="me2 white" href="/en/general/about" rel="nofollow"
-          >About Us</a
+        <a
+          class="me2 white"
+          @click="$router.push({ path: '/about-us' })"
+          rel="nofollow"
+          >{{ $t("About Us") }}</a
         >
-        <a class="me2 white" href="/en/general/contact">Contact Us</a>
+        <a class="me2 white" href="/en/general/contact">{{
+          $t("Contact Us")
+        }}</a>
 
-        <a class="me2 white" href="/en/general/success">Success Stories</a>
+        <a class="me2 white" href="/en/general/success">{{
+          $t("Success Stories")
+        }}</a>
 
         <a
           class="me2 white"
           href="https://www.cupidmedia.com/our-sites/"
           target="_blank"
-          >Other Sites</a
+          >{{ $t("Other Sites") }}</a
         >
 
-        <a class="me2 white" href="/en/general/termsofuse">Terms of Use</a>
-        <a class="me2 white" href="/en/general/paymentRefund">Refund Policy</a>
-        <a class="me2 white" href="/en/general/privacystatement"
-          >Privacy Statement</a
-        >
-        <a class="me2 white" href="/en/general/privacystatement#cookiepolicy"
-          >Cookie Policy</a
-        >
+        <a class="me2 white" href="/en/general/termsofuse">{{
+          $t("Terms of Use")
+        }}</a>
+        <a class="me2 white" href="/en/general/paymentRefund">{{
+          $t("Refund Policy")
+        }}</a>
+        <a class="me2 white" href="/en/general/privacystatement">{{
+          $t("Privacy Statement")
+        }}</a>
+        <a class="me2 white" href="/en/general/privacystatement#cookiepolicy">{{
+          $t("Cookie Policy")
+        }}</a>
 
-        <a class="me2 white" href="/en/general/datingsafety">Dating Safety</a>
-        <a class="me2 white" href="/en/general/sitemap">Site Map</a>
-        <a class="me2 white" href="/en/general/communityguidelines"
-          >Community Guidelines</a
-        >
-        <a class="me2 white" href="https://www.cupidmedia.com" target="_blank"
-          >Corporate</a
+        <a class="me2 white" href="/en/general/datingsafety">{{
+          $t("Dating Safety")
+        }}</a>
+        <a class="me2 white" href="/en/general/sitemap">{{ $t("Site Map") }}</a>
+        <a class="me2 white" href="/en/general/communityguidelines">{{
+          $t("Community Guidelines")
+        }}</a>
+        <a
+          class="me2 white"
+          href="https://www.cupidmedia.com"
+          target="_blank"
+          >{{ $t("Corporate") }}</a
         >
         <a
           class="me2 white"
           href="https://www.cupidmedia.com/affiliates/"
           target="_blank"
-          >Affiliates</a
+          >{{ $t("Affiliates") }}</a
         >
       </div>
 
       <div class="center white">
         <p>
-          Cupid Media, the Cupid Media Logo are registered trademarks of Ecom
-          Holdings Pty Ltd and used with permission by Cupid Media Pty Ltd.
+          {{
+            $t(
+              "Cupid Media, the Cupid Media Logo are registered trademarks of Ecom Holdings Pty Ltd and used with permission by Cupid Media Pty Ltd."
+            )
+          }}
         </p>
       </div>
     </footer>
@@ -180,14 +216,14 @@ export default {
         email: [
           {
             required: true,
-            message: "Please enter your email",
+            message: this.$t("Please enter your email"),
             trigger: "blur",
           },
         ],
         password: [
           {
             required: true,
-            message: "Please enter your password",
+            message: this.$t("Please enter your password"),
             trigger: "blur",
           },
         ],
@@ -204,7 +240,7 @@ export default {
             .dispatch("user/login", this.form)
             .then((res) => {
               Message({
-                message: "Login successfully!",
+                message: this.$t("Login successfully!"),
                 type: "success",
                 duration: 1000,
               });
@@ -214,7 +250,7 @@ export default {
             .catch((error) => {
               this.loading = false;
               Message({
-                message: error.response.data.message[Object.keys(error.response.data.message)[0]][0],
+                message: this.$t("Invalid login information"),
                 type: "error",
                 duration: 5 * 1000,
               });

@@ -32,19 +32,19 @@
       >
         <el-row :gutter="24">
           <el-col :span="12">
-            <el-form-item label="Name" prop="name">
+            <el-form-item :label="$t('Name')" prop="name">
               <el-input
                 size="large"
-                placeholder="Name"
+                :placeholder="$t('Name')"
                 v-model="form.name"
               ></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="Age" prop="age">
+            <el-form-item :label="$t('Age')" prop="age">
               <el-select
                 v-model="form.age"
-                placeholder="Select"
+                :placeholder="$t('Select')"
                 style="width: 100%"
                 size="large"
               >
@@ -60,10 +60,10 @@
         </el-row>
         <el-row :gutter="24">
           <el-col :span="12">
-            <el-form-item label="Phone" prop="phone">
+            <el-form-item :label="$t('Phone')" prop="phone">
               <el-input
                 size="large"
-                placeholder="Phone"
+                :placeholder="$t('Phone')"
                 v-model="form.phone"
               ></el-input>
             </el-form-item>
@@ -72,19 +72,19 @@
         </el-row>
         <el-row :gutter="24">
           <el-col :span="12">
-            <el-form-item label="Favorite" prop="favorite">
+            <el-form-item :label="$t('Favorite')" prop="favorite">
               <el-input
                 size="large"
-                placeholder="Favorite"
+                :placeholder="$t('Favorite')"
                 v-model="form.favorite"
               ></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="Weight" prop="weight">
+            <el-form-item :label="$t('Weight')" prop="weight">
               <el-input
                 size="large"
-                placeholder="Weight"
+                :placeholder="$t('Weight')"
                 v-model="form.weight"
               ></el-input>
             </el-form-item>
@@ -92,19 +92,19 @@
         </el-row>
         <el-row :gutter="24">
           <el-col :span="12">
-            <el-form-item label="Height" prop="height">
+            <el-form-item :label="$t('Height')" prop="height">
               <el-input
                 size="large"
-                placeholder="Height"
+                :placeholder="$t('Height')"
                 v-model="form.height"
               ></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="Skin Color" prop="skin_color">
+            <el-form-item :label="$('Skin Color')" prop="skin_color">
               <el-input
                 size="large"
-                placeholder="Skin Color"
+                :placeholder="$t('Skin Color')"
                 v-model="form.skin_color"
               ></el-input>
             </el-form-item>
@@ -112,19 +112,19 @@
         </el-row>
         <el-row :gutter="24">
           <el-col :span="12">
-            <el-form-item label="Blood Group" prop="blood_group">
+            <el-form-item :label="$t('Blood Group')" prop="blood_group">
               <el-input
                 size="large"
-                placeholder="Blood Group"
+                :placeholder="$t('Blood Group')"
                 v-model="form.blood_group"
               ></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="Eye Color" prop="eye_color">
+            <el-form-item :label="$t('Eye Color')" prop="eye_color">
               <el-input
                 size="large"
-                placeholder="Eye Color"
+                :placeholder="$t('Eye Color')"
                 v-model="form.eye_color"
               ></el-input>
             </el-form-item>
@@ -132,15 +132,15 @@
         </el-row>
 
         <el-form-item class="text-right">
-          <el-button type="warning" size="medium" @click="closeDialog"
-            >Cancel</el-button
-          >
+          <el-button type="warning" size="medium" @click="closeDialog">{{
+            $t("Cancel")
+          }}</el-button>
           <el-button
             type="primary"
             size="medium"
             @click="submitForm('ruleFormRef')"
             :loading="loading"
-            >Save</el-button
+            >{{ $t("Save") }}</el-button
           >
         </el-form-item>
       </el-form>
@@ -164,21 +164,21 @@ export default {
         name: [
           {
             required: true,
-            message: "Please enter your name",
+            message: this.$t("Please enter your name"),
             trigger: "blur",
           },
         ],
         age: [
           {
             required: true,
-            message: "Please enter your age",
+            message: this.$t("Please enter your age"),
             trigger: "blur",
           },
         ],
         phone: [
           {
             required: true,
-            message: "Please enter your phone number",
+            message: this.$t("Please enter your phone number"),
             trigger: "blur",
           },
         ],
@@ -217,7 +217,7 @@ export default {
             .dispatch("user/updateUserDetail", this.form)
             .then((res) => {
               Message({
-                message: "Update profile successfully!",
+                message: this.$t("Update profile successfully!"),
                 type: "success",
                 duration: 1000,
               });

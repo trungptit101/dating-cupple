@@ -8,7 +8,7 @@
         <el-col :span="8" class="question-item-filter">
           <el-select
             v-model="yearSelected"
-            placeholder="Select"
+            :placeholder="$t('Select')"
             style="width: 100%"
             size="large"
           >
