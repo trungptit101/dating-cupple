@@ -120,6 +120,8 @@
     <el-dialog
       :title="itemId == null ? $t('Add Question') : $t('Edit Question')"
       :visible.sync="isQuestionDetail"
+      :close-on-click-modal="false"
+      top="5vh"
     >
       <QuestionDetail
         v-if="isQuestionDetail"
@@ -191,6 +193,7 @@ export default {
       totalCount: 0,
       page: 1,
       perPage: 10,
+      currentLanguage: localStorage.getItem("language") || "en",
     };
   },
   created() {
@@ -258,11 +261,7 @@ export default {
     },
     getList() {
       this.loading = true;
-      const params = {
-        page: this.page,
-        perPage: this.perPage,
-      };
-      getListQuestion(params).then((response) => {
+      getListQuestion().then((response) => {
         this.loading = false;
         this.list = response.data;
         this.totalCount = response.data.total;
@@ -271,13 +270,13 @@ export default {
           .map((q) => {
             return {
               value: q.id,
-              label: q.question,
+              label: this.currentLanguage == "vi" ? q.question : q.question_en,
             };
           });
       });
     },
     deleteItem(id) {
-      this.$confirm("Are you sure to delete this question?")
+      this.$confirm(this.$t("Are you sure to delete this question?"))
         .then((_) => {
           deleteQuestion(id).then((res) => {
             Message({

@@ -101,7 +101,7 @@
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item :label="$('Skin Color')" prop="skin_color">
+            <el-form-item :label="$t('Skin Color')" prop="skin_color">
               <el-input
                 size="large"
                 :placeholder="$t('Skin Color')"

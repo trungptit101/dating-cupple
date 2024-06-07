@@ -238,7 +238,10 @@
       :visible.sync="isDisplaySettingsProfile"
       top="5vh"
     >
-      <SettingsProfile @closeDialog="isDisplaySettingsProfile = false" />
+      <SettingsProfile
+        v-if="isDisplaySettingsProfile"
+        @closeDialog="isDisplaySettingsProfile = false"
+      />
     </el-dialog>
   </div>
 </template>

@@ -8,7 +8,8 @@
 
     <!-- <breadcrumb class="breadcrumb-container" /> -->
 
-    <div class="right-menu">
+    <div class="right-menu flex">
+      <MultipleLanguage style="margin-right: 15px" />
       <AvatarUser :size="40" @settingProfile="settingProfile" />
       <!-- <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
@@ -24,11 +25,14 @@
     </div>
     <el-dialog
       :close-on-click-modal="false"
-      title="Settings Profile"
+      :title="$t('Settings Profile')"
       :visible.sync="isDisplaySettingsProfile"
       top="5vh"
     >
-      <SettingsProfile @closeDialog="isDisplaySettingsProfile = false" />
+      <SettingsProfile
+        v-if="isDisplaySettingsProfile"
+        @closeDialog="isDisplaySettingsProfile = false"
+      />
     </el-dialog>
   </div>
 </template>
@@ -41,6 +45,7 @@ import { GenderUser } from "@/define/index";
 import AvatarUser from "@/components/AvatarUser.vue";
 import store from "@/store";
 import SettingsProfile from "@/components/SettingsProfile.vue";
+import MultipleLanguage from "@/layout/components/MultipleLanguage.vue";
 
 export default {
   components: {
@@ -48,6 +53,7 @@ export default {
     Hamburger,
     AvatarUser,
     SettingsProfile,
+    MultipleLanguage,
   },
   data() {
     return {

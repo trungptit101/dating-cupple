@@ -1,10 +1,33 @@
 <template>
   <el-form :model="form" ref="ruleFormRef" :rules="rules" label-position="top">
+    <div class="text-right">
+      <img
+        src="@/assets/images/logo-vietnamese.png"
+        width="30.5"
+        style="cursor: pointer"
+        @click="changeMode('vi')"
+        v-if="currentLanguage == 'en'"
+      />
+      <img
+        src="@/assets/images/logo-american.png"
+        width="30"
+        style="cursor: pointer"
+        @click="changeMode('en')"
+        v-else
+      />
+    </div>
     <el-form-item :label="$t('Question')" prop="question">
       <el-input
         size="medium"
         v-model="form.question"
-        :placeholder="$t('question')"
+        :placeholder="$t('Question')"
+        v-if="currentLanguage == 'vi'"
+      ></el-input>
+      <el-input
+        size="medium"
+        v-model="form.question_en"
+        :placeholder="$t('Question')"
+        v-else
       ></el-input>
     </el-form-item>
     <el-form-item :label="$t('Type')" prop="type">
@@ -40,6 +63,13 @@
             size="medium"
             :placeholder="$t('option')"
             v-model="option.text"
+            v-if="currentLanguage == 'vi'"
+          ></el-input>
+          <el-input
+            size="medium"
+            :placeholder="$t('option')"
+            v-model="option.text_en"
+            v-else
           ></el-input>
         </el-col>
         <el-col :span="12">
@@ -100,15 +130,23 @@
       </div>
     </el-form-item>
     <div v-else-if="form.type == QuestionType.BreakScreen">
-      <el-form-item label="Description" prop="description">
+      <el-form-item :label="$t('Description')" prop="description">
         <el-input
           type="textarea"
           :rows="5"
           v-model="form.description"
-          placeholder="Description"
+          :placeholder="$t('Description')"
+          v-if="currentLanguage == 'vi'"
+        ></el-input>
+        <el-input
+          type="textarea"
+          :rows="5"
+          v-model="form.description_en"
+          :placeholder="$t('Description')"
+          v-else
         ></el-input>
       </el-form-item>
-      <el-form-item label="Background" prop="background">
+      <el-form-item :label="$t('Background')" prop="background">
         <input
           type="file"
           ref="picker"
@@ -143,7 +181,7 @@
               </svg>
             </div>
             <div style="font-size: 12px; line-height: 15px">
-              Upload background
+              {{ $t("Upload background") }}
             </div>
           </div>
           <div v-else style="cursor: pointer">
@@ -178,6 +216,7 @@ export default {
   props: ["formData", "id"],
   data() {
     return {
+      currentLanguage: localStorage.getItem("language") || "en",
       QuestionType,
       optionTypes: [
         {
@@ -232,15 +271,20 @@ export default {
     if (this.id) {
       this.form = {
         question: this.formData.question,
+        question_en: this.formData.question_en,
         slug: this.formData.slug,
         type: this.formData.type,
         description: this.formData.description,
+        description_en: this.formData.description_en,
         background: this.formData.background,
       };
       this.optionsList = JSON.parse(this.formData.options);
     }
   },
   methods: {
+    changeMode(lang) {
+      this.currentLanguage = lang;
+    },
     async submitForm(formEl) {
       await this.$refs[formEl].validate(async (valid, fields) => {
         if (valid) {

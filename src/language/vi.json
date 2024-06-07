@@ -206,6 +206,9 @@
   "List Contacts": "Danh sách liên hệ",
   "Contact": "Liên hệ",
   "Issue": "Vấn đề",
-  "Description": "Sự miêu tả",
-  "Are you sure to delete this contact?": "Bạn có chắc chắn xóa địa chỉ liên hệ này không?"
+  "Description": "Mô tả",
+  "Are you sure to delete this contact?": "Bạn có chắc chắn xóa địa chỉ liên hệ này không?",
+  "Background": "Hình nền",
+  "Upload background": "Tải lên hình nên",
+  "Are you sure to delete this question?": "Bạn có chắc muốn xoá câu hỏi này không?"
 }

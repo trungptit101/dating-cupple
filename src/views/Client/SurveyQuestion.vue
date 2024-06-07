@@ -30,7 +30,7 @@
             @click="prevQuestion"
             :disabled="currentStep == 0"
           >
-            Back
+            {{ $t("Back") }}
           </button>
           <button
             type="submit"
@@ -39,7 +39,7 @@
             :disabled="!isDisableBtnNext"
             @click="nextQuestion"
           >
-            Next
+            {{ $t("Next") }}
           </button>
         </div>
         <div class="grid grid-cols-2" v-else>
@@ -50,7 +50,7 @@
             :disabled="currentStep == 0"
             v-if="currentStep"
           >
-            Back
+            {{ $t("Back") }}
           </button>
           <button
             type="submit"
@@ -60,10 +60,10 @@
           >
             {{
               currentStep == 0
-                ? "Start"
+                ? $t("Start")
                 : currentStep == questionsList.length - 1
-                ? "Finish"
-                : "Next"
+                ? $t("Finish")
+                : $t("Next")
             }}
           </button>
         </div>

@@ -9,7 +9,8 @@
         style="cursor: pointer; object-fit: contain; height: 100%"
         @click="$router.push({ path: '/' })"
       />
-      <div class="nav-header py1 px2">
+      <div class="nav-header py1 px2 flex items-center">
+        <MultipleLanguage style="margin-right: 15px" />
         <AvatarUser :size="40" @settingProfile="settingProfile" />
       </div>
     </div>
@@ -18,8 +19,9 @@
 
 <script>
 import AvatarUser from "@/components/AvatarUser.vue";
+import MultipleLanguage from "@/layout/components/MultipleLanguage.vue";
 export default {
-  components: { AvatarUser },
+  components: { AvatarUser, MultipleLanguage },
   data() {
     return {};
   },

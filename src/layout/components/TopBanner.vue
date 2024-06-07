@@ -39,7 +39,7 @@
       }"
     >
       <div
-        class="flex items-center justify-center height-97 col-6"
+        class="flex items-center justify-center height-97"
         :class="{
           'height-top-other': otherHome,
         }"

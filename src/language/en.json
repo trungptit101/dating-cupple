@@ -207,5 +207,8 @@
   "Contact": "Contact",
   "Issue": "Issue",
   "Description": "Description",
-  "Are you sure to delete this contact?": "Are you sure to delete this contact?"
+  "Are you sure to delete this contact?": "Are you sure to delete this contact?",
+  "Background": "Background",
+  "Upload background": "Upload background",
+  "Are you sure to delete this question?": "Are you sure to delete this question?"
 }

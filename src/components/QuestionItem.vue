@@ -16,7 +16,9 @@
           <h1
             class="lg:text-2xl text-xl lg:font-normal font-semibold text-[#323232]"
           >
-            {{ question.question }}
+            {{
+              currentLanguage == "vi" ? question.question : question.question_en
+            }}
           </h1>
         </div>
       </div>
@@ -62,7 +64,7 @@
             style="display: block"
             v-if="question.type == QuestionType.OnlyOption"
           />
-          <span class="option-text">{{ option.text }}</span>
+          <span class="option-text">{{ currentLanguage == "vi" ? option.text : option.text_en }}</span>
         </div>
       </div>
       <div
@@ -96,10 +98,10 @@
               <h2
                 class="lg:text-7xl text-3xl lg:font-normal mb-6 text-[#D6AD60] font-semibold text-center"
               >
-                {{ question.question }}
+                {{ currentLanguage == "vi" ? question.question : question.question_en }}
               </h2>
               <p class="lg:text-2xl text-sm font-normal text-white">
-                {{ question.description }}
+                {{ currentLanguage == "vi" ? question.description : question.description_en }}
               </p>
             </div>
           </div>
@@ -118,6 +120,7 @@ export default {
       QuestionType,
       checkedAnswers: [],
       checkedOnlyAnswer: null,
+      currentLanguage: localStorage.getItem("language") || "en",
     };
   },
   created() {

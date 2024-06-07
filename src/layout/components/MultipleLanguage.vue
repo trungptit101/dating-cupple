@@ -1,6 +1,5 @@
 <template>
   <div class="membernav">
-    {{ currentLanguage }} ==
     <img
       src="@/assets/images/logo-vietnamese.png"
       width="30.5"
