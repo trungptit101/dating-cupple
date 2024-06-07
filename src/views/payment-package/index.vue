@@ -2,13 +2,13 @@
   <div class="app-container">
     <el-row class="flex items-center">
       <el-col :span="12">
-        <h2>List Payment Packages</h2>
+        <h2>{{ $t("List Payment Packages") }}</h2>
       </el-col>
       <el-col :span="12">
         <div class="text-right">
-          <el-button type="primary" size="medium" @click="addItem"
-            >Add</el-button
-          >
+          <el-button type="primary" size="medium" @click="addItem">{{
+            $t("Add")
+          }}</el-button>
         </div>
       </el-col>
     </el-row>
@@ -20,34 +20,47 @@
       fit
       highlight-current-row
     >
-      <el-table-column align="center" label="No" width="95">
+      <el-table-column align="center" :label="$t('No')" width="95">
         <template slot-scope="scope">
           {{ scope.$index + 1 }}
         </template>
       </el-table-column>
-      <el-table-column label="Months">
+      <el-table-column :label="$t('Months')">
         <template slot-scope="scope">
           {{ scope.row.months }}
         </template>
       </el-table-column>
-      <el-table-column class-name="status-col" label="Price" align="center">
+      <el-table-column
+        class-name="status-col"
+        :label="$t('Price')"
+        align="center"
+      >
         <template slot-scope="scope">
           <span>{{ scope.row.price }}</span>
         </template>
       </el-table-column>
-      <el-table-column class-name="status-col" label="Unit" align="center">
+      <el-table-column
+        class-name="status-col"
+        :label="$t('Unit')"
+        align="center"
+      >
         <template slot-scope="scope">
           <span>{{ scope.row.unit }}</span>
         </template>
       </el-table-column>
       <el-table-column
         class-name="status-col"
-        label="Action"
+        :label="$t('Action')"
         width="110"
         align="center"
       >
         <template slot-scope="scope">
-          <el-tooltip class="item" effect="dark" content="Edit" placement="top">
+          <el-tooltip
+            class="item"
+            effect="dark"
+            :content="$t('Edit')"
+            placement="top"
+          >
             <el-button
               type="primary"
               icon="el-icon-edit"
@@ -59,7 +72,7 @@
           <el-tooltip
             class="item"
             effect="dark"
-            content="Delete"
+            :content="$t('Delete')"
             placement="top"
           >
             <el-button

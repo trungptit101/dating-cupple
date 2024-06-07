@@ -40,7 +40,7 @@
     </div>
     <el-row class="flex items-center">
       <el-col :span="12">
-        <h2>List Candidates</h2>
+        <h2>{{ $t("List Candidates") }}</h2>
       </el-col>
       <el-col :span="12" class="text-right">
         <el-button
@@ -48,52 +48,53 @@
           icon="el-icon-search"
           size="medium"
           @click="search"
-          >Search</el-button
+          >{{ $t("Search") }}</el-button
         >
       </el-col>
     </el-row>
-    <el-table
-      v-loading="loading"
-      :data="list"
-      element-loading-text="Loading"
-      border
-      fit
-      highlight-current-row
-    >
-      <el-table-column align="center" label="No" width="95">
+    <el-table v-loading="loading" :data="list" border fit highlight-current-row>
+      <el-table-column align="center" :label="$t('No')" width="95">
         <template slot-scope="scope">
           {{ scope.$index + 1 + (page - 1) * perPage }}
         </template>
       </el-table-column>
-      <el-table-column label="Name">
+      <el-table-column :label="$t('Name')">
         <template slot-scope="scope">
           {{ scope.row.name }}
         </template>
       </el-table-column>
-      <el-table-column class-name="status-col" label="Email" align="center">
+      <el-table-column
+        class-name="status-col"
+        :label="$t('Email')"
+        align="center"
+      >
         <template slot-scope="scope">
           <span>{{ scope.row.email }}</span>
         </template>
       </el-table-column>
-      <el-table-column class-name="status-col" label="Gender" align="center">
+      <el-table-column
+        class-name="status-col"
+        :label="$t('Gender')"
+        align="center"
+      >
         <template slot-scope="scope">
-          <span :class="scope.row.gender">{{ scope.row.gender }}</span>
+          <span :class="scope.row.gender">{{ $t(scope.row.gender) }}</span>
         </template>
       </el-table-column>
       <el-table-column
         class-name="status-col"
-        label="Looking Gender"
+        :label="$t('Looking Gender')"
         align="center"
       >
         <template slot-scope="scope">
           <span :class="scope.row.lookingGender">{{
-            scope.row.lookingGender
+            $t(scope.row.lookingGender)
           }}</span>
         </template>
       </el-table-column>
       <el-table-column
         class-name="status-col"
-        label="Status Dating"
+        :label="$t('Status Dating')"
         align="center"
       >
         <template slot-scope="scope">
@@ -104,15 +105,15 @@
           >
             {{
               scope.row.dating.isComplete
-                ? "InProgress Dating"
-                : "Complete Dating"
+                ? $t("InProgress Dating")
+                : $t("Complete Dating")
             }}
           </el-tag>
         </template>
       </el-table-column>
       <el-table-column
         class-name="status-col"
-        label="Action"
+        :label="$t('Action')"
         width="110"
         align="center"
       >
@@ -120,7 +121,7 @@
           <el-tooltip
             class="item"
             effect="dark"
-            content="Delete"
+            :content="$t('Delete')"
             placement="top"
           >
             <el-button

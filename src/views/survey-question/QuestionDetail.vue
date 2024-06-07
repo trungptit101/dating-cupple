@@ -1,16 +1,16 @@
 <template>
   <el-form :model="form" ref="ruleFormRef" :rules="rules" label-position="top">
-    <el-form-item label="Question" prop="question">
+    <el-form-item :label="$t('Question')" prop="question">
       <el-input
         size="medium"
         v-model="form.question"
-        placeholder="question"
+        :placeholder="$t('question')"
       ></el-input>
     </el-form-item>
-    <el-form-item label="Type" prop="type">
+    <el-form-item :label="$t('Type')" prop="type">
       <el-select
         v-model="form.type"
-        placeholder="Select"
+        :placeholder="$t('Select')"
         style="width: 100%"
         size="medium"
       >
@@ -23,7 +23,7 @@
       </el-select>
     </el-form-item>
     <el-form-item
-      label="option"
+      :label="$t('option')"
       v-if="
         ![QuestionType.BreakScreen, QuestionType.InputAnswer].includes(
           form.type
@@ -38,7 +38,7 @@
         <el-col :span="12" class="option-item">
           <el-input
             size="medium"
-            placeholder="option"
+            :placeholder="$t('option')"
             v-model="option.text"
           ></el-input>
         </el-col>
@@ -76,7 +76,9 @@
                   />
                 </svg>
               </div>
-              <div style="font-size: 12px; line-height: 15px">Upload image</div>
+              <div style="font-size: 12px; line-height: 15px">
+                {{ $t("Upload image") }}
+              </div>
             </div>
             <div v-else style="cursor: pointer">
               <img
@@ -154,15 +156,15 @@
       </el-form-item>
     </div>
     <el-form-item class="text-right">
-      <el-button type="warning" size="medium" @click="closeDialog"
-        >Cancel</el-button
-      >
+      <el-button type="warning" size="medium" @click="closeDialog">{{
+        $t("Cancel")
+      }}</el-button>
       <el-button
         type="primary"
         size="medium"
         @click="submitForm('ruleFormRef')"
         :loading="loading"
-        >Save</el-button
+        >{{ $t("Save") }}</el-button
       >
     </el-form-item>
   </el-form>
@@ -179,19 +181,19 @@ export default {
       QuestionType,
       optionTypes: [
         {
-          label: "Input answer",
+          label: this.$t("Input answer"),
           value: QuestionType.InputAnswer,
         },
         {
-          label: "Only 1 option",
+          label: this.$t("Only 1 option"),
           value: QuestionType.OnlyOption,
         },
         {
-          label: "Mutiple options",
+          label: this.$t("Mutiple options"),
           value: QuestionType.MultipleOption,
         },
         {
-          label: "Break Screen",
+          label: this.$t("Break Screen"),
           value: QuestionType.BreakScreen,
         },
       ],
@@ -212,14 +214,14 @@ export default {
         question: [
           {
             required: true,
-            message: "Please enter question",
+            message: this.$t("Please enter question"),
             trigger: "blur",
           },
         ],
         type: [
           {
             required: true,
-            message: "Please choose type question",
+            message: this.$t("Please choose type question"),
             trigger: "blur",
           },
         ],
@@ -252,7 +254,7 @@ export default {
               this.loading = false;
               this.$emit("closeCreateDialog");
               Message({
-                message: res.message,
+                message: this.$t("Create question successfully!"),
                 type: "success",
                 duration: 1000,
               });
@@ -265,7 +267,7 @@ export default {
               this.loading = false;
               this.$emit("closeCreateDialog");
               Message({
-                message: res.message,
+                message: this.$t("Update question successfully!"),
                 type: "success",
                 duration: 1000,
               });

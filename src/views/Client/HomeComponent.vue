@@ -176,7 +176,10 @@
         </div>
         <div class="col col-2" style="float: left">
           <div class="h3 mt2 mb1 color-dark-grey">{{ $t("Follow Us") }}</div>
-          <a class="inline-block"
+          <a
+            class="inline-block"
+            href="https://www.facebook.com/Vietsyncupid?"
+            target="_blank"
             ><img
               src="@/assets/images/fb.png"
               width="50"
@@ -196,7 +199,10 @@
               class="network"
           /></a>
 
-          <a class="inline-block"
+          <a
+            class="inline-block"
+            href="https://www.instagram.com/visicupid?igsh=MWR5MWZub2F3NWVybA%3D%3D&utm_source=qr"
+            target="_blank"
             ><img
               src="@/assets/images/instagram.png"
               width="50"

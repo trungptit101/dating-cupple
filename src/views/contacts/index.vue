@@ -2,45 +2,38 @@
   <div class="contacts-container app-container">
     <el-row class="flex items-center" style="margin-bottom: 10px">
       <el-col :span="12">
-        <h2>List Contacts</h2>
+        <h2>{{ $t("List Contacts") }}</h2>
       </el-col>
     </el-row>
-    <el-table
-      v-loading="loading"
-      :data="list"
-      element-loading-text="Loading"
-      border
-      fit
-      highlight-current-row
-    >
-      <el-table-column align="center" label="No" width="95">
+    <el-table v-loading="loading" :data="list" border fit highlight-current-row>
+      <el-table-column align="center" :label="$t('No')" width="95">
         <template slot-scope="scope">
           {{ scope.$index + 1 + (page - 1) * perPage }}
         </template>
       </el-table-column>
-      <el-table-column label="Email">
+      <el-table-column :label="$t('Email')">
         <template slot-scope="scope">
           {{ scope.row.email }}
         </template>
       </el-table-column>
-      <el-table-column label="Contact">
+      <el-table-column :label="$t('Contact')">
         <template slot-scope="scope">
           {{ scope.row.contact }}
         </template>
       </el-table-column>
-      <el-table-column label="Issue">
+      <el-table-column :label="$t('Issue')">
         <template slot-scope="scope">
           {{ scope.row.issue }}
         </template>
       </el-table-column>
-      <el-table-column label="Description">
+      <el-table-column :label="$t('Description')">
         <template slot-scope="scope">
           {{ scope.row.description }}
         </template>
       </el-table-column>
       <el-table-column
         class-name="status-col"
-        label="Action"
+        :label="$t('Action')"
         width="110"
         align="center"
       >
@@ -48,7 +41,7 @@
           <el-tooltip
             class="item"
             effect="dark"
-            content="Delete"
+            :content="$t('Delete')"
             placement="top"
           >
             <el-button
@@ -107,7 +100,7 @@ export default {
       });
     },
     deleteItem(id) {
-      this.$confirm("Are you sure to delete this contact?")
+      this.$confirm(this.$t("Are you sure to delete this contact?"))
         .then((_) => {
           deleteContact(id).then((res) => {
             Message({

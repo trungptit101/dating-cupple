@@ -23,5 +23,7 @@ export function removeToken() {
 }
 
 export function clearStoreage() {
+  const lang = localStorage.getItem("language") || "en";
   localStorage.clear();
+  localStorage.setItem("language", lang);
 }

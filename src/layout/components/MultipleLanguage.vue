@@ -1,15 +1,16 @@
 <template>
-  <div class="membernav" style="cursor: pointer">
+  <div class="membernav">
     {{ currentLanguage }} ==
     <img
       src="@/assets/images/logo-vietnamese.png"
-      width="35.5"
-      style="margin-right: 15px"
+      width="30.5"
+      style="cursor: pointer; margin-right: 15px"
       @click="changeLanguage('vi')"
     />
     <img
       src="@/assets/images/logo-american.png"
-      width="35"
+      width="30"
+      style="cursor: pointer"
       @click="changeLanguage('en')"
     />
   </div>

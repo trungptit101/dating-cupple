@@ -2,7 +2,7 @@
   <div class="app-container">
     <el-row class="flex items-center" style="margin-bottom: 10px">
       <el-col :span="12">
-        <h2>List Survey Questions</h2>
+        <h2>{{ $t("List Survey Questions") }}</h2>
       </el-col>
       <el-col :span="12" class="text-right">
         <el-button
@@ -10,35 +10,37 @@
           size="small"
           icon="el-icon-s-tools"
           @click="settingsFilter"
-          >Settings Filter</el-button
+          >{{ $t("Settings Filter") }}</el-button
         >
         <el-button
           type="primary"
           icon="el-icon-plus"
           size="small"
           @click="addQuestion"
-          >Add Question</el-button
+          >{{ $t("Add Question") }}</el-button
         >
       </el-col>
     </el-row>
     <table class="design-table" v-if="list.length > 0">
       <thead>
         <th class="header-table-design" style="width: 60px; text-align: center">
-          No
+          {{ $t("No") }}
         </th>
-        <th class="header-table-design" style="width: 30%">Question</th>
+        <th class="header-table-design" style="width: 30%">
+          {{ $t("Question") }}
+        </th>
         <th
           class="header-table-design"
           style="width: 150px; text-align: center"
         >
-          Type
+          {{ $t("Type") }}
         </th>
-        <th class="header-table-design">Options</th>
+        <th class="header-table-design">{{ $t("Options") }}</th>
         <th
           class="header-table-design"
           style="width: 100px; text-align: center"
         >
-          Action
+          {{ $t("Action") }}
         </th>
       </thead>
 
@@ -59,7 +61,7 @@
           </td>
           <td>
             <div class="value-column" style="width: 150px; text-align: center">
-              {{ item.type | statusFilter }}
+              {{ statusFilter(item.type) }}
             </div>
           </td>
           <td>
@@ -85,7 +87,7 @@
             <el-tooltip
               class="item"
               effect="dark"
-              content="Edit"
+              :content="$t('Edit')"
               placement="top"
             >
               <el-button
@@ -99,7 +101,7 @@
             <el-tooltip
               class="item"
               effect="dark"
-              content="Delete"
+              :content="$t('Delete')"
               placement="top"
             >
               <el-button
@@ -116,7 +118,7 @@
     </table>
 
     <el-dialog
-      :title="itemId == null ? 'Add Question' : 'Edit Question'"
+      :title="itemId == null ? $t('Add Question') : $t('Edit Question')"
       :visible.sync="isQuestionDetail"
     >
       <QuestionDetail
@@ -128,13 +130,13 @@
       />
     </el-dialog>
 
-    <el-dialog title="Settings Filter" :visible.sync="isSettingsFilter">
+    <el-dialog :title="$t('Settings Filter')" :visible.sync="isSettingsFilter">
       <el-select
         class="setting-filter"
         v-model="filterSelected"
         multiple
         filterable
-        placeholder="Settings Filter"
+        :placeholder="$t('Settings Filter')"
       >
         <el-option
           v-for="item in optionsQuestionFilter"
@@ -149,11 +151,11 @@
           type="warning"
           size="medium"
           @click="isSettingsFilter = false"
-          >Cancel</el-button
+          >{{ $t("Cancel") }}</el-button
         >
-        <el-button type="primary" size="medium" @click="saveSettings"
-          >Save</el-button
-        >
+        <el-button type="primary" size="medium" @click="saveSettings">{{
+          $t("Save")
+        }}</el-button>
       </div>
     </el-dialog>
   </div>
@@ -174,17 +176,6 @@ import Draggable from "vuedraggable";
 
 export default {
   components: { QuestionDetail, Draggable },
-  filters: {
-    statusFilter(status) {
-      const statusMap = {
-        1: "only 1 answer",
-        2: "mutiple answers",
-        3: "Break screen",
-        4: "Input answer",
-      };
-      return statusMap[status];
-    },
-  },
   data() {
     return {
       QuestionType,
@@ -207,8 +198,16 @@ export default {
     this.getSettings();
   },
   methods: {
+    statusFilter(status) {
+      const statusMap = {
+        1: this.$t("Only 1 answer"),
+        2: this.$t("Mutiple answers"),
+        3: this.$t("Break Screen"),
+        4: this.$t("Input answer"),
+      };
+      return statusMap[status];
+    },
     endDragAction() {
-      console.log("@@@@@@@@", this.list);
       const questionIds = this.list.map((e) => e.id);
       updateOrderQuestion({ questionIds: questionIds });
     },

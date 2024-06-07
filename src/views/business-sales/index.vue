@@ -3,7 +3,7 @@
     <div class="filter-search">
       <el-row :gutter="20" style="display: flex; align-items: flex-end">
         <el-col :span="6" class="question-item-filter">
-          <div class="label">Select year for statistics</div>
+          <div class="label">{{ $t("Select year for statistics") }}</div>
         </el-col>
         <el-col :span="8" class="question-item-filter">
           <el-select
@@ -27,13 +27,14 @@
             size="medium"
             :loading="loading"
             @click="search"
-            >Search</el-button
+            >{{ $t("Search") }}</el-button
           >
         </el-col>
       </el-row>
     </div>
     <h2 class="text-center">
-      Statistical chart of registered users by months in {{ yearSelected }}
+      {{ $t("Statistical chart of registered users by months in") }}
+      {{ yearSelected }}
     </h2>
     <VueApexCharts
       type="bar"
@@ -45,7 +46,8 @@
     <el-row :gutter="20" style="display: flex; align-items: flex-end">
       <el-col :xs="24" :md="12">
         <h2 class="text-center">
-          Monthly sales unit VND statistics chart in {{ yearSelected }}
+          {{ $t("Monthly sales unit VND statistics chart in") }}
+          {{ yearSelected }}
         </h2>
         <VueApexCharts
           type="bar"
@@ -56,7 +58,7 @@
       </el-col>
       <el-col :xs="24" :md="12">
         <h2 class="text-center">
-          Monthly sales unit USD statistics chart in {{ yearSelected }}
+          {{ $t("Monthly sales unit USD statistics chart in") }} {{ yearSelected }}
         </h2>
         <VueApexCharts
           type="bar"
@@ -115,18 +117,18 @@ export default {
         },
         xaxis: {
           categories: [
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December",
+            this.$t("January"),
+            this.$t("February"),
+            this.$t("March"),
+            this.$t("April"),
+            this.$t("May"),
+            this.$t("June"),
+            this.$t("July"),
+            this.$t("August"),
+            this.$t("September"),
+            this.$t("October"),
+            this.$t("November"),
+            this.$t("December"),
           ],
         },
       },
@@ -153,19 +155,19 @@ export default {
       },
       dataUsersAnalysic: [
         {
-          name: "Users",
+          name: this.$t("Users"),
           data: [],
         },
       ],
       dataSalesAnalysicVND: [
         {
-          name: "Sales",
+          name: this.$t("Sales"),
           data: [],
         },
       ],
       dataSalesAnalysicUSD: [
         {
-          name: "Sales",
+          name: this.$t("Sales"),
           data: [],
         },
       ],
@@ -191,7 +193,7 @@ export default {
             Object.keys(res.users).forEach((key) => data.push(res.users[key]));
             this.dataUsersAnalysic = [
               {
-                name: "Users",
+                name: this.$t("Users"),
                 data: data,
               },
             ];
@@ -203,7 +205,7 @@ export default {
             );
             this.dataSalesAnalysicVND = [
               {
-                name: "Sales",
+                name: this.$t("Sales"),
                 data: data,
               },
             ];
@@ -215,7 +217,7 @@ export default {
             );
             this.dataSalesAnalysicUSD = [
               {
-                name: "Sales",
+                name: this.$t("Sales"),
                 data: data,
               },
             ];
