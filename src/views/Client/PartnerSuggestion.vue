@@ -28,7 +28,7 @@
             :key="index"
             class="partner-item"
           >
-            <div class="flex items-center" @click="choosePartner(partner)">
+            <div class="flex items-center" @click="viewPartner(partner)">
               <Avatar :size="50" :user="partner" :url="partner.avatar" />
               <div class="partner-info">
                 <div class="name">{{ partner.name }} - {{ partner.age }}</div>
@@ -51,11 +51,13 @@
                   src="@/assets/images/heart-red.png"
                   class="icon-heart"
                   v-if="partnersSelected.includes(partner.id)"
+                  @click="choosePartner(partner)"
                 />
                 <img
                   src="@/assets/images/heart.svg"
                   class="icon-heart"
                   v-else
+                  @click="choosePartner(partner)"
                 />
               </div>
             </div>
@@ -64,6 +66,72 @@
       </div>
       <Footer />
     </div>
+    <el-dialog
+      :visible.sync="isDisplayDetailPartner"
+      :title="$t('Detail Partner')"
+    >
+      <div class="detail-partner">
+        <el-row
+          :gutter="24"
+          v-if="partnerSelected.image_dating"
+          style="margin-bottom: 20px"
+        >
+          <el-carousel :interval="333000" arrow="always">
+            <el-carousel-item
+              v-for="(item, index) in getArray(partnerSelected.image_dating)"
+              :key="index"
+            >
+              <div class="slide flex items-center justify-center">
+                <img
+                  :src="item"
+                  style="width: 100%; height: 300px; object-fit: cover"
+                />
+              </div>
+            </el-carousel-item>
+          </el-carousel>
+        </el-row>
+        <el-row :gutter="24" class="row-info">
+          <el-col :span="12" class="text-right">{{ $t("Name") }}</el-col>
+          <el-col :span="12">{{ partnerSelected.name }}</el-col>
+        </el-row>
+        <el-row :gutter="24" class="row-info">
+          <el-col :span="12" class="text-right">{{ $t("Age") }}</el-col>
+          <el-col :span="12">{{ partnerSelected.age }}</el-col>
+        </el-row>
+        <el-row :gutter="24" class="row-info">
+          <el-col :span="12" class="text-right">{{ $t("Blood Group") }}</el-col>
+          <el-col :span="12">{{ partnerSelected.blood_group }}</el-col>
+        </el-row>
+        <el-row :gutter="24" class="row-info">
+          <el-col :span="12" class="text-right">{{ $t("Eye Color") }}</el-col>
+          <el-col :span="12">{{ partnerSelected.eye_color }}</el-col>
+        </el-row>
+        <el-row :gutter="24" class="row-info">
+          <el-col :span="12" class="text-right">{{ $t("Skin Color") }}</el-col>
+          <el-col :span="12">{{ partnerSelected.skin_color }}</el-col>
+        </el-row>
+        <el-row :gutter="24" class="row-info">
+          <el-col :span="12" class="text-right">{{ $t("Weight") }}</el-col>
+          <el-col :span="12">{{ partnerSelected.weight }}</el-col>
+        </el-row>
+        <el-row :gutter="24" class="row-info">
+          <el-col :span="12" class="text-right">{{ $t("Height") }}</el-col>
+          <el-col :span="12">{{ partnerSelected.height }}</el-col>
+        </el-row>
+        <el-row :gutter="24" class="row-info">
+          <el-col :span="12" class="text-right">{{ $t("Favorite") }}</el-col>
+          <el-col :span="12">{{ partnerSelected.favorite }}</el-col>
+        </el-row>
+      </div>
+      <div class="text-right">
+        <el-button
+          type="warning"
+          size="large"
+          @click="isDisplayDetailPartner = false"
+          >{{ $t("Close") }}</el-button
+        >
+      </div>
+    </el-dialog>
   </div>
 </template>
 
@@ -87,12 +155,23 @@ export default {
       loadingProcess: false,
       listPartners: [],
       partnersSelected: [],
+      isDisplayDetailPartner: false,
+      partnerSelected: {},
     };
   },
   created() {
     this.getDetail();
   },
   methods: {
+    viewPartner(partner) {
+      console.log("@@@@@@@@@@@@", partner);
+      this.isDisplayDetailPartner = true;
+      this.partnerSelected = partner;
+    },
+    getArray(string) {
+      if (!string) return [];
+      return JSON.parse(string);
+    },
     async getDetail() {
       const response = await getProcessDatingDetail();
       if (response.process) {
@@ -171,6 +250,7 @@ export default {
       padding: 20px 0;
     }
     .partner-item {
+      min-height: 130px;
       background: #eaebf0;
       padding: 15px 10px;
       border-radius: 8px;
@@ -215,6 +295,16 @@ export default {
     .partner-item {
       width: 48%;
       margin: 1%;
+    }
+  }
+  .detail-partner {
+    padding: 0 30px;
+    .row-info {
+      padding: 10px 0;
+      font-size: 16px;
+    }
+    .text-right {
+      font-weight: bold;
     }
   }
 }

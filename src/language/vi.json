@@ -1,6 +1,6 @@
 {
   "We protect your profile as privacy and confidential.": "Chúng tôi bảo vệ hồ sơ của bạn dưới sự riêng tư và bí mật.",
-  "Your Journey let out professional matchmaker behalf’s.": "Hành trình của bạn hãy thay mặt người mai mối chuyên nghiệp.",
+  "Your Journey let our professional matchmaker behalf’s.": "Hành trình của bạn hãy thay mặt người mai mối chuyên nghiệp.",
   "Superior Matching Algorithms": "Thuật toán kết hợp ưu việt",
   "In-depth Profiling": "Hồ sơ chuyên sâu",
   "Trusted site backed by Visicupid Media": "Trang web đáng tin cậy được hỗ trợ bởi Visicupid Media",
@@ -210,5 +210,10 @@
   "Are you sure to delete this contact?": "Bạn có chắc chắn xóa địa chỉ liên hệ này không?",
   "Background": "Hình nền",
   "Upload background": "Tải lên hình nên",
-  "Are you sure to delete this question?": "Bạn có chắc muốn xoá câu hỏi này không?"
+  "Are you sure to delete this question?": "Bạn có chắc muốn xoá câu hỏi này không?",
+  "Image": "Hình ảnh",
+  "Please upload image": "Vui lòng tải lên hình ảnh",
+  "The number of photos cannot exceed 3": "số ảnh không được vượt quá 3",
+  "Must have 3 personal photos": "Bắt buộc phải đủ 3 ảnh cá nhân",
+  "Detail Partner": "Chi tiết ứng viên"
 }

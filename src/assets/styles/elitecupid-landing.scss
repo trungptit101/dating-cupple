@@ -4901,6 +4901,14 @@ html.modal-open {
     padding: 0 10%;
   }
 }
+@media (max-width: 1024px) {
+  .lg\:text-7xl {
+    font-size: 38px;
+  }
+  .lg\:text-2xl {
+    font-size: 20px !important;
+  }
+}
 .lg\:font-normal {
   font-weight: 400;
 }

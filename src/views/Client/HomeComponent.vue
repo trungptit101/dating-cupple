@@ -107,9 +107,7 @@
 
           <p class="p0 m0">
             {{
-              $t(`Send a like or message to start communicating with members. You can
-            always use our "Online" tab to see who else is ready to connect
-            right away.`)
+              $t("Send a like or message to start communicating with members. You can always use our 'Online' tab to see who else is ready to connect right away.")
             }}
           </p>
         </div>

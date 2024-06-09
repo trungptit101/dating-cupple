@@ -64,7 +64,9 @@
             style="display: block"
             v-if="question.type == QuestionType.OnlyOption"
           />
-          <span class="option-text">{{ currentLanguage == "vi" ? option.text : option.text_en }}</span>
+          <span class="option-text">{{
+            currentLanguage == "vi" ? option.text : option.text_en
+          }}</span>
         </div>
       </div>
       <div
@@ -87,25 +89,36 @@
         <div
           class="w-full h-full absolute left-0 top-0 bg-black bg-opacity-60"
         />
-        <picture>
-          <img
+        <div
+          :style="`background: url(${question.background})`"
+          style="height: calc(100vh - 64px - 122px); background-size: cover"
+        >
+          <!-- <img
             style="height: calc(100vh - 64px - 122px)"
             :src="question.background"
             class="w-full object-cover"
-          />
+          /> -->
           <div class="absolute text-center intro-upgrade">
             <div class="lg:px-0 px-6">
               <h2
                 class="lg:text-7xl text-3xl lg:font-normal mb-6 text-[#D6AD60] font-semibold text-center"
               >
-                {{ currentLanguage == "vi" ? question.question : question.question_en }}
+                {{
+                  currentLanguage == "vi"
+                    ? question.question
+                    : question.question_en
+                }}
               </h2>
               <p class="lg:text-2xl text-sm font-normal text-white">
-                {{ currentLanguage == "vi" ? question.description : question.description_en }}
+                {{
+                  currentLanguage == "vi"
+                    ? question.description
+                    : question.description_en
+                }}
               </p>
             </div>
           </div>
-        </picture>
+        </div>
       </div>
     </div>
   </div>

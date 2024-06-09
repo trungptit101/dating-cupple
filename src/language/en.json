@@ -1,6 +1,6 @@
 {
   "We protect your profile as privacy and confidential.": "We protect your profile as privacy and confidential.",
-  "Your Journey let out professional matchmaker behalf’s.": "Your Journey let out professional matchmaker behalf’s.",
+  "Your Journey let our professional matchmaker behalf’s.": "Your Journey let our professional matchmaker behalf’s.",
   "Superior Matching Algorithms": "Superior Matching Algorithms",
   "In-depth Profiling": "In-depth Profiling",
   "Trusted site backed by Visicupid Media": "Trusted site backed by Visicupid Media",
@@ -210,5 +210,10 @@
   "Are you sure to delete this contact?": "Are you sure to delete this contact?",
   "Background": "Background",
   "Upload background": "Upload background",
-  "Are you sure to delete this question?": "Are you sure to delete this question?"
+  "Are you sure to delete this question?": "Are you sure to delete this question?",
+  "Image": "Image",
+  "Please upload image": "Please upload image",
+  "The number of photos cannot exceed 3": "The number of photos cannot exceed 3",
+  "Must have 3 personal photos": "Must have 3 personal photos",
+  "Detail Partner": "Detail Partner"
 }

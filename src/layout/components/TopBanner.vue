@@ -50,7 +50,7 @@
               {{ $t("We protect your profile as privacy and confidential.") }}
             </h1>
             <h2 class="h2 white relative my2 line-height-4 max-width-2 mx-auto">
-              {{ $t("Your Journey let out professional matchmaker behalf’s.") }}
+              {{ $t("Your Journey let our professional matchmaker behalf’s.") }}
             </h2>
             <div
               class="intro-join mt1 center flex items-start justify-center col-12 mx-auto reveal"
