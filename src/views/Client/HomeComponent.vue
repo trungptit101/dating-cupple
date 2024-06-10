@@ -9,7 +9,7 @@
       class="section landing-bg-grey testimonial-section py2 center flex items-center justify-center"
     />
 
-    <el-row class="section justify-between bg-white">
+    <el-row class="section justify-between bg-white p4">
       <el-col :md="8" :xs="24">
         <h2>{{ $t("Your chance to find the one.") }}</h2>
         <p>
@@ -22,7 +22,7 @@
           }}
         </p>
       </el-col>
-      <el-col :md="8" :xs="24">
+      <el-col :md="8" :xs="24" class="why-visicupid">
         <h2>{{ $t("Why Visicupid?") }}</h2>
         <p>
           {{
@@ -266,3 +266,10 @@ export default {
   },
 };
 </script>
+<style lang="scss">
+@media (min-width: 992px) {
+  .why-visicupid {
+    padding: 0 3%;
+  }
+}
+</style>

@@ -45,7 +45,7 @@
         }"
       >
         <div class="p0 intro">
-          <div class="intro-text center reveal">
+          <div class="intro-text center reveal" style="padding-left: 3%">
             <h1 class="h1 white relative m0 mb1 line-height-3 max-width-3">
               {{ $t("We protect your profile as privacy and confidential.") }}
             </h1>
