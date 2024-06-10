@@ -29,7 +29,11 @@
         v-if="form.avatar"
         @click="handlePickAvatar"
       >
-        <img :src="form.avatar" class="image-profile" />
+        <img
+          :src="form.avatar"
+          class="image-profile"
+          style="max-width: 300px"
+        />
       </div>
       <div
         class="text-center"
@@ -47,7 +51,7 @@
       <el-input size="large" v-model="form.name"></el-input>
     </el-form-item>
     <el-row>
-      <el-col :xs="8" :md="8">
+      <el-col :span="8">
         <el-form-item :label="$t(`I'm a`)" prop="gender">
           <div class="gender-group flex">
             <input type="hidden" name="seek" value="male" />
@@ -105,7 +109,7 @@
           </div>
         </el-form-item>
       </el-col>
-      <el-col :xs="8" :md="8">
+      <el-col :span="8">
         <el-form-item :label="$t(`I'm looking for`)">
           <div class="gender-group flex">
             <div class="gender-checkbox gender-male flex-none">
@@ -158,7 +162,7 @@
           </div>
         </el-form-item>
       </el-col>
-      <el-col :xs="8" :md="8">
+      <el-col :span="8">
         <el-form-item :label="$t('Age')" prop="age">
           <el-select v-model="form.age" style="width: 100%" size="large">
             <el-option
@@ -302,13 +306,13 @@ export default {
             trigger: "blur",
           },
         ],
-        avatar: [
-          {
-            required: true,
-            message: this.$t("Please upload your avatar"),
-            trigger: "blur",
-          },
-        ],
+        // avatar: [
+        //   {
+        //     required: true,
+        //     message: this.$t("Please upload your avatar"),
+        //     trigger: "blur",
+        //   },
+        // ],
         age: [
           {
             required: true,
@@ -402,7 +406,6 @@ export default {
       const fileName = "fileAvatar";
       const file = document.getElementById(fileName).files[0];
       const base64 = await convertBase64(file);
-      console.log("@@@@@@@@@", base64);
       this.form.avatar = base64;
     },
     handlePick() {
@@ -450,6 +453,7 @@ export default {
               });
               this.$emit("finish");
               this.loading = false;
+              this.$router.push({ path: "/survey-question" });
             })
             .catch(() => {
               this.loading = false;

@@ -59,12 +59,7 @@
                 />
               </el-form-item>
               <div class="flex justify-end">
-                <a
-                  class="white"
-                  href="/en/auth/showforgotpassword"
-                  tabindex="4"
-                  >{{ $t("Forgot Password") }}</a
-                >
+                <a class="white">{{ $t("Forgot Password") }}</a>
               </div>
             </el-form>
           </div>
