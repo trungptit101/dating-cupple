@@ -9,7 +9,7 @@
       class="section landing-bg-grey testimonial-section py2 center flex items-center justify-center"
     />
 
-    <el-row :gutter="24" class="section justify-between bg-white p4">
+    <el-row class="section justify-between bg-white">
       <el-col :md="8" :xs="24">
         <h2>{{ $t("Your chance to find the one.") }}</h2>
         <p>
