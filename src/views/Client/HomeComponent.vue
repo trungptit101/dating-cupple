@@ -9,8 +9,8 @@
       class="section landing-bg-grey testimonial-section py2 center flex items-center justify-center"
     />
 
-    <div class="section flex justify-between bg-white p4">
-      <div class="col-3">
+    <el-row :gutter="24" class="section justify-between bg-white p4">
+      <el-col :md="8" :xs="24">
         <h2>{{ $t("Your chance to find the one.") }}</h2>
         <p>
           {{
@@ -21,8 +21,8 @@
           success and know you do too.`)
           }}
         </p>
-      </div>
-      <div class="col-3">
+      </el-col>
+      <el-col :md="8" :xs="24">
         <h2>{{ $t("Why Visicupid?") }}</h2>
         <p>
           {{
@@ -31,8 +31,8 @@
           where you live or whom you love.`)
           }}
         </p>
-      </div>
-      <div class="col-3">
+      </el-col>
+      <el-col :md="8" :xs="24">
         <h2>{{ $t("Find your perfect match.") }}</h2>
         <p>
           {{
@@ -43,15 +43,15 @@
           creating a higher success rate.`)
           }}
         </p>
-      </div>
-    </div>
+      </el-col>
+    </el-row>
     <div class="section bg-white how-it-works p4 center landing-bg-grey">
       <h2 class="mb1 highlight">{{ $t("How It Works") }}</h2>
       <h4 class="mt1 mb3">
         {{ $t("Get started on Visicupid.com today in 3 simple steps:") }}
       </h4>
-      <div class="flex justify-around">
-        <div class="flex-none block m2 col-2 relative">
+      <el-row :gutter="24" class="justify-around">
+        <el-col :md="8" :xs="24" style="margin-top: 20px">
           <div
             class="absolute top-0 left-0 step p2 circle flex justify-center items-cnter hide"
           >
@@ -61,7 +61,6 @@
             <img style="margin-top: -10px" src="@/assets/images/profile.jpg" />
           </div>
           <h3 class="mb1">{{ $t("Create A Profile") }}</h3>
-
           <p class="p0 m0">
             {{
               $t(`Once you have selected who you are searching for, you will be asked
@@ -69,9 +68,8 @@
             our high match standards.`)
             }}
           </p>
-        </div>
-
-        <div class="flex-none block m2 col-2 relative">
+        </el-col>
+        <el-col :md="8" :xs="24" style="margin-top: 20px">
           <div
             class="absolute top-0 left-0 step p2 circle flex justify-center items-cnter hide"
           >
@@ -89,9 +87,8 @@
             range of preferences and settings.`)
             }}
           </p>
-        </div>
-
-        <div class="flex-none block m2 col-2 relative">
+        </el-col>
+        <el-col :md="8" :xs="24" style="margin-top: 20px">
           <div
             class="absolute top-0 left-0 step p2 circle flex justify-center items-cnter hide"
           >
@@ -107,11 +104,13 @@
 
           <p class="p0 m0">
             {{
-              $t("Send a like or message to start communicating with members. You can always use our 'Online' tab to see who else is ready to connect right away.")
+              $t(
+                "Send a like or message to start communicating with members. You can always use our 'Online' tab to see who else is ready to connect right away."
+              )
             }}
           </p>
-        </div>
-      </div>
+        </el-col>
+      </el-row>
     </div>
     <div class="footer py3 px4">
       <div class="clearfix">
@@ -136,41 +135,24 @@
         <div class="col col-2" style="float: left">
           <div class="h3 mt2 mb1 color-dark-grey">{{ $t("Information") }}</div>
 
-          <a class="block" href="general/success.html" rel="nofollow">{{
-            $t("Success Stories")
-          }}</a>
-          <a class="block" href="general/contact.html" rel="nofollow">{{
-            $t("Contact Us")
-          }}</a>
-          <a class="block" href="general/datingsafety.html">Dating Safety</a>
-          <a class="block" href="general/sitemap.html" rel="nofollow">{{
-            $t("Site Map")
-          }}</a>
+          <a class="block" rel="nofollow">{{ $t("Success Stories") }}</a>
+          <a class="block" rel="nofollow">{{ $t("Contact Us") }}</a>
+          <a class="block">{{ $t("Dating Safety") }}</a>
+          <a class="block" rel="nofollow">{{ $t("Site Map") }}</a>
         </div>
         <div class="col col-2" style="float: left">
           <div class="h3 mt2 mb1 color-dark-grey">Legal</div>
-          <a class="block" href="general/termsofuse.html" rel="nofollow">{{
-            $t("Terms of Use")
-          }}</a>
+          <a class="block" rel="nofollow">{{ $t("Terms of Use") }}</a>
           <a
             class="block"
             @click="$router.push({ path: '/privacy-statement' })"
             rel="nofollow"
             >{{ $t("Privacy Statement") }}</a
           >
-          <a class="block" href="general/paymentRefund.html" rel="nofollow">{{
-            $t("Refund Policy")
-          }}</a>
-          <a href="general/privacystatement.html#cookiepolicy" rel="nofollow">{{
-            $t("Cookie Policy")
-          }}</a>
+          <a class="block" rel="nofollow">{{ $t("Refund Policy") }}</a>
+          <a rel="nofollow">{{ $t("Cookie Policy") }}</a>
 
-          <a
-            class="block"
-            href="general/communityguidelines.html"
-            rel="nofollow"
-            >{{ $t("Community Guidelines") }}</a
-          >
+          <a class="block" rel="nofollow">{{ $t("Community Guidelines") }}</a>
         </div>
         <div class="col col-2" style="float: left">
           <div class="h3 mt2 mb1 color-dark-grey">{{ $t("Follow Us") }}</div>
@@ -197,10 +179,7 @@
               class="network"
           /></a>
 
-          <a
-            class="inline-block"
-            href="https://www.instagram.com/visicupid?igsh=MWR5MWZub2F3NWVybA%3D%3D&utm_source=qr"
-            target="_blank"
+          <a class="inline-block" target="_blank"
             ><img
               src="@/assets/images/instagram.png"
               width="50"

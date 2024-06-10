@@ -2,114 +2,144 @@
   <div class="about-us">
     <TopBanner @openFormRegister="openFormRegister" :otherHome="true" />
     <div class="content">
-      <div class="title">Visicupid là ai?</div>
-      <div class="title-des">#ViSiCupid là gì?</div>
-      <div class="description">
-        ViSiCupid là một trang web mở rộng giúp những bạn độc thân đến tuổi lập
-        gia đình mà đang tìm kiếm một nửa của mình ở đâu đó mà duyên tơ hồng
-        chưa tìm được, chúng tôi mong muốn cung cấp dich vụ thân thiện này để
-        kết hợp với các phương tiện tìm kiếm qua chọn lọc hồ sơ nghiêm túc để
-        giúp bạn tìm đến một tình yêu đích thực của bạn để trở thành người bạn
-        đời mà bạn đang mong đợi.
+      <div class="title bold">{{ $t("About Us") }}</div>
+      <div class="text-center" style="font-size: 22px; padding-bottom: 30px">
+        {{
+          $t(
+            "Welcome to Visicupid.com, where meaningful connections are made. Our mission is to bring together individuals who are looking for genuine relationships and help them find their perfect match."
+          )
+        }}
       </div>
+      <div style="font-size: 20px">
+        <div class="title bold">{{ $t("Our Values") }}</div>
+        <div style="padding: 5px 0">
+          <span style="font-weight: bold">{{ $t("Integrity") }}: </span>
+          <span>{{
+            $t("We conduct our services with honesty and transparency.")
+          }}</span>
+        </div>
+        <div style="padding: 5px 0">
+          <span style="font-weight: bold">{{ $t("Respect") }}: </span>
+          <span>{{
+            $t("We honest and respect the individuality of every client.")
+          }}</span>
+        </div>
+        <div style="padding: 5px 0">
+          <span style="font-weight: bold">{{ $t("Commitment") }}: </span>
+          <span>{{
+            $t("We are dedicated to helping you find a lasting relationship.")
+          }}</span>
+        </div>
+        <div style="padding: 5px 0">
+          <span style="font-weight: bold">{{ $t("Empathy") }}: </span>
+          <span>{{
+            $t(
+              "We understand the emotional journey of finding love and offer compassionate support."
+            )
+          }}</span>
+        </div>
 
-      <div class="title-des">#Tại sao lại phải nhờ đến ViSiCupid?</div>
-      <div class="description">
-        ViSiCupid cung cấp dịch vụ thông tin cá nhân với công nghệ mới nhất,
-        hoàn toàn bảo mật và đảm bảo quyền riêng tư cho bạn. Chuyên viên chuyên
-        nghiệp được đào tạo qua trường lớp quốc tế. Dịch vụ được đăng ký bởi
-        pháp lý nhà nước bảo vệ.
-      </div>
-
-      <div class="title-des">
-        #Lợi ích khi và kết quả sử dụng dịch vụ ViSiCupid!
-      </div>
-      <div class="description">
-        Bạn hoàn toàn chủ động thời gian, không phát sinh rủi ro ngoài ý muốn
-        (nếu như bạn thực hiện quy định của ViSiCupid). Thao tác đăng ký hồ sơ
-        mọi lúc mọi nơi trong thời gian không quá 10 phút. bảo vệ tuyệt mật.
-        Ngoài ra hồ sơ của bạn hoàn thành sớm nhất được ưu tiên chuyên viên hỗ
-        trợ trực tiếp chu đáo và cẩn thận để bạn đi đến con đường hạnh phúc mà
-        bạn chọn. không những vậy ViSiCupid có
-        <a
-          href="https://www.huyenhocchanquang.com/"
-          target="_blank"
-          style="color: #0029ff; text-decoration: underline"
-          >chuyên gia phong thuỷ và mệnh lý học</a
-        >
-        hỗ trợ nếu bạn có yêu cầu.
-      </div>
-
-      <div class="title-des"># Liên hệ với ViSiCupid</div>
-      <div class="description">
-        Xin bạn đừng ngần ngại, hãy lên hệ với ViSiCupid nếu bạn có bất kỳ câu
-        hỏi nào liên quan đến trang web này. Vui lòng nhấn
-        <a
-          class="font-bold"
-          style="color: #0029ff; text-decoration: underline"
-          @click="isDisplayFormContactUs = true"
-          >vào đây</a
-        >
-        để liên hệ với ViSiCupid.
-      </div>
-
-      <div style="font-size: 22px; font-weight: 500; padding: 10px 0 5px 0">
-        Cảm ơn bạn đã tìm đến ViSiCupid
-      </div>
-      <div style="font-size: 22px; font-weight: 500; padding: 5px 0">
-        Chúc bạn một ngày cũng như mọi ngày luôn tràn đầy năng lượng sống - lạc
-        quan - yêu đời
+        <div class="title bold" style="margin-top: 20px">
+          {{ $t("What we do! “PESS”") }}
+        </div>
+        <div style="padding: 5px 0">
+          {{
+            $t(
+              "At Visicupid.com, we combine the art of traditional matchmaking with the convenience of modern technology. Our comprehensive approach includes:"
+            )
+          }}
+        </div>
+        <div class="bold-character" style="padding: 5px 0">
+          {{
+            $t(
+              "Personalized Matching: We use detailed questionnaires and in-depth profiles to understand your preferences, values, and interests. Our expert matchmakers then handpick potential matches tailored to your unique personality."
+            )
+          }}
+        </div>
+        <div class="bold-character" style="padding: 5px 0">
+          {{
+            $t(
+              "Expert Guidance: Our team of experienced relationship coaches and matchmakers provide ongoing support and advice, ensuring you feel confident and prepared at every step of your dating journey."
+            )
+          }}
+        </div>
+        <div class="bold-character" style="padding: 5px 0">
+          {{
+            $t(
+              "Safety and Privacy: We prioritize your safety and privacy. All profiles are verified, and we use advanced security measures to protect your information."
+            )
+          }}
+        </div>
+        <div class="bold-character" style="padding: 5px 0">
+          {{
+            $t(
+              "Success Stories: Our greatest achievement is the countless love stories that have blossomed through our platform. We take pride in the happiness and fulfilment our clients find."
+            )
+          }}
+        </div>
+        <div class="title bold" style="margin-top: 20px">
+          {{ $t("Our Story!") }}
+        </div>
+        <div>
+          {{
+            $t(
+              "Founded in year’s 2023, Visicopid.com was born out of a passion for creating lasting relationship. Our founder"
+            )
+          }}
+          <span class="bold"> Jenny Official, </span>
+          {{
+            $t(
+              "have years of experience in relationship coaching and graduated of Matchmaker course. We saw a need for a platform that prioritizes quality over quantity. We believe that everyone deserves to find love and companionship, we’re here to make that journey smoother and more enjoyable."
+            )
+          }}
+        </div>
+        <div class="title bold" style="margin-top: 20px">
+          {{ $t("Why choose Us?") }}
+        </div>
+        <div style="padding: 5px 0">
+          {{
+            $t(
+              "Tailored Approach: Unlike generic dating apps, we offer a bespoke matchmaking service designed to meet your specific needs and desires."
+            )
+          }}
+        </div>
+        <div style="padding: 5px 0">
+          {{
+            $t(
+              "Proven Track Record: With a high success rate, we have helped many individuals find meaningful relationships and lifelong partners."
+            )
+          }}
+        </div>
+        <div style="padding: 5px 0">
+          {{
+            $t(
+              "Dedicated Support: Our friendly and professional team is always here to help, offering personalized advice and encouragement."
+            )
+          }}
+        </div>
+        <div style="padding: 5px 0">
+          {{
+            $t(
+              "Community: Join a community of like-minded individuals who are serious about finding love. We host events and gatherings to help you connect in person"
+            )
+          }}
+        </div>
       </div>
     </div>
     <Footer />
+    <el-dialog
+      top="5vh"
+      :close-on-click-modal="false"
+      :visible.sync="isDisplayRegisterServey"
+    >
+      <RegisterServey @finish="finishRegister" />
+    </el-dialog>
     <el-dialog
       :close-on-click-modal="false"
       title="Contact Us"
       :visible.sync="isDisplayFormContactUs"
     >
-      <div class="text-center" style="font-size: 24px">Customer Service</div>
-      <el-form
-        :model="form"
-        ref="ruleFormRef"
-        :rules="rules"
-        label-position="top"
-      >
-        <el-form-item label="Email" prop="email">
-          <el-input
-            size="large"
-            placeholder="Email"
-            v-model="form.email"
-          ></el-input>
-        </el-form-item>
-        <el-form-item label="Contact" prop="contact">
-          <el-input
-            size="large"
-            placeholder="Phone Number"
-            v-model="form.contact"
-          ></el-input>
-        </el-form-item>
-        <el-form-item label="Issue" prop="issue">
-          <el-input size="large" v-model="form.issue"></el-input>
-        </el-form-item>
-        <el-form-item label="Description" prop="description">
-          <el-input
-            size="large"
-            type="textarea"
-            rows="5"
-            v-model="form.description"
-          ></el-input>
-        </el-form-item>
-        <el-form-item>
-          <el-button
-            type="warning"
-            class="col-12 btn-bg"
-            size="large"
-            :loading="loading"
-            @click="submitForm('ruleFormRef')"
-            >Submit</el-button
-          >
-        </el-form-item>
-      </el-form>
+      <ContactUs @closeContact="closeContact" v-if="isDisplayFormContactUs" />
     </el-dialog>
   </div>
 </template>
@@ -117,56 +147,25 @@
 <script>
 import TopBanner from "@/layout/components/TopBanner.vue";
 import Footer from "@/layout/components/Footer.vue";
-import { createContact } from "@/api/contact";
-import { Message } from "element-ui";
+import ContactUs from "@/components/ContactUs.vue";
+import RegisterServey from "@/components/RegisterServey.vue";
 export default {
-  components: { TopBanner, Footer },
+  components: { TopBanner, Footer, ContactUs, RegisterServey },
   data() {
     return {
       isDisplayFormContactUs: false,
-      loading: false,
-      form: {},
-      rules: {
-        email: [
-          {
-            required: true,
-            message: "Please enter your email",
-            trigger: "blur",
-          },
-        ],
-        contact: [
-          {
-            required: true,
-            message: "Please enter your contact phone",
-            trigger: "blur",
-          },
-        ],
-      },
+      isDisplayRegisterServey: false,
     };
   },
   methods: {
     openFormRegister() {
       this.isDisplayRegisterServey = true;
     },
-    async submitForm(formEl) {
-      await this.$refs[formEl].validate((valid, fields) => {
-        if (valid) {
-          console.log("submit!", this.form);
-          this.loading = true;
-          createContact(this.form).then((res) => {
-            this.loading = false;
-            Message({
-              message:
-                "Contact created successfully. Admin will contact you later!",
-              type: "success",
-              duration: 1000,
-            });
-            this.isDisplayFormContactUs = false;
-          });
-        } else {
-          console.log("error submit!", fields);
-        }
-      });
+    finishRegister() {
+      this.isDisplayRegisterServey = false;
+    },
+    closeContact() {
+      this.isDisplayFormContactUs = false;
     },
   },
 };
@@ -186,6 +185,9 @@ export default {
     }
     .description {
       font-size: 16px;
+    }
+    .bold-character::first-letter {
+      font-weight: bold;
     }
   }
 }

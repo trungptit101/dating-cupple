@@ -3,7 +3,7 @@
     <h5>
       {{
         $t(
-          "Cupid Media, the Cupid Media Logo are registered trademarks of Ecom Holdings Pty Ltd and used with permission by Cupid Media Pty Ltd."
+          "Visicupid Media, the Visicupid Media Logo are registered trademarks of Ecom Holdings Pty Ltd and used with permission by Visicupid Media Pty Ltd."
         )
       }}
     </h5>
