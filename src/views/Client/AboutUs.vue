@@ -2,16 +2,16 @@
   <div class="about-us">
     <TopBanner @openFormRegister="openFormRegister" :otherHome="true" />
     <div class="content">
-      <div class="title bold">{{ $t("About Us") }}</div>
-      <div class="text-center" style="font-size: 22px; padding-bottom: 30px">
+      <div class="title">{{ $t("About Us") }}</div>
+      <div class="text-center" style="font-size: 18px; padding-bottom: 30px">
         {{
           $t(
             "Welcome to Visicupid.com, where meaningful connections are made. Our mission is to bring together individuals who are looking for genuine relationships and help them find their perfect match."
           )
         }}
       </div>
-      <div style="font-size: 20px">
-        <div class="title bold">{{ $t("Our Values") }}</div>
+      <div style="font-size: 18px">
+        <div class="title">{{ $t("Our Values") }}</div>
         <div style="padding: 5px 0">
           <span style="font-weight: bold">{{ $t("Integrity") }}: </span>
           <span>{{
@@ -39,7 +39,7 @@
           }}</span>
         </div>
 
-        <div class="title bold" style="margin-top: 20px">
+        <div class="title" style="margin-top: 20px">
           {{ $t("What we do! “PESS”") }}
         </div>
         <div style="padding: 5px 0">
@@ -77,7 +77,7 @@
             )
           }}
         </div>
-        <div class="title bold" style="margin-top: 20px">
+        <div class="title" style="margin-top: 20px">
           {{ $t("Our Story!") }}
         </div>
         <div>
@@ -93,7 +93,7 @@
             )
           }}
         </div>
-        <div class="title bold" style="margin-top: 20px">
+        <div class="title" style="margin-top: 20px">
           {{ $t("Why choose Us?") }}
         </div>
         <div style="padding: 5px 0">
@@ -173,6 +173,7 @@ export default {
 <style lang="scss" scoped>
 .about-us {
   .content {
+    line-height: 25px;
     padding: 5vh;
     .title {
       font-size: 28px;

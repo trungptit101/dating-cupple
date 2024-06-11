@@ -28,7 +28,7 @@
           class="py1 ms2 px2"
           :size="45"
           v-else
-          @settingProfile="$emit('settingProfile')"
+          @settingProfile="isDisplaySettingsProfile = true"
         />
       </div>
     </div>
@@ -56,7 +56,7 @@
               class="intro-join mt1 center flex items-start justify-center col-12 mx-auto reveal"
               v-if="!user.email"
             >
-              <a class="header-color" @click="$emit('openFormRegister')">
+              <a class="header-color" @click="isDisplayRegisterServey = true">
                 <h3
                   class="btn-bg btn-color block py1 px2 button relative overflow-hidden rounded shadow"
                 >
@@ -85,21 +85,49 @@
         </div>
       </div>
     </div>
+    <el-dialog
+      top="5vh"
+      :close-on-click-modal="false"
+      :visible.sync="isDisplayRegisterServey"
+    >
+      <RegisterServey @finish="finishRegister" />
+    </el-dialog>
+    <el-dialog
+      :close-on-click-modal="false"
+      title="Settings Profile"
+      :visible.sync="isDisplaySettingsProfile"
+      top="5vh"
+    >
+      <SettingsProfile
+        v-if="isDisplaySettingsProfile"
+        @closeDialog="isDisplaySettingsProfile = false"
+      />
+    </el-dialog>
   </div>
 </template>
 
 <script>
 import AvatarUser from "@/components/AvatarUser.vue";
+import RegisterServey from "@/components/RegisterServey.vue";
 import MultipleLanguage from "./MultipleLanguage.vue";
+import SettingsProfile from "@/components/SettingsProfile.vue";
 export default {
-  components: { AvatarUser, MultipleLanguage },
+  components: { AvatarUser, MultipleLanguage, RegisterServey, SettingsProfile },
   props: ["otherHome"],
   data() {
-    return {};
+    return {
+      isDisplayRegisterServey: false,
+      isDisplaySettingsProfile: false,
+    };
   },
   computed: {
     user() {
       return this.$store.state.user.user;
+    },
+  },
+  methods: {
+    finishRegister() {
+      this.isDisplayRegisterServey = false;
     },
   },
 };

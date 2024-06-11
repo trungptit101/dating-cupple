@@ -32,7 +32,7 @@
         <img
           :src="form.avatar"
           class="image-profile"
-          style="max-width: 300px"
+          style="max-width: 300px; max-height: 250px"
         />
       </div>
       <div
@@ -260,7 +260,9 @@
         />
         <div>
           {{ $t("Yes, I confirm that I am over 18 and agree to the") }}
-          <a class="bold">{{ $t("Terms of Use") }}</a>
+          <a class="bold" @click="$router.push({ path: '/term-of-use' })">{{
+            $t("Terms of Use")
+          }}</a>
           {{ $t("and") }}
           <a class="bold">{{ $t("Privacy Statement") }}</a
           >.

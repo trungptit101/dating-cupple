@@ -40,8 +40,24 @@ export const constantRoutes = [
     component: () => import("@/views/Client/AboutUs.vue"),
   },
   {
+    path: "/term-of-use",
+    component: () => import("@/views/Client/TermOfUse.vue"),
+  },
+  {
     path: "/privacy-statement",
     component: () => import("@/views/Client/PrivacyStatement.vue"),
+  },
+  {
+    path: "/refund-policy",
+    component: () => import("@/views/Client/RefundPolicy.vue"),
+  },
+  {
+    path: "/cookie-policy",
+    component: () => import("@/views/Client/CookiePolicy.vue"),
+  },
+  {
+    path: "/community-guidelines",
+    component: () => import("@/views/Client/CommunityGuidelines.vue"),
   },
   {
     path: "/login",

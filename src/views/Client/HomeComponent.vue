@@ -1,10 +1,6 @@
 <template>
   <div>
-    <TopBanner
-      @openFormRegister="openFormRegister"
-      @settingProfile="settingProfile"
-    />
-
+    <TopBanner />
     <div
       class="section landing-bg-grey testimonial-section py2 center flex items-center justify-center"
     />
@@ -113,112 +109,124 @@
       </el-row>
     </div>
     <div class="footer py3 px4">
-      <div class="clearfix">
-        <div class="col col-2" style="float: left">
+      <el-row>
+        <el-col :xs="12" :sm="6" :md="6">
           <div class="h3 mt2 mb1 color-dark-grey">Jenny Official</div>
           <a class="block">{{ $t("Address") }}: S271032</a>
           <a class="block">{{ $t("UEN") }}: 53484643B</a>
           <a class="block">{{ $t("Phone Number") }}: +65 98881336</a>
-        </div>
-        <div class="col col-2" style="float: left">
-          <div class="h3 mt2 mb1 color-dark-grey">{{ $t("Company") }}</div>
+        </el-col>
+        <el-col :xs="12" :sm="6" :md="6">
+          <div class="h3 mt2 mb1 color-dark-grey">{{ $t("Information") }}</div>
           <a
             class="block"
             rel="nofollow"
             @click="$router.push({ path: '/about-us' })"
             >{{ $t("About Us") }}</a
           >
-          <a class="block">{{ $t("Other Sites") }}</a>
-          <a class="block">{{ $t("Corporate") }}</a>
-          <a class="block" rel="nofollow">{{ $t("Affiliates") }}</a>
-        </div>
-        <div class="col col-2" style="float: left">
-          <div class="h3 mt2 mb1 color-dark-grey">{{ $t("Information") }}</div>
-
+          <a
+            class="block"
+            rel="nofollow"
+            @click="isDisplayFormContactUs = true"
+            >{{ $t("Contact Us") }}</a
+          >
           <a class="block" rel="nofollow">{{ $t("Success Stories") }}</a>
-          <a class="block" rel="nofollow">{{ $t("Contact Us") }}</a>
           <a class="block">{{ $t("Dating Safety") }}</a>
           <a class="block" rel="nofollow">{{ $t("Site Map") }}</a>
-        </div>
-        <div class="col col-2" style="float: left">
+        </el-col>
+        <el-col :xs="12" :sm="6" :md="6">
           <div class="h3 mt2 mb1 color-dark-grey">Legal</div>
-          <a class="block" rel="nofollow">{{ $t("Terms of Use") }}</a>
+          <a
+            class="block"
+            @click="$router.push({ path: '/term-of-use' })"
+            rel="nofollow"
+            >{{ $t("Terms of Use") }}</a
+          >
           <a
             class="block"
             @click="$router.push({ path: '/privacy-statement' })"
             rel="nofollow"
             >{{ $t("Privacy Statement") }}</a
           >
-          <a class="block" rel="nofollow">{{ $t("Refund Policy") }}</a>
-          <a rel="nofollow">{{ $t("Cookie Policy") }}</a>
-
-          <a class="block" rel="nofollow">{{ $t("Community Guidelines") }}</a>
-        </div>
-        <div class="col col-2" style="float: left">
-          <div class="h3 mt2 mb1 color-dark-grey">{{ $t("Follow Us") }}</div>
           <a
-            class="inline-block"
-            href="https://www.facebook.com/Vietsyncupid?"
-            target="_blank"
-            ><img
-              src="@/assets/images/fb.png"
-              width="50"
-              height="50"
-              alt=""
-              border="0"
-              class="network"
-          /></a>
+            class="block"
+            rel="nofollow"
+            @click="$router.push({ path: '/refund-policy' })"
+            >{{ $t("Refund Policy") }}</a
+          >
+          <a rel="nofollow" @click="$router.push({ path: '/cookie-policy' })">{{
+            $t("Cookie Policy")
+          }}</a>
 
-          <a class="inline-block"
-            ><img
-              src="@/assets/images/twt.png"
-              width="50"
-              height="50"
-              alt=""
-              border="0"
-              class="network"
-          /></a>
-
-          <a class="inline-block" target="_blank"
-            ><img
-              src="@/assets/images/instagram.png"
-              width="50"
-              height="50"
-              alt=""
-              border="0"
-              class="network"
-          /></a>
-
-          <a class="inline-block"
-            ><img
-              src="@/assets/images/ytube.png"
-              width="50"
-              height="50"
-              alt=""
-              border="0"
-              class="network"
-          /></a>
-        </div>
-      </div>
+          <a
+            class="block"
+            rel="nofollow"
+            @click="$router.push({ path: '/community-guidelines' })"
+            >{{ $t("Community Guidelines") }}</a
+          >
+        </el-col>
+        <el-col :xs="12" :sm="6" :md="6">
+          <div class="h3 mt2 mb1 color-dark-grey">{{ $t("Follow Us") }}</div>
+          <div class="flex items-center" style="text-indent: 10px">
+            <a
+              class="inline-block"
+              href="https://www.facebook.com/Vietsyncupid?"
+              target="_blank"
+              ><img
+                src="@/assets/images/fb.png"
+                width="50"
+                height="50"
+                alt=""
+                border="0"
+                class="network"
+            /></a>
+            <a
+              class="inline-block"
+              href="https://www.tiktok.com/@jennypham0608?_t=8n6hOsqfDfj&_r=1"
+              target="_blank"
+              ><img
+                src="@/assets/images/tiktok-logo.png"
+                width="50"
+                height="50"
+                alt=""
+                border="0"
+                class="network"
+            /></a>
+            <a
+              class="inline-block"
+              href="https://www.instagram.com/visicupid?igsh=MWR5MWZub2F3NWVybA%3D%3D&utm_source=qr"
+              target="_blank"
+              ><img
+                src="@/assets/images/instagram.png"
+                width="50"
+                height="50"
+                alt=""
+                border="0"
+                class="network"
+            /></a>
+            <a
+              class="inline-block"
+              href="https://youtube.com/@jenniferpham7775?si=UEU-82YSrtM8s6qC"
+              target="_blank"
+              ><img
+                src="@/assets/images/ytube.png"
+                width="50"
+                height="50"
+                alt=""
+                border="0"
+                class="network"
+            /></a>
+          </div>
+        </el-col>
+      </el-row>
     </div>
     <Footer />
     <el-dialog
-      top="5vh"
       :close-on-click-modal="false"
-      :visible.sync="isDisplayRegisterServey"
+      title="Contact Us"
+      :visible.sync="isDisplayFormContactUs"
     >
-      <RegisterServey @finish="finishRegister" />
-    </el-dialog>
-    <el-dialog
-      :close-on-click-modal="false"
-      title="Settings Profile"
-      :visible.sync="isDisplaySettingsProfile"
-      top="5vh"
-    >
-      <SettingsProfile
-        v-if="isDisplaySettingsProfile"
-        @closeDialog="isDisplaySettingsProfile = false"
-      />
+      <ContactUs @closeContact="closeContact" v-if="isDisplayFormContactUs" />
     </el-dialog>
   </div>
 </template>
@@ -227,20 +235,19 @@
 import RegisterServey from "@/components/RegisterServey.vue";
 import Footer from "@/layout/components/Footer.vue";
 import TopBanner from "@/layout/components/TopBanner.vue";
+import ContactUs from "@/components/ContactUs.vue";
 import AvatarUser from "@/components/AvatarUser.vue";
-import SettingsProfile from "@/components/SettingsProfile.vue";
 export default {
   components: {
     RegisterServey,
     Footer,
     AvatarUser,
-    SettingsProfile,
     TopBanner,
+    ContactUs,
   },
   data() {
     return {
-      isDisplayRegisterServey: false,
-      isDisplaySettingsProfile: false,
+      isDisplayFormContactUs: false,
     };
   },
   watch: {},
@@ -250,14 +257,8 @@ export default {
     },
   },
   methods: {
-    openFormRegister() {
-      this.isDisplayRegisterServey = true;
-    },
-    settingProfile() {
-      this.isDisplaySettingsProfile = true;
-    },
-    finishRegister() {
-      this.isDisplayRegisterServey = false;
+    closeContact() {
+      this.isDisplayFormContactUs = false;
     },
     async logout() {
       await this.$store.dispatch("user/logout");

@@ -1,5 +1,5 @@
 import router from "./router";
-import store from './store'
+import store from "./store";
 // import { Message } from 'element-ui'
 import NProgress from "nprogress"; // progress bar
 import "nprogress/nprogress.css"; // progress bar style
@@ -8,7 +8,14 @@ import { getToken } from "@/utils/auth"; // get token from cookie
 
 NProgress.configure({ showSpinner: false }); // NProgress Configuration
 
-const whiteList = ["/login", "/", "/about-us"]; // no redirect whitelist
+const whiteList = [
+  "/login",
+  "/",
+  "/about-us",
+  "/term-of-use",
+  "/privacy-statement",
+  "/refund-policy"
+]; // no redirect whitelist
 
 router.beforeEach(async (to, from, next) => {
   // start progress bar
@@ -26,7 +33,7 @@ router.beforeEach(async (to, from, next) => {
       next({ path: "/" });
       NProgress.done();
     } else {
-        next();
+      next();
     }
   } else {
     /* has no token*/
