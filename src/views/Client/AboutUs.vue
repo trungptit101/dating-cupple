@@ -1,6 +1,6 @@
 <template>
   <div class="about-us">
-    <TopBanner @openFormRegister="openFormRegister" :otherHome="true" />
+    <TopBanner :otherHome="true" />
     <div class="content">
       <div class="title">{{ $t("About Us") }}</div>
       <div class="text-center" style="font-size: 18px; padding-bottom: 30px">
@@ -11,27 +11,27 @@
         }}
       </div>
       <div style="font-size: 18px">
-        <div class="title">{{ $t("Our Values") }}</div>
+        <div class="title" style="color: #4472c4">{{ $t("Our Values") }}</div>
         <div style="padding: 5px 0">
-          <span style="font-weight: bold">{{ $t("Integrity") }}: </span>
+          <span style="font-weight: bold; color: #4472c4">{{ $t("Integrity") }}: </span>
           <span>{{
             $t("We conduct our services with honesty and transparency.")
           }}</span>
         </div>
         <div style="padding: 5px 0">
-          <span style="font-weight: bold">{{ $t("Respect") }}: </span>
+          <span style="font-weight: bold; color: #4472c4">{{ $t("Respect") }}: </span>
           <span>{{
             $t("We honest and respect the individuality of every client.")
           }}</span>
         </div>
         <div style="padding: 5px 0">
-          <span style="font-weight: bold">{{ $t("Commitment") }}: </span>
+          <span style="font-weight: bold; color: #4472c4">{{ $t("Commitment") }}: </span>
           <span>{{
             $t("We are dedicated to helping you find a lasting relationship.")
           }}</span>
         </div>
         <div style="padding: 5px 0">
-          <span style="font-weight: bold">{{ $t("Empathy") }}: </span>
+          <span style="font-weight: bold; color: #4472c4">{{ $t("Empathy") }}: </span>
           <span>{{
             $t(
               "We understand the emotional journey of finding love and offer compassionate support."
@@ -39,7 +39,7 @@
           }}</span>
         </div>
 
-        <div class="title" style="margin-top: 20px">
+        <div class="title" style="margin-top: 20px; color: #4472c4">
           {{ $t("What we do! “PESS”") }}
         </div>
         <div style="padding: 5px 0">
@@ -77,7 +77,7 @@
             )
           }}
         </div>
-        <div class="title" style="margin-top: 20px">
+        <div class="title" style="margin-top: 20px; color: #4472c4">
           {{ $t("Our Story!") }}
         </div>
         <div>
@@ -93,7 +93,7 @@
             )
           }}
         </div>
-        <div class="title" style="margin-top: 20px">
+        <div class="title" style="margin-top: 20px; color: #4472c4">
           {{ $t("Why choose Us?") }}
         </div>
         <div style="padding: 5px 0">
@@ -128,13 +128,6 @@
     </div>
     <Footer />
     <el-dialog
-      top="5vh"
-      :close-on-click-modal="false"
-      :visible.sync="isDisplayRegisterServey"
-    >
-      <RegisterServey @finish="finishRegister" />
-    </el-dialog>
-    <el-dialog
       :close-on-click-modal="false"
       title="Contact Us"
       :visible.sync="isDisplayFormContactUs"
@@ -154,16 +147,9 @@ export default {
   data() {
     return {
       isDisplayFormContactUs: false,
-      isDisplayRegisterServey: false,
     };
   },
   methods: {
-    openFormRegister() {
-      this.isDisplayRegisterServey = true;
-    },
-    finishRegister() {
-      this.isDisplayRegisterServey = false;
-    },
     closeContact() {
       this.isDisplayFormContactUs = false;
     },

@@ -14,7 +14,10 @@ const whiteList = [
   "/about-us",
   "/term-of-use",
   "/privacy-statement",
-  "/refund-policy"
+  "/refund-policy",
+  "/cookie-policy",
+  "/community-guidelines",
+  "/dating-safety"
 ]; // no redirect whitelist
 
 router.beforeEach(async (to, from, next) => {

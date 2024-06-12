@@ -1,6 +1,6 @@
 <template>
   <div class="refund-policy">
-    <TopBanner @openFormRegister="openFormRegister" :otherHome="true" />
+    <TopBanner :otherHome="true" />
     <div class="content">
       <h1 class="text-center">
         <span style="color: rgb(47, 84, 150)">{{ $t("Refund Policy") }}</span>
@@ -326,9 +326,6 @@ export default {
     return {};
   },
   methods: {
-    openFormRegister() {
-      this.isDisplayRegisterServey = true;
-    },
   },
 };
 </script>

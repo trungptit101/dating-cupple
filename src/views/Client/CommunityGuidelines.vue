@@ -1,6 +1,6 @@
 <template>
   <div class="community-guildelines">
-    <TopBanner @openFormRegister="openFormRegister" :otherHome="true" />
+    <TopBanner :otherHome="true" />
     <div class="content">
       <h1 class="text-center">{{ $t("Community Guidelines") }}</h1>
       <p>
@@ -208,9 +208,6 @@ export default {
     return {};
   },
   methods: {
-    openFormRegister() {
-      this.isDisplayRegisterServey = true;
-    },
   },
 };
 </script>

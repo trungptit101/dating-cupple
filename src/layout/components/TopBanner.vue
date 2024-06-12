@@ -40,17 +40,24 @@
     >
       <div
         class="flex items-center justify-center height-97"
+        style="width: 100%"
         :class="{
           'height-top-other': otherHome,
         }"
       >
         <div class="p0 intro">
-          <div class="intro-text center reveal" style="padding-left: 3%">
-            <h1 class="h1 white relative m0 mb1 line-height-3 max-width-3">
-              {{ $t("We protect your profile as privacy and confidential.") }}
+          <div class="intro-text center reveal">
+            <h1 class="h1 white relative m0 mb1 line-height-3">
+              {{ $t("Welcome to Visicupid.com!") }}
             </h1>
-            <h2 class="h2 white relative my2 line-height-4 max-width-2 mx-auto">
-              {{ $t("Your Journey let our professional matchmaker behalf’s.") }}
+            <h2 class="h2 white relative my2 line-height-4 mx-auto">
+              {{ $t("Visicupid’s Mission is to connect singles who are seeking true love and happiness.") }}
+            </h2>
+            <h2 class="h2 white relative my2 line-height-4 mx-auto">
+              {{ $t("Connect with singles who sharing your values and interests.") }}
+            </h2>
+            <h2 class="h2 white relative my2 line-height-4 mx-auto">
+              {{ $t("Sign up for your Ideal Type’s") }}
             </h2>
             <div
               class="intro-join mt1 center flex items-start justify-center col-12 mx-auto reveal"
@@ -60,7 +67,7 @@
                 <h3
                   class="btn-bg btn-color block py1 px2 button relative overflow-hidden rounded shadow"
                 >
-                  {{ $t("Find Your Beloved") }}
+                  <i class="el-icon-user" style="margin-right: 10px" />{{ $t("Sign up") }}
                 </h3>
               </a>
             </div>

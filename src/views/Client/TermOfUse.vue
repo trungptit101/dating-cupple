@@ -1,6 +1,6 @@
 <template>
   <div class="term-of-use">
-    <TopBanner @openFormRegister="openFormRegister" :otherHome="true" />
+    <TopBanner :otherHome="true" />
     <div class="content">
       <h1 class="text-center" style="padding-bottom: 20px">
         {{ $t("Welcome to Visicupid.com") }}
@@ -145,9 +145,6 @@ export default {
     return {};
   },
   methods: {
-    openFormRegister() {
-      this.isDisplayRegisterServey = true;
-    },
   },
 };
 </script>

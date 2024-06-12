@@ -112,9 +112,22 @@
       <el-row>
         <el-col :xs="12" :sm="6" :md="6">
           <div class="h3 mt2 mb1 color-dark-grey">Jenny Official</div>
-          <a class="block">{{ $t("Address") }}: S271032</a>
-          <a class="block">{{ $t("UEN") }}: 53484643B</a>
-          <a class="block">{{ $t("Phone Number") }}: +65 98881336</a>
+          <a class="block flex items-center"
+            ><i
+              class="el-icon-location-information icon-information"
+            />S271032</a
+          >
+          <a class="block flex items-center"
+            ><i class="el-icon-document icon-information" />53484643B</a
+          >
+          <a class="block flex items-center"
+            ><i class="el-icon-phone-outline icon-information" />(65) 98881336</a
+          >
+          <a class="block flex items-center"
+            ><i
+              class="el-icon-chat-dot-square icon-information"
+            />jenbusiness.sg@gmail.com</a
+          >
         </el-col>
         <el-col :xs="12" :sm="6" :md="6">
           <div class="h3 mt2 mb1 color-dark-grey">{{ $t("Information") }}</div>
@@ -131,11 +144,13 @@
             >{{ $t("Contact Us") }}</a
           >
           <a class="block" rel="nofollow">{{ $t("Success Stories") }}</a>
-          <a class="block">{{ $t("Dating Safety") }}</a>
+          <a class="block" @click="$router.push({ path: '/dating-safety' })">{{
+            $t("Dating Safety")
+          }}</a>
           <a class="block" rel="nofollow">{{ $t("Site Map") }}</a>
         </el-col>
         <el-col :xs="12" :sm="6" :md="6">
-          <div class="h3 mt2 mb1 color-dark-grey">Legal</div>
+          <div class="h3 mt2 mb1 color-dark-grey">{{ $t("Legal") }}</div>
           <a
             class="block"
             @click="$router.push({ path: '/term-of-use' })"
@@ -272,5 +287,11 @@ export default {
   .why-visicupid {
     padding: 0 3%;
   }
+}
+.icon-information {
+  color: #4472c4;
+  font-weight: bold;
+  margin-right: 5px;
+  font-size: 16px;
 }
 </style>

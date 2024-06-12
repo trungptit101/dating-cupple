@@ -60,6 +60,10 @@ export const constantRoutes = [
     component: () => import("@/views/Client/CommunityGuidelines.vue"),
   },
   {
+    path: "/dating-safety",
+    component: () => import("@/views/Client/DatingSafety.vue"),
+  },
+  {
     path: "/login",
     name: "login",
     component: () => import("@/views/Client/Login.vue"),

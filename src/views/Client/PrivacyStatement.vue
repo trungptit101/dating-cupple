@@ -1,6 +1,6 @@
 <template>
   <div class="about-us">
-    <TopBanner @openFormRegister="openFormRegister" :otherHome="true" />
+    <TopBanner :otherHome="true" />
     <div class="content">
       <h1 class="text-center">{{ $t("Privacy Statement") }}</h1>
       <p style="font-size: 20px"><strong>{{ $t("Introduction") }}</strong></p>
@@ -249,9 +249,6 @@ export default {
     return {};
   },
   methods: {
-    openFormRegister() {
-      this.isDisplayRegisterServey = true;
-    },
   },
 };
 </script>
