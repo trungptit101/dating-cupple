@@ -20,36 +20,60 @@
       fit
       highlight-current-row
     >
-      <el-table-column align="center" :label="$t('No')" width="95">
+      <el-table-column
+        class-name="package-col"
+        align="center"
+        :label="$t('No')"
+        width="95"
+      >
         <template slot-scope="scope">
           {{ scope.$index + 1 }}
         </template>
       </el-table-column>
-      <el-table-column :label="$t('Months')">
+      <el-table-column class-name="package-col" :label="$t('Months')">
         <template slot-scope="scope">
           {{ scope.row.months }}
         </template>
       </el-table-column>
       <el-table-column
-        class-name="status-col"
-        :label="$t('Price')"
+        class-name="package-col"
+        :label="$t('Price VNĐ')"
         align="center"
       >
         <template slot-scope="scope">
-          <span>{{ scope.row.price }}</span>
+          <span>{{
+            Number(scope.row.price_vnpay).toLocaleString("en-US", {
+              style: "currency",
+              currency: "VND",
+            })
+          }}</span>
         </template>
       </el-table-column>
       <el-table-column
-        class-name="status-col"
-        :label="$t('Unit')"
+        class-name="package-col"
+        :label="$t('Price USD')"
         align="center"
       >
         <template slot-scope="scope">
-          <span>{{ scope.row.unit }}</span>
+          <span>{{
+            Number(scope.row.price_paypal).toLocaleString("en-US", {
+              style: "currency",
+              currency: "USD",
+            })
+          }}</span>
         </template>
       </el-table-column>
       <el-table-column
-        class-name="status-col"
+        class-name="package-col"
+        :label="$t('Gender')"
+        align="center"
+      >
+        <template slot-scope="scope">
+          <span :class="scope.row.gender">{{ $t(scope.row.gender) }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column
+        class-name="package-col"
         :label="$t('Action')"
         width="110"
         align="center"
@@ -87,7 +111,7 @@
       </el-table-column>
     </el-table>
     <el-dialog
-      :title="itemId == null ? 'Add Package' : 'Edit Package'"
+      :title="itemId == null ? $t('Add Package') : $t('Edit Package')"
       :visible.sync="isPackageDetail"
     >
       <PackageDetail
@@ -133,7 +157,7 @@ export default {
         });
     },
     deleteItem(id) {
-      this.$confirm("Are you sure to delete this payment package?")
+      this.$confirm(this.$t("Are you sure to delete this payment package?"))
         .then((_) => {
           deletePackage(id).then((res) => {
             Message({
@@ -166,3 +190,16 @@ export default {
   },
 };
 </script>
+<style lang="scss">
+.package-col {
+  font-weight: 600;
+}
+.male {
+  font-weight: 600;
+  color: #67c23a;
+}
+.female {
+  font-weight: 600;
+  color: #f56c6c;
+}
+</style>

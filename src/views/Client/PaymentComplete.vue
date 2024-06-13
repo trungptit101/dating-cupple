@@ -2,7 +2,7 @@
   <div class="payment-complete">
     <LoadingComponent
       v-if="isLoading"
-      message="Processing now, please wait ..."
+      :message="$t('Processing now, please wait ...')"
     />
     <div v-else>
       <Header />
@@ -11,14 +11,15 @@
           <img src="@/assets/images/complete.png" />
           <div class="title">{{ $t("Payment Successfully!") }}</div>
           <div class="info">
-            {{ $t("Order code") }}: <span class="bold">{{ orderDetail.code }}</span>
+            {{ $t("Order code") }}:
+            <span class="bold">{{ orderDetail.code }}</span>
           </div>
           <div class="info">
             {{ $t("Amount") }}:
             <span class="bold">{{
               orderDetail.price.toLocaleString("it-IT", {
                 style: "currency",
-                currency: orderDetail.unit,
+                currency: orderDetail.unit == "VNPAY" ? "VND" : "USD",
               })
             }}</span>
           </div>
@@ -87,13 +88,14 @@ export default {
           this.isLoading = false;
         })
         .catch((error) => {
-          this.message = error.response.data.message;
+          this.isLoading = false;
+          this.message = this.$t(error.response.data.message);
           if (
+            !error.response.data.order ||
             error.response.data.order.payment_status ==
-            OrderStatus.PAYMENT_STATUS_CANCEL
+              OrderStatus.PAYMENT_STATUS_CANCEL
           )
             this.isBackOrder = true;
-          this.isLoading = false;
         });
     },
     completeOrder() {

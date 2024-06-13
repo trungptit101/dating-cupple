@@ -1213,7 +1213,10 @@ svg {
 .bg-green {
   background-color: #7faf41 !important;
   color: white !important;
-  -webkit-print-color-adjust: exact;
+}
+.bg-green:disabled {
+  background-color: #cce6ab !important;
+  color: rgb(124, 122, 122) !important;
 }
 .bg-platinum {
   background-color: #1525a2;

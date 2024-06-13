@@ -80,6 +80,7 @@ export default {
       loading: false,
       totalCount: 0,
       page: 1,
+      list: [],
       perPage: 10,
     };
   },
@@ -98,6 +99,14 @@ export default {
         this.list = response.data.data;
         this.totalCount = response.data.total;
       });
+    },
+    handleSizeChange(val) {
+      this.perPage = val;
+      this.getList();
+    },
+    handleCurrentChange(val) {
+      this.page = val;
+      this.getList();
     },
     deleteItem(id) {
       this.$confirm(this.$t("Are you sure to delete this contact?"))

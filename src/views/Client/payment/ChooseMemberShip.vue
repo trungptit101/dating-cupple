@@ -60,12 +60,15 @@
                 </div>
                 <div class="col-12 my2">
                   <div class="opacity-8" data-billed="">
-                    Billed in one payment of
+                    {{ $t("Billed in one payment of") }}
                     <span data-currency-price="Diamond3_2">{{
-                      packPayment.price.toLocaleString("it-IT", {
-                        style: "currency",
-                        currency: packPayment.unit,
-                      })
+                      Number(packPayment[keyPriceLanguage]).toLocaleString(
+                        "it-IT",
+                        {
+                          style: "currency",
+                          currency: currencyLanguage,
+                        }
+                      )
                     }}</span>
                   </div>
                 </div>
@@ -84,7 +87,7 @@
       </div>
 
       <div data-payment-options="" class="fade-in">
-        <h2 class="bold body-font-color upgrade-experiment payment-title">
+        <!-- <h2 class="bold body-font-color upgrade-experiment payment-title">
           {{ $t("Choose a payment method") }}
         </h2>
         <div class="mb3">
@@ -141,8 +144,6 @@
         <div data-need-payment-option="true" hidden="">
           <div class="m2 flex items-center">
             <div class="icon-24 fill-red me2">
-              <!--?xml version="1.0" encoding="utf-8"?-->
-              <!-- Generator: Adobe Illustrator 21.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
               <svg
                 version="1.1"
                 id="Layer_1"
@@ -216,17 +217,35 @@
               {{ $t("of") }} visicupid.com/
             </div>
           </label>
+        </div> -->
+        <div v-if="language == 'vi'">
+          <el-radio v-model="methodPaymentVnPay" label="INTCARD"
+            >Thanh toán qua thẻ quốc tế</el-radio
+          >
+          <el-radio v-model="methodPaymentVnPay" label="VNBANK"
+            >Thanh toán qua thẻ ATM/Tài khoản nội địa</el-radio
+          >
+          <el-radio v-model="methodPaymentVnPay" label="VNPAYQR"
+            >Thanh toán bằng ứng dụng hỗ trợ VNPAYQR</el-radio
+          >
         </div>
 
-        <div class="col-12 center my2">
+        <div class="col-12 center my2 flex justify-center">
           <el-button
             type="submit"
             class="upgrade-experiment upgrade-button relative bg-green white h4 py2 px4 my2 rounded shadow border-none upper-case pointer"
             :loading="isLoading"
             @click="upgradePayment"
+            :disabled="!packageSelected"
+            v-if="language == 'vi'"
           >
-            {{ $t("Upgrade Now") }}
+            {{ $t("Pay Now") }}
           </el-button>
+          <div
+            v-if="packageSelected && isDisplayPaypal && language == 'en'"
+            id="paypal-button-container"
+            style="width: 400px"
+          ></div>
         </div>
 
         <div
@@ -300,123 +319,162 @@
       <div class="max-width mx-auto">
         <div class="col-12 flex flex-wrap">
           <div class="mb3 col-features me4">
-            <div class="h3 mb1">Basic Matching</div>
+            <div class="h3 mb1">{{ $t("Basic Matching") }}</div>
 
             <p class="m0 opacity-8">
-              We show you profiles that match your ideal partner filtered by
-              age, interests and lifestyle.
+              {{
+                $t(
+                  "We show you profiles that match your ideal partner filtered by age, interests and lifestyle."
+                )
+              }}
             </p>
           </div>
 
           <div class="mb3 col-features me4">
-            <div class="h3 mb1">Like</div>
+            <div class="h3 mb1">{{ $t("Like") }}</div>
 
             <p class="m0 opacity-8">
-              Show you're interested by sending profile likes to other members
+              {{
+                $t(
+                  "Show you're interested by sending profile likes to other members"
+                )
+              }}
             </p>
           </div>
 
           <div class="mb3 col-features">
-            <div class="h3 mb1">Communicate with Paying Members</div>
+            <div class="h3 mb1">
+              {{ $t("Communicate with Paying Members") }}
+            </div>
 
             <p class="m0 opacity-8">
-              Start messaging any paying member you've got your eye on!
+              {{
+                $t("Start messaging any paying member you've got your eye on!")
+              }}
             </p>
           </div>
 
           <div class="mb3 col-features me4">
-            <div class="h3 mb1">Send Unlimited Communications</div>
+            <div class="h3 mb1">{{ $t("Send Unlimited Communications") }}</div>
 
             <p class="m0 opacity-8">
-              Start interacting via instant messenger chat.
+              {{ $t("Start interacting via instant messenger chat.") }}
             </p>
           </div>
 
           <div class="mb3 col-features me4">
-            <div class="h3 mb1">Unlock Your Messages</div>
+            <div class="h3 mb1">{{ $t("Unlock Your Messages") }}</div>
 
             <p class="m0 opacity-8">
-              Send and receive unlimited messages to all members
+              {{ $t("Send and receive unlimited messages to all members") }}
             </p>
           </div>
 
           <div class="mb3 col-features">
-            <div class="h3 mb1">Say Goodbye to Ads</div>
+            <div class="h3 mb1">{{ $t("Say Goodbye to Ads") }}</div>
 
             <p class="m0 opacity-8">
-              Premium members enjoy no third-party ads in their dating
-              experience.
+              {{
+                $t(
+                  "Premium members enjoy no third-party ads in their dating experience."
+                )
+              }}
             </p>
           </div>
 
           <div class="mb3 col-features me4">
-            <div class="h3 mb1">Hide Your Profile and Photos</div>
+            <div class="h3 mb1">{{ $t("Hide Your Profile and Photos") }}</div>
 
             <p class="m0 opacity-8">
-              Value your privacy? Premium members can their profiles and photos
-              from other members with ease.
+              {{
+                $t(
+                  "Value your privacy? Premium members can their profiles and photos from other members with ease."
+                )
+              }}
             </p>
           </div>
 
           <div class="mb3 col-features me4">
-            <div class="h3 mb1">Double Your Profile Space</div>
+            <div class="h3 mb1">{{ $t("Double Your Profile Space") }}</div>
 
             <p class="m0 opacity-8">
-              Eligible members get twice the profile space in search results.
+              {{
+                $t(
+                  "Eligible members get twice the profile space in search results."
+                )
+              }}
             </p>
           </div>
 
           <div class="mb3 col-features">
-            <div class="h3 mb1">Get Better Matches</div>
+            <div class="h3 mb1">{{ $t("Get Better Matches") }}</div>
 
             <p class="m0 opacity-8">
-              Find your perfect partner easier with access to exclusive mutual
-              and reverse matching algorithms. It's never been easier to find
-              that special someone.
+              {{
+                $t(
+                  "Find your perfect partner easier with access to exclusive mutual and reverse matching algorithms. It's never been easier to find that special someone."
+                )
+              }}
             </p>
           </div>
 
           <div class="mb3 col-features me4">
-            <div class="h3 mb1">Instantly Translate Messages</div>
+            <div class="h3 mb1">{{ $t("Instantly Translate Messages") }}</div>
 
             <p class="m0 opacity-8">
-              Don't let language barriers get in the way of love with messages
-              translated instantly.
+              {{
+                $t(
+                  "Don't let language barriers get in the way of love with messages translated instantly."
+                )
+              }}
             </p>
           </div>
 
           <div class="mb3 col-features me4">
-            <div class="h3 mb1">Priority Messaging</div>
+            <div class="h3 mb1">{{ $t("Priority Messaging") }}</div>
 
             <p class="m0 opacity-8">
-              Be the top message in the inbox of all the singles that you've
-              messaged.
+              {{
+                $t(
+                  "Be the top message in the inbox of all the singles that you've messaged."
+                )
+              }}
             </p>
           </div>
 
           <div class="mb3 col-features">
-            <div class="h3 mb1">Rank Above All Members</div>
+            <div class="h3 mb1">{{ $t("Rank Above All Members") }}</div>
 
             <p class="m0 opacity-8">
-              Have your profile rank above all members in search results.
+              {{
+                $t(
+                  "Have your profile rank above all members in search results."
+                )
+              }}
             </p>
           </div>
 
           <div class="mb3 col-features me4">
-            <div class="h3 mb1">Profile Highlighting</div>
+            <div class="h3 mb1">{{ $t("Profile Highlighting") }}</div>
 
             <p class="m0 opacity-8">
-              Show you're a serious dater with the exclusive Diamond icon on
-              your profile.
+              {{
+                $t(
+                  "Show you're a serious dater with the exclusive Diamond icon on your profile."
+                )
+              }}
             </p>
           </div>
 
           <div class="mb3 col-features me4">
-            <div class="h3 mb1">Premium Customer Service</div>
+            <div class="h3 mb1">{{ $t("Premium Customer Service") }}</div>
 
             <p class="m0 opacity-8">
-              Experience premium customer service, 24 hours a day, 7 days a
-              week, 365 days a year.
+              {{
+                $t(
+                  "Experience premium customer service, 24 hours a day, 7 days a week, 365 days a year."
+                )
+              }}
             </p>
           </div>
         </div>
@@ -431,9 +489,10 @@
 
 <script>
 import { getAllPaymentPackage } from "@/api/payment-package";
-import { createOrder } from "@/api/order";
+import { createOrder, createOrderPaypal, cancelOrderPaypal } from "@/api/order";
 import { detailOrder } from "@/api/order";
 import { OrderStatus } from "@/define/index";
+import store from "@/store";
 export default {
   data() {
     return {
@@ -456,28 +515,41 @@ export default {
         },
         {
           title: this.$t("Double Your Profile Space"),
-          description:
-            this.$t("Eligible members get twice the profile space in search results. Upgrade now and enjoy the extra attention from eligible singles."),
+          description: this.$t(
+            "Eligible members get twice the profile space in search results. Upgrade now and enjoy the extra attention from eligible singles."
+          ),
         },
         {
           title: this.$t("Rank Above Other Members"),
-          description:
-            this.$t("As a premium member, your profile will rank above standard members in search results."),
+          description: this.$t(
+            "As a premium member, your profile will rank above standard members in search results."
+          ),
         },
         {
           title: this.$t("Exclusive Diamond Membership"),
-          description:
-            this.$t("Diamond members will appear at the top of all results and have all their messages prioritised above others."),
+          description: this.$t(
+            "Diamond members will appear at the top of all results and have all their messages prioritised above others."
+          ),
         },
       ],
-      packageSelected: null,
+      packageSelected: {},
+      isDisplayPaypal: false,
       isLoading: false,
       list: [],
+      methodPaymentVnPay: "INTCARD",
+      language: localStorage.getItem("language") || "en",
     };
   },
   created() {
     detailOrder()
-      .then((res) => {})
+      .then((res) => {
+        if (
+          res.status != "completed" ||
+          res.order.payment_status != OrderStatus.PAYMENT_STATUS_COMPLETE
+        ) {
+          this.getList();
+        } else this.$router.push({ path: "/partner/suggest" });
+      })
       .catch((err) => {
         if (
           !err.response.data.order ||
@@ -489,12 +561,62 @@ export default {
         } else this.$router.push({ path: "/partner/suggest" });
       });
   },
+  computed: {
+    keyPriceLanguage() {
+      const lang = localStorage.getItem("language") || "en";
+      if (lang == "vi") return "price_vnpay";
+      return "price_paypal";
+    },
+    currencyLanguage() {
+      const lang = localStorage.getItem("language") || "en";
+      if (lang == "vi") return "VND";
+      return "USD";
+    },
+    user() {
+      return store.getters.user;
+    },
+  },
   methods: {
+    initPaypal(packageSelected, price_paypal) {
+      if (this.language != "en") return;
+      window.paypal
+        .Buttons({
+          style: {
+            shape: "rect",
+            layout: "vertical",
+            color: "blue",
+            label: "paypal",
+          },
+          async createOrder(data, actions) {
+            return actions.order.create({
+              purchase_units: [
+                {
+                  amount: {
+                    value: price_paypal,
+                  },
+                },
+              ],
+            });
+          },
+          async onApprove(data, actions) {
+            createOrderPaypal({ id: packageSelected }).then((res) => {
+              window.location.href =
+                window.location.origin + "/#/payment/complete";
+            });
+          },
+          async onCancel(data) {
+            console.log("cancel", data);
+            cancelOrderPaypal({ id: packageSelected });
+          },
+        })
+        .render("#paypal-button-container");
+    },
     upgradePayment() {
       this.isLoading = true;
       createOrder({
         id: this.packageSelected,
         returnUrl: window.location.origin,
+        methodPaymentVnPay: this.methodPaymentVnPay,
       })
         .then((res) => {
           this.isLoading = false;
@@ -505,27 +627,47 @@ export default {
         });
     },
     caculatePermonth(packPayment) {
-      return (packPayment.price / packPayment.months).toLocaleString("it-IT", {
+      return (
+        Number(packPayment[this.keyPriceLanguage]) / packPayment.months
+      ).toLocaleString("it-IT", {
         style: "currency",
-        currency: packPayment.unit,
+        currency: this.currencyLanguage,
       });
     },
     saleOffPackage(packPayment) {
       if (!this.list.length) return;
-      const permonth = packPayment.price / packPayment.months;
-      const permonthMin = this.list[0].price / this.list[0].months;
-      return (1 - Math.round((permonth / permonthMin) * 100) / 100) * 100;
+      const permonth =
+        Number(packPayment[this.keyPriceLanguage]) / packPayment.months;
+      const permonthMin =
+        Number(this.list[0][this.keyPriceLanguage]) / this.list[0].months;
+      return parseFloat(
+        (1 - Math.round((permonth / permonthMin) * 100) / 100) * 100
+      ).toFixed(2);
     },
     getList() {
       getAllPaymentPackage().then((res) => {
         this.isLoading = false;
-        this.list = res.data;
-        if (!this.list.length) returnl;
+        this.list = res.data.filter((pack) => pack.gender == this.user.gender);
+        if (!this.list.length) return;
         this.packageSelected = this.list[0].id;
       });
     },
     choosePackPayment(packPayment) {
       this.packageSelected = packPayment.id;
+    },
+  },
+  watch: {
+    packageSelected(id) {
+      this.isDisplayPaypal = false;
+      if (this.language == "en") {
+        setTimeout(() => {
+          this.isDisplayPaypal = true;
+        }, 100);
+        const pack = this.list.find((e) => e.id == id);
+        setTimeout(() => {
+          this.initPaypal(this.packageSelected, pack.price_paypal);
+        }, 300);
+      }
     },
   },
 };

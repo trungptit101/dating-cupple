@@ -1,7 +1,9 @@
 <template>
   <div class="upgrade-payment">
     <Header />
-    <ChooseMemberShip />
+    <div class="content">
+      <ChooseMemberShip />
+    </div>
   </div>
 </template>
 
@@ -24,6 +26,10 @@ export default {
 .upgrade-payment {
   min-height: 100vh;
   background: #fff;
+  .content {
+    height: calc(100vh - 80px);
+    overflow: auto;
+  }
   .payment-content-max-width {
     max-width: 980px;
     margin: 0px auto;

@@ -1,93 +1,123 @@
 <template>
-  <el-form :model="form" ref="ruleFormRef" :rules="rules" label-position="top">
-    <el-form-item label="Months" prop="months">
-      <el-input-number
-        size="medium"
-        v-model="form.months"
-        :min="1"
-        placeholder="months"
-      ></el-input-number>
-    </el-form-item>
-    <el-form-item label="Price" prop="price">
-      <el-input-number
-        size="medium"
-        :min="1"
-        v-model="form.price"
-        placeholder="price"
-      ></el-input-number>
-    </el-form-item>
-    <el-form-item label="Unit" prop="unit">
-      <el-select
-        v-model="form.unit"
-        placeholder="Select"
-        style="width: 100%"
-        size="medium"
-      >
-        <el-option
-          v-for="item in optionTypes"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value"
-        />
-      </el-select>
-    </el-form-item>
-    <el-form-item class="text-right">
-      <el-button type="warning" size="medium" @click="closeDialog"
-        >Cancel</el-button
-      >
-      <el-button
-        type="primary"
-        size="medium"
-        @click="submitForm('ruleFormRef')"
-        :loading="loading"
-        >Save</el-button
-      >
-    </el-form-item>
-  </el-form>
+  <div class="flex justify-center">
+    <el-form
+      :model="form"
+      ref="ruleFormRef"
+      :rules="rules"
+      label-position="top"
+      style="width: 400px; max-width: 100%"
+    >
+      <el-form-item :label="$t('Months')" prop="months">
+        <el-input
+          size="medium"
+          v-model="form.months"
+          :min="1"
+          placeholder="months"
+          @input.native="isNumber"
+        ></el-input>
+      </el-form-item>
+      <el-form-item :label="$t('Price VNĐ')" prop="price_vnpay">
+        <el-input
+          size="medium"
+          :min="1"
+          v-model="form.price_vnpay"
+          :placeholder="$t('Price VNĐ')"
+          @input.native="isNumber"
+          ><template slot="append">VNĐ</template></el-input
+        >
+      </el-form-item>
+      <el-form-item :label="$t('Price USD')" prop="price_paypal">
+        <el-input
+          size="medium"
+          :min="1"
+          v-model="form.price_paypal"
+          :placeholder="$t('Price USD')"
+          @input.native="isNumber"
+          ><template slot="append">USD</template></el-input
+        >
+      </el-form-item>
+      <el-form-item :label="$t('Gender')" prop="gender">
+        <el-select
+          v-model="form.gender"
+          :placeholder="$t('Select')"
+          style="width: 100%"
+          size="medium"
+        >
+          <el-option
+            v-for="item in optionTypes"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          />
+        </el-select>
+      </el-form-item>
+      <el-form-item class="text-right">
+        <el-button type="warning" size="medium" @click="closeDialog">{{
+          $t("Cancel")
+        }}</el-button>
+        <el-button
+          type="primary"
+          size="medium"
+          @click="submitForm('ruleFormRef')"
+          :loading="loading"
+          >{{ $t("Save") }}</el-button
+        >
+      </el-form-item>
+    </el-form>
+  </div>
 </template>
 <script>
 import { Message } from "element-ui";
-import { convertBase64 } from "@/utils/common";
+import { convertBase64, isNumber } from "@/utils/common";
 import { createPackage, updatePackage } from "@/api/payment-package";
 export default {
   props: ["formData", "id"],
   data() {
     return {
+      isNumber,
       optionTypes: [
         {
-          label: "VNĐ",
-          value: "VND",
+          label: this.$t("male"),
+          value: "male",
         },
         {
-          label: "USD",
-          value: "USD",
+          label: this.$t("female"),
+          value: "female",
         },
       ],
       loading: false,
       form: {
         months: null,
-        price: null,
-        unit: null,
+        gender: "male",
+        price_paypal: 0,
+        price_vnpay: 0,
       },
       rules: {
         months: [
           {
             required: true,
-            message: "Please enter months",
+            message: this.$t("Please enter months"),
             trigger: "blur",
           },
         ],
-        price: [
+        price_paypal: [
           {
             required: true,
-            message: "Please enter price",
+            message: this.$t("Please enter price USD"),
             trigger: "blur",
           },
         ],
-        unit: [
+        price_vnpay: [
           {
             required: true,
-            message: "Please choose unit",
+            message: this.$t("Please enter price VNĐ"),
+            trigger: "blur",
+          },
+        ],
+        gender: [
+          {
+            required: true,
+            message: this.$t("Please choose gender"),
             trigger: "blur",
           },
         ],
@@ -98,8 +128,9 @@ export default {
     if (this.id) {
       this.form = {
         months: this.formData.months,
-        price: this.formData.price,
-        unit: this.formData.unit,
+        price_paypal: this.formData.price_paypal,
+        price_vnpay: this.formData.price_vnpay,
+        gender: this.formData.gender,
       };
     }
   },
@@ -110,12 +141,12 @@ export default {
           const form = { ...this.form };
           this.loading = true;
           if (!this.id) {
-            const res = await createPackage(form);
+            await createPackage(form);
             try {
               this.loading = false;
               this.$emit("closeCreateDialog");
               Message({
-                message: res.message,
+                message: this.$t("Create package successfully!"),
                 type: "success",
                 duration: 1000,
               });
@@ -123,12 +154,12 @@ export default {
               this.loading = false;
             }
           } else {
-            const res = await updatePackage(form, this.id);
+            await updatePackage(form, this.id);
             try {
               this.loading = false;
               this.$emit("closeCreateDialog");
               Message({
-                message: res.message,
+                message: this.$t("Update package successfully!"),
                 type: "success",
                 duration: 1000,
               });

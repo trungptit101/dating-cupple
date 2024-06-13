@@ -8,6 +8,22 @@ export function createOrder(data) {
   });
 }
 
+export function createOrderPaypal(data) {
+  return request({
+    url: "/order/create-paypal",
+    method: "post",
+    data,
+  });
+}
+
+export function cancelOrderPaypal(data) {
+  return request({
+    url: "/order/cancel-paypal",
+    method: "post",
+    data,
+  });
+}
+
 export function detailOrder(params) {
   return request({
     url: "/order/detail",
