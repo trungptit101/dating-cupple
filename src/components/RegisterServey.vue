@@ -276,7 +276,7 @@
         size="large"
         :loading="loading"
         @click="submitForm('ruleFormRef')"
-        >Find Your Beloved</el-button
+        >{{ $t("Find Your Beloved") }}</el-button
       >
     </el-form-item>
   </el-form>

@@ -136,7 +136,6 @@ export const constantRoutes = [
   {
     path: "/payment-package",
     component: Layout,
-    meta: { icon: "el-icon-s-help" },
     children: [
       {
         path: "payment-package",
@@ -149,13 +148,24 @@ export const constantRoutes = [
   {
     path: "/contact",
     component: Layout,
-    meta: { icon: "el-icon-s-help" },
     children: [
       {
         path: "list",
         name: "contacts",
         component: () => import("@/views/contacts/index"),
         meta: { title: "Contact List", icon: "tree-table", requireAdmin: true },
+      },
+    ],
+  },
+  {
+    path: "/marketing",
+    component: Layout,
+    children: [
+      {
+        path: "list",
+        name: "contacts",
+        component: () => import("@/views/marketing/index"),
+        meta: { title: "Marketing strategy", icon: "international", requireAdmin: true },
       },
     ],
   },
