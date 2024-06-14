@@ -230,6 +230,7 @@ export default {
       await processDating({
         partnersId: this.partnersSelected,
       });
+      this.$router.push({ path: "/partner/suggest/complete" });
       this.loadingProcess = false;
     },
   },
