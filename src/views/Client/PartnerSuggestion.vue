@@ -83,7 +83,7 @@
             >
               <div class="slide flex items-center justify-center">
                 <img
-                  :src="item"
+                  :src="linkUrlBase + item"
                   style="width: 100%; height: 300px; object-fit: cover"
                 />
               </div>
@@ -157,6 +157,7 @@ export default {
       partnersSelected: [],
       isDisplayDetailPartner: false,
       partnerSelected: {},
+      linkUrlBase: process.env.VUE_APP_BASE,
     };
   },
   created() {
@@ -164,13 +165,12 @@ export default {
   },
   methods: {
     viewPartner(partner) {
-      console.log("@@@@@@@@@@@@", partner);
       this.isDisplayDetailPartner = true;
       this.partnerSelected = partner;
     },
     getArray(string) {
       if (!string) return [];
-      return JSON.parse(string);
+      return string.split(",");
     },
     async getDetail() {
       const response = await getProcessDatingDetail();

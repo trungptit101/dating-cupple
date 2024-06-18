@@ -237,7 +237,7 @@
             class="image-parent"
           >
             <img :src="image" class="image-profile" />
-            <div class="delete-image" @click="deleteImage(image)">
+            <div class="delete-image" @click="deleteImage(index)">
               <i class="el-icon-close" />
             </div>
           </div>
@@ -368,6 +368,7 @@ export default {
         ],
       },
       optionsAge: [],
+      filesPortrait: [],
     };
   },
   mounted() {
@@ -385,8 +386,11 @@ export default {
     },
   },
   methods: {
-    deleteImage(image) {
-      this.form.image_dating = this.form.image_dating.filter((i) => i != image);
+    deleteImage(index) {
+      this.form.image_dating = this.form.image_dating.filter(
+        (i, key) => key != index
+      );
+      this.filesPortrait = this.filesPortrait.filter((i, key) => key != index);
     },
     async updateFile() {
       const fileName = "fileUpload";
@@ -402,6 +406,7 @@ export default {
       files.forEach(async (file) => {
         const base64 = await convertBase64(file);
         this.form.image_dating.push(base64);
+        this.filesPortrait.push(file);
       });
     },
     async updateFileAvatar() {
@@ -445,8 +450,32 @@ export default {
           }
           console.log("submit!", this.form);
           this.loading = true;
+          const formData = new FormData();
+
+          // "avatar" => $req->avatar,
+          // "name" => $req->name,
+          // "email" => $req->email,
+          // "age" => $req->age,
+          // "phone" => $req->phone,
+          // "gender" => $req->gender,
+          // "lookingGender" => $req->lookingGender,
+          // "image_dating" => json_encode($req->image_dating),
+          // "password" => Hash::make($req->password),
+
+          formData.append("avatar", this.form.avatar);
+          formData.append("name", this.form.name);
+          formData.append("age", this.form.age);
+          formData.append("email", this.form.email);
+          formData.append("phone", this.form.phone);
+          formData.append("gender", this.form.gender);
+          formData.append("lookingGender", this.form.lookingGender);
+          formData.append("password", this.form.password);
+          this.filesPortrait.forEach((file) => {
+            formData.append("image_dating[]", file);
+          });
+
           this.$store
-            .dispatch("user/register", this.form)
+            .dispatch("user/register", formData)
             .then((res) => {
               Message({
                 message: this.$t("Register User Successfully!"),
