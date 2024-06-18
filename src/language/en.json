@@ -554,6 +554,14 @@
   "Billed in one payment of": "Billed in one payment of",
   "Payment failed!": "Payment failed!",
   "Marketing strategy": "Marketing strategy",
+  "Email not exists!": "Email not exists!",
+  "The OTP code has been sent to your email": "The OTP code has been sent to your email",
+  "OTP": "OTP",
+  "Please enter your OTP": "Please enter your OTP",
+  "Send": "Send",
+  "Reset Password": "Reset Password",
+  "Invalid information": "Invalid information",
+  "Reset password successfully! Please try login": "Reset password successfully! Please try login",
   "Experience premium customer service, 24 hours a day, 7 days a week, 365 days a year.": "Experience premium customer service, 24 hours a day, 7 days a week, 365 days a year.",
   "Consider having a video call before meeting in person. This helps verify their identity and establish a level of comfort.": "Consider having a video call before meeting in person. This helps verify their identity and establish a level of comfort."
 }

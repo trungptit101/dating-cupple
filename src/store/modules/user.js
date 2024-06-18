@@ -1,6 +1,7 @@
 import {
   login,
   register,
+  processAfterRegister,
   logout,
   getUserDetail,
   updateUserProfile,
@@ -71,11 +72,20 @@ const actions = {
     return new Promise((resolve, reject) => {
       register(user)
         .then((response) => {
-          commit("SET_TOKEN", response.access_token);
-          setToken(response.access_token);
-          commit("SET_USER", response.user);
-          setUser(response.user);
-          resolve(response);
+          processAfterRegister({
+            email: user.get("email"),
+            password: user.get("password"),
+          })
+            .then((res) => {
+              commit("SET_TOKEN", res.access_token);
+              setToken(res.access_token);
+              commit("SET_USER", res.user);
+              setUser(res.user);
+              resolve(res);
+            })
+            .catch((err) => {
+              reject(err);
+            });
         })
         .catch((error) => {
           reject(error);

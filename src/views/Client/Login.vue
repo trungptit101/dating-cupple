@@ -21,7 +21,10 @@
       <div
         class="blackscreen-min-height col-12 flex flex-column items-center justify-center"
       >
-        <div class="login relative max-width-1 white mx-auto">
+        <div
+          class="login relative form-login-width white mx-auto"
+          v-if="isLogin == 1"
+        >
           <h1 class="center" style="font-size: 34px">
             {{ $t("Members Login") }}
           </h1>
@@ -59,7 +62,9 @@
                 />
               </el-form-item>
               <div class="flex justify-end">
-                <a class="white">{{ $t("Forgot Password") }}</a>
+                <a class="white" @click="isLogin = 2">{{
+                  $t("Forgot Password")
+                }}</a>
               </div>
             </el-form>
           </div>
@@ -90,28 +95,131 @@
             <p class="center m0 mb1">
               {{ $t("Help spread the word about Visicupid!") }}
             </p>
-            <div class="flex justify-center">
-              <a
-                href="https://www.facebook.com/elitecupid"
-                class="fb"
-                target="_blank"
-              />
-              <a
-                href="https://www.twitter.com/elitecupid_"
-                class="tw"
-                target="_blank"
-              />
-              <a
-                href="https://www.instagram.com/elitecupid/"
-                class="insta"
-                target="_blank"
-              />
-              <a
-                href="https://www.youtube.com/channel/UCpHjDYdw9yzsE8L5LhrHc5A"
-                class="youtube"
-                target="_blank"
-              />
-            </div>
+          </div>
+        </div>
+        <div
+          class="login relative form-login-width white mx-auto"
+          v-else-if="isLogin == 2"
+        >
+          <h1 class="center" style="font-size: 34px">
+            {{ $t("Forgot Password") }}
+          </h1>
+          <div class="loginform">
+            <el-form
+              ref="resetForm"
+              :model="resetform"
+              :rules="rulesResetForm"
+              label-position="top"
+            >
+              <el-form-item
+                class="form-login"
+                :label="$t('Email')"
+                prop="email"
+              >
+                <el-input
+                  v-model="resetform.email"
+                  size="large"
+                  placeholder="email@example.com"
+                />
+              </el-form-item>
+            </el-form>
+          </div>
+          <el-button
+            type="submit"
+            class="h3 rounded py1 px2 btn-color btn-bg border-none col-12 relative overflow-hidden shadow"
+            :loading="loadingReset"
+            @click="forgotPassword"
+          >
+            {{ $t("Send") }}
+          </el-button>
+          <div
+            class="h3 center mt2 link-color"
+            style="cursor: pointer"
+            @click="isLogin = 1"
+          >
+            <strong>{{ $t("Login") }}</strong>
+          </div>
+          <div class="h3 center mt2 link-color">
+            {{ $t("Not a member?") }}
+            <a @click="$router.push({ path: '/' })"
+              ><strong>{{ $t("Join Now!") }}</strong></a
+            >
+          </div>
+
+          <div class="mt2 white">
+            <p class="center m0 mb1">
+              {{ $t("Help spread the word about Visicupid!") }}
+            </p>
+          </div>
+        </div>
+        <div class="login relative form-login-width white mx-auto" v-else>
+          <h1 class="center" style="font-size: 34px">
+            {{ $t("Reset Password") }}
+          </h1>
+          <div class="loginform">
+            <el-form
+              ref="resetPassword"
+              :model="resetPassword"
+              :rules="rulesResetPassword"
+              label-position="top"
+            >
+              <el-form-item
+                class="form-login"
+                :label="$t('Email')"
+                prop="email"
+              >
+                <el-input
+                  v-model="resetPassword.email"
+                  size="large"
+                  placeholder="email@example.com"
+                />
+              </el-form-item>
+              <el-form-item class="form-login" :label="$t('OTP')" prop="otp">
+                <el-input
+                  v-model="resetPassword.otp"
+                  size="large"
+                  :placeholder="$t('OTP')"
+                />
+              </el-form-item>
+              <el-form-item
+                class="form-login"
+                :label="$t('Password')"
+                prop="password"
+              >
+                <el-input
+                  v-model="resetPassword.password"
+                  type="password"
+                  size="large"
+                  :placeholder="$t('Password')"
+                />
+              </el-form-item>
+            </el-form>
+          </div>
+          <el-button
+            type="submit"
+            class="h3 rounded py1 px2 btn-color btn-bg border-none col-12 relative overflow-hidden shadow"
+            :loading="loadingResetPassword"
+            @click="resetPasswordApply"
+          >
+            {{ $t("Reset Password") }}
+          </el-button>
+          <div
+            class="h3 center mt2 link-color"
+            style="cursor: pointer"
+            @click="isLogin = 1"
+          >
+            <strong>{{ $t("Login") }}</strong>
+          </div>
+          <div class="h3 center mt2 link-color">
+            {{ $t("Not a member?") }}
+            <a @click="$router.push({ path: '/' })"
+              ><strong>{{ $t("Join Now!") }}</strong></a
+            >
+          </div>
+          <div class="mt2 white">
+            <p class="center m0 mb1">
+              {{ $t("Help spread the word about Visicupid!") }}
+            </p>
           </div>
         </div>
       </div>
@@ -166,13 +274,25 @@
 import ContactUs from "@/components/ContactUs.vue";
 import MultipleLanguage from "@/layout/components/MultipleLanguage.vue";
 import { Message } from "element-ui";
+import { forgotPassword, resetPassword } from "@/api/user";
 export default {
   components: { ContactUs, MultipleLanguage },
   data() {
     return {
       loading: false,
+      loadingReset: false,
+      loadingResetPassword: false,
+      isLogin: 1,
       form: {
         email: "",
+        password: "",
+      },
+      resetform: {
+        email: "",
+      },
+      resetPassword: {
+        email: "",
+        otp: "",
         password: "",
       },
       isDisplayFormContactUs: false,
@@ -181,6 +301,38 @@ export default {
           {
             required: true,
             message: this.$t("Please enter your email"),
+            trigger: "blur",
+          },
+        ],
+        password: [
+          {
+            required: true,
+            message: this.$t("Please enter your password"),
+            trigger: "blur",
+          },
+        ],
+      },
+      rulesResetForm: {
+        email: [
+          {
+            required: true,
+            message: this.$t("Please enter your email"),
+            trigger: "blur",
+          },
+        ],
+      },
+      rulesResetPassword: {
+        email: [
+          {
+            required: true,
+            message: this.$t("Please enter your email"),
+            trigger: "blur",
+          },
+        ],
+        otp: [
+          {
+            required: true,
+            message: this.$t("Please enter your OTP"),
             trigger: "blur",
           },
         ],
@@ -214,7 +366,7 @@ export default {
               this.$router.push({ path: this.redirect || "/" });
               this.loading = false;
             })
-            .catch((error) => {
+            .catch(() => {
               this.loading = false;
               Message({
                 message: this.$t("Invalid login information"),
@@ -228,10 +380,71 @@ export default {
         }
       });
     },
+    forgotPassword() {
+      this.$refs.resetForm.validate((valid) => {
+        if (valid) {
+          this.loadingReset = true;
+          forgotPassword(this.resetform)
+            .then((res) => {
+              this.loadingReset = false;
+              this.isLogin = 3;
+              this.resetPassword = {
+                email: this.resetform.email,
+                otp: "",
+                password: "",
+              };
+              Message({
+                message: this.$t("The OTP code has been sent to your email"),
+                type: "success",
+                duration: 2 * 1000,
+              });
+            })
+            .catch((err) => {
+              this.loadingReset = false;
+              Message({
+                message: this.$t(err.response.data.message),
+                type: "error",
+                duration: 2 * 1000,
+              });
+            });
+        }
+      });
+    },
+
+    resetPasswordApply() {
+      this.$refs.resetPassword.validate((valid) => {
+        if (valid) {
+          this.loadingResetPassword = true;
+          resetPassword(this.resetPassword)
+            .then((res) => {
+              this.loadingResetPassword = false;
+              this.isLogin = 1;
+              Message({
+                message: this.$t(
+                  "Reset password successfully! Please try login"
+                ),
+                type: "success",
+                duration: 5 * 1000,
+              });
+            })
+            .catch((err) => {
+              this.loadingResetPassword = false;
+              Message({
+                message: this.$t("Invalid information"),
+                type: "error",
+                duration: 5 * 1000,
+              });
+            });
+        }
+      });
+    },
   },
 };
 </script>
 <style lang="scss">
+.form-login-width {
+  width: 24rem;
+}
 .form-login {
   .el-form-item__label {
     font-size: 16px !important;
