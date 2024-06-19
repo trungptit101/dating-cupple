@@ -163,9 +163,9 @@ export const constantRoutes = [
     children: [
       {
         path: "list",
-        name: "contacts",
+        name: "marketing",
         component: () => import("@/views/marketing/index"),
-        meta: { title: "Marketing strategy", icon: "international", requireAdmin: true },
+        meta: { title: "Discount strategy", icon: "international", requireAdmin: true },
       },
     ],
   },

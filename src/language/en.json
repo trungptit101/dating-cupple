@@ -553,7 +553,7 @@
   "Premium Customer Service": "Premium Customer Service",
   "Billed in one payment of": "Billed in one payment of",
   "Payment failed!": "Payment failed!",
-  "Marketing strategy": "Marketing strategy",
+  "Discount strategy": "Discount strategy",
   "Email not exists!": "Email not exists!",
   "The OTP code has been sent to your email": "The OTP code has been sent to your email",
   "OTP": "OTP",
@@ -563,5 +563,18 @@
   "Invalid information": "Invalid information",
   "Reset password successfully! Please try login": "Reset password successfully! Please try login",
   "Experience premium customer service, 24 hours a day, 7 days a week, 365 days a year.": "Experience premium customer service, 24 hours a day, 7 days a week, 365 days a year.",
-  "Consider having a video call before meeting in person. This helps verify their identity and establish a level of comfort.": "Consider having a video call before meeting in person. This helps verify their identity and establish a level of comfort."
+  "Consider having a video call before meeting in person. This helps verify their identity and establish a level of comfort.": "Consider having a video call before meeting in person. This helps verify their identity and establish a level of comfort.",
+  "Discount": "Discount",
+  "End": "End",
+  "Add Discount Strategy": "Add Discount Strategy",
+  "Edit Discount Strategy": "Edit Discount Strategy",
+  "Please enter discount": "Please enter discount",
+  "Please enter gender": "Please enter gender",
+  "Please enter start discount": "Please enter start discount",
+  "Please enter end discount": "Please enter end discount",
+  "Create discount strategy successfully!": "Create discount strategy successfully!",
+  "Update discount strategy successfully!": "Update discount strategy successfully!",
+  "Are you sure to delete this discount strategy": "Are you sure to delete this discount strategy",
+  "Delete this discount strategy successfully!": "Delete this discount strategy successfully!",
+  "An error occurred": "An error occurred"
 }

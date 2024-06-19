@@ -62,13 +62,22 @@
                   <div class="opacity-8" data-billed="">
                     {{ $t("Billed in one payment of") }}
                     <span data-currency-price="Diamond3_2">{{
-                      Number(packPayment[keyPriceLanguage]).toLocaleString(
-                        "it-IT",
-                        {
-                          style: "currency",
-                          currency: currencyLanguage,
-                        }
-                      )
+                      discountGender
+                        ? (
+                            (Number(packPayment[keyPriceLanguage]) *
+                              (100 - discountGender)) /
+                            100
+                          ).toLocaleString("it-IT", {
+                            style: "currency",
+                            currency: currencyLanguage,
+                          })
+                        : Number(packPayment[keyPriceLanguage]).toLocaleString(
+                            "it-IT",
+                            {
+                              style: "currency",
+                              currency: currencyLanguage,
+                            }
+                          )
                     }}</span>
                   </div>
                 </div>
@@ -492,6 +501,7 @@ import { getAllPaymentPackage } from "@/api/payment-package";
 import { createOrder, createOrderPaypal, cancelOrderPaypal } from "@/api/order";
 import { detailOrder } from "@/api/order";
 import { OrderStatus } from "@/define/index";
+import { getListStrategies } from "@/api/discount-strategy";
 import store from "@/store";
 export default {
   data() {
@@ -537,10 +547,16 @@ export default {
       isLoading: false,
       list: [],
       methodPaymentVnPay: "INTCARD",
+      discountGender: 0,
       language: localStorage.getItem("language") || "en",
     };
   },
   created() {
+    // if (!this.user.is_complete_survey) {
+    //   this.$router.push({ path: "/survey-question" });
+    //   return;
+    // }
+    this.getListDiscount();
     detailOrder()
       .then((res) => {
         if (
@@ -577,6 +593,22 @@ export default {
     },
   },
   methods: {
+    getListDiscount() {
+      getListStrategies().then((response) => {
+        const today = new Date().toLocaleDateString();
+        const todayValue = new Date(today).valueOf();
+        const discountValid = response.data.find((e) => {
+          const startValue = new Date(e.start).valueOf();
+          const endValue = new Date(e.end).valueOf();
+          return (
+            e.gender == this.user.gender &&
+            (todayValue > startValue || todayValue == startValue) &&
+            (todayValue < endValue || todayValue == endValue)
+          );
+        });
+        if (discountValid) this.discountGender = discountValid.discount || 0;
+      });
+    },
     initPaypal(packageSelected, price_paypal) {
       if (this.language != "en") return;
       window.paypal
@@ -627,6 +659,16 @@ export default {
         });
     },
     caculatePermonth(packPayment) {
+      if (this.discountGender)
+        return (
+          (Number(packPayment[this.keyPriceLanguage]) *
+            (100 - this.discountGender)) /
+          100 /
+          packPayment.months
+        ).toLocaleString("it-IT", {
+          style: "currency",
+          currency: this.currencyLanguage,
+        });
       return (
         Number(packPayment[this.keyPriceLanguage]) / packPayment.months
       ).toLocaleString("it-IT", {
@@ -665,7 +707,10 @@ export default {
         }, 100);
         const pack = this.list.find((e) => e.id == id);
         setTimeout(() => {
-          this.initPaypal(this.packageSelected, pack.price_paypal);
+          let price_paypal = pack.price_paypal;
+          if (this.discountGender)
+            price_paypal = (price_paypal * (100 - this.discountGender)) / 100;
+          this.initPaypal(this.packageSelected, price_paypal);
         }, 300);
       }
     },

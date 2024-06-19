@@ -553,7 +553,7 @@
   "Premium Customer Service": "Dịch vụ khách hàng cao cấp",
   "Billed in one payment of": "Thanh toán trong một lần thanh toán",
   "Payment failed!": "Thanh toán thất bại!",
-  "Marketing strategy": "Chiến lược marketing",
+  "Discount strategy": "Chiến lược giảm giá",
   "Email not exists!": "Email không tồn tại!",
   "The OTP code has been sent to your email": "Mã OTP đã được gửi tới email của bạn",
   "OTP": "OTP",
@@ -563,5 +563,17 @@
   "Invalid information": "Thông tin không chính xác",
   "Reset password successfully! Please try login": "Cập nhật mật khẩu thành công! Mời bạn đăng nhập",
   "Experience premium customer service, 24 hours a day, 7 days a week, 365 days a year.": "Trải nghiệm dịch vụ khách hàng cao cấp, 24 giờ một ngày, 7 ngày một tuần, 365 ngày một năm.",
-  "Consider having a video call before meeting in person. This helps verify their identity and establish a level of comfort.": "Hãy cân nhắc việc gọi điện video trước khi gặp mặt trực tiếp. Điều này giúp xác minh danh tính của họ và thiết lập mức độ thoải mái."
+  "Consider having a video call before meeting in person. This helps verify their identity and establish a level of comfort.": "Hãy cân nhắc việc gọi điện video trước khi gặp mặt trực tiếp. Điều này giúp xác minh danh tính của họ và thiết lập mức độ thoải mái.",
+  "Discount": "Giảm giá",
+  "End": "Kết thúc",
+  "Add Discount Strategy": "Thêm chiến lược giảm giá",
+  "Edit Discount Strategy": "Chỉnh sửa chiến lược giảm giá",
+  "Please enter discount": "Vui lòng nhập giảm giá",
+  "Please enter gender": "Vui lòng nhập giới tính",
+  "Please enter start discount": "Vui lòng nhập chiết khấu bắt đầu",
+  "Please enter end discount": "Vui lòng nhập chiết khấu cuối cùng",
+  "Create discount strategy successfully!": "Tạo chiến lược giảm giá thành công!",
+  "Update discount strategy successfully!": "Cập nhật chiến lược giảm giá thành công!",
+  "Delete this discount strategy successfully!": "Xoá chiến lược giảm giá thành công!",
+  "An error occurred": "Có lỗi xảy ra"
 }

@@ -2,33 +2,45 @@
   <div class="contacts-container app-container">
     <el-row class="flex items-center" style="margin-bottom: 10px">
       <el-col :span="12">
-        <h2>{{ $t("List Contacts") }}</h2>
+        <h2>{{ $t("Discount strategy") }}</h2>
+      </el-col>
+      <el-col :span="12" class="text-right">
+        <el-button
+          type="primary"
+          icon="el-icon-plus"
+          size="medium"
+          @click="addItem"
+          >{{ $t("Add") }}</el-button
+        >
       </el-col>
     </el-row>
     <el-table v-loading="loading" :data="list" border fit highlight-current-row>
-      <el-table-column align="center" :label="$t('No')" width="95">
+      <el-table-column
+        class-name="bold"
+        align="center"
+        :label="$t('No')"
+        width="95"
+      >
         <template slot-scope="scope">
-          {{ scope.$index + 1 + (page - 1) * perPage }}
+          {{ scope.$index + 1 }}
         </template>
       </el-table-column>
-      <el-table-column :label="$t('Email')">
+      <el-table-column class-name="bold" :label="$t('Discount')">
+        <template slot-scope="scope"> {{ scope.row.discount }}% </template>
+      </el-table-column>
+      <el-table-column class-name="bold" :label="$t('Gender')">
         <template slot-scope="scope">
-          {{ scope.row.email }}
+          <span :class="scope.row.gender">{{ $t(scope.row.gender) }}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('Contact')">
+      <el-table-column class-name="bold" :label="$t('Start')">
         <template slot-scope="scope">
-          {{ scope.row.contact }}
+          {{ scope.row.start }}
         </template>
       </el-table-column>
-      <el-table-column :label="$t('Issue')">
+      <el-table-column class-name="bold" :label="$t('End')">
         <template slot-scope="scope">
-          {{ scope.row.issue }}
-        </template>
-      </el-table-column>
-      <el-table-column :label="$t('Description')">
-        <template slot-scope="scope">
-          {{ scope.row.description }}
+          {{ scope.row.end }}
         </template>
       </el-table-column>
       <el-table-column
@@ -38,6 +50,20 @@
         align="center"
       >
         <template slot-scope="scope">
+          <el-tooltip
+            class="item"
+            effect="dark"
+            :content="$t('Edit')"
+            placement="top"
+          >
+            <el-button
+              type="primary"
+              icon="el-icon-edit"
+              size="mini"
+              circle
+              @click="editItem(scope.row, scope.row.id)"
+            ></el-button>
+          </el-tooltip>
           <el-tooltip
             class="item"
             effect="dark"
@@ -55,33 +81,39 @@
         </template>
       </el-table-column>
     </el-table>
-    <div class="text-center" style="padding: 20px 0">
-      <el-pagination
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-        :current-page.sync="page"
-        :page-sizes="[10, 20, 30, 40, 50]"
-        :page-size="perPage"
-        layout="total, sizes, prev, pager, next"
-        :total="totalCount"
-      >
-      </el-pagination>
-    </div>
+
+    <el-dialog
+      :title="
+        strategyId == null
+          ? $t('Add Discount Strategy')
+          : $t('Edit Discount Strategy')
+      "
+      :visible.sync="isStrategyDetail"
+    >
+      <StrategyDetail
+        :id="strategyId"
+        @closeCreateDialog="closeCreateDialog"
+        :formData="formData"
+        v-if="isStrategyDetail"
+      />
+    </el-dialog>
   </div>
 </template>
 
 <script>
-import { getListContacts, deleteContact } from "@/api/contact";
+import { getListStrategies, deleteStrategy } from "@/api/discount-strategy";
+import StrategyDetail from "./StrategyDetail.vue";
 import { Message } from "element-ui";
 
 export default {
+  components: { StrategyDetail },
   data() {
     return {
       loading: false,
-      totalCount: 0,
-      page: 1,
       list: [],
-      perPage: 10,
+      isStrategyDetail: false,
+      strategyId: null,
+      formData: {},
     };
   },
   created() {
@@ -90,30 +122,31 @@ export default {
   methods: {
     getList() {
       this.loading = true;
-      const params = {
-        page: this.page,
-        perPage: this.perPage,
-      };
-      getListContacts(params).then((response) => {
+      getListStrategies().then((response) => {
         this.loading = false;
-        this.list = response.data.data;
-        this.totalCount = response.data.total;
+        this.list = response.data;
       });
     },
-    handleSizeChange(val) {
-      this.perPage = val;
+    closeCreateDialog() {
+      this.isStrategyDetail = false;
       this.getList();
     },
-    handleCurrentChange(val) {
-      this.page = val;
-      this.getList();
+    addItem() {
+      this.strategyId = null;
+      this.formData = {};
+      this.isStrategyDetail = true;
+    },
+    editItem(row, id) {
+      this.strategyId = id;
+      this.formData = row;
+      this.isStrategyDetail = true;
     },
     deleteItem(id) {
-      this.$confirm(this.$t("Are you sure to delete this contact?"))
+      this.$confirm(this.$t("Are you sure to delete this discount strategy?"))
         .then((_) => {
-          deleteContact(id).then((res) => {
+          deleteStrategy(id).then((res) => {
             Message({
-              message: res.message,
+              message: this.$t("Delete this discount strategy successfully!"),
               type: "success",
               duration: 2000,
             });
@@ -126,6 +159,12 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.contacts-container {
+.male {
+  font-weight: 600;
+  color: #67c23a;
+}
+.female {
+  font-weight: 600;
+  color: #f56c6c;
 }
 </style>

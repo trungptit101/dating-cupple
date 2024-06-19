@@ -12,7 +12,7 @@
           size="medium"
           v-model="form.months"
           :min="1"
-          placeholder="months"
+          :placeholder="$t('months')"
           @input.native="isNumber"
         ></el-input>
       </el-form-item>
