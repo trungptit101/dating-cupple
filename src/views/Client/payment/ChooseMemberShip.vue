@@ -552,10 +552,10 @@ export default {
     };
   },
   created() {
-    // if (!this.user.is_complete_survey) {
-    //   this.$router.push({ path: "/survey-question" });
-    //   return;
-    // }
+    if (!this.user.is_complete_survey) {
+      this.$router.push({ path: "/survey-question" });
+      return;
+    }
     this.getListDiscount();
     detailOrder()
       .then((res) => {
