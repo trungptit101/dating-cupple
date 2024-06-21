@@ -3,7 +3,7 @@
     <el-row class="flex items-center">
       <el-col :span="12">
         <h2>
-          Requests Dating
+          {{ $t("Requests Dating") }}
           <span class="badge-request" v-if="listRequestPending.length">{{
             listRequestPending.length
           }}</span>
@@ -18,12 +18,12 @@
       fit
       highlight-current-row
     >
-      <el-table-column align="center" label="No" width="95">
+      <el-table-column align="center" :label="$t('No')" width="95">
         <template slot-scope="scope">
           {{ scope.$index + 1 }}
         </template>
       </el-table-column>
-      <el-table-column label="Name Candidate">
+      <el-table-column :label="$t('Name Candidate')">
         <template slot-scope="scope">
           <div class="flex items-center">
             <Avatar
@@ -39,7 +39,7 @@
           </div>
         </template>
       </el-table-column>
-      <el-table-column label="Partners">
+      <el-table-column :label="$t('Partners')">
         <template slot-scope="scope">
           <div
             class="flex items-center"
@@ -55,24 +55,26 @@
       </el-table-column>
       <el-table-column
         class-name="status-col"
-        label="Request Date"
+        :label="$t('Request Date')"
         align="center"
       >
         <template slot-scope="scope">
           <span>{{ convertDatetimeFormat(scope.row.created_at) }}</span>
         </template>
       </el-table-column>
-      <el-table-column class-name="status-col" label="Status" align="center">
+      <el-table-column class-name="status-col" :label="$t('Status')" align="center">
         <template slot-scope="scope">
           <el-tag type="warning" effect="dark" v-if="scope.row.isComplete == 0">
-            InProgress
+            {{ $t("InProgress") }}
           </el-tag>
-          <el-tag type="success" effect="dark" v-else> Complete </el-tag>
+          <el-tag type="success" effect="dark" v-else>
+            {{ $t("Complete") }}
+          </el-tag>
         </template>
       </el-table-column>
       <el-table-column
         class-name="status-col"
-        label="Action"
+        :label="$t('Action')"
         width="110"
         align="center"
       >

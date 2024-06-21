@@ -77,6 +77,10 @@ export const constantRoutes = [
     component: () => import("@/views/Client/PaymentComplete.vue"),
   },
   {
+    path: "/payment/inprogress",
+    component: () => import("@/views/Client/PaymentInprogress.vue"),
+  },
+  {
     path: "/partner/suggest",
     component: () => import("@/views/Client/PartnerSuggestion.vue"),
   },
@@ -131,6 +135,12 @@ export const constantRoutes = [
         component: () => import("@/views/manager-dating/index"),
         meta: { title: "Dating", icon: "wechat", requireAdmin: true },
       },
+      {
+        path: "request-banking",
+        name: "request-banking",
+        component: () => import("@/views/manager-dating/RequestBanking"),
+        meta: { title: "Request Banking", icon: "lock", requireAdmin: true },
+      },
     ],
   },
   {
@@ -169,13 +179,25 @@ export const constantRoutes = [
       },
     ],
   },
+  {
+    path: "/internet-banking",
+    component: Layout,
+    children: [
+      {
+        path: "list",
+        name: "internet-banking",
+        component: () => import("@/views/internet-banking/index"),
+        meta: { title: "Internet Banking", icon: "money", requireAdmin: true },
+      },
+    ],
+  },
   // 404 page must be placed at the end !!!
   { path: "*", redirect: "/404", hidden: true },
 ];
 
 const createRouter = () =>
   new Router({
-    // mode: 'history', // require service support
+    mode: 'history', // require service support
     scrollBehavior: () => ({ y: 0 }),
     routes: constantRoutes,
   });

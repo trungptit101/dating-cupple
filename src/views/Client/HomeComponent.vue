@@ -185,7 +185,7 @@
           <div class="flex items-center" style="text-indent: 10px">
             <a
               class="inline-block"
-              href="https://www.facebook.com/Vietsyncupid?"
+              href="https://www.facebook.com/Vietsyncupid"
               target="_blank"
               ><img
                 src="@/assets/images/fb.png"

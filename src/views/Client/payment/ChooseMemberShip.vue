@@ -96,18 +96,19 @@
       </div>
 
       <div data-payment-options="" class="fade-in">
-        <!-- <h2 class="bold body-font-color upgrade-experiment payment-title">
+        <h2 class="bold body-font-color upgrade-experiment payment-title">
           {{ $t("Choose a payment method") }}
         </h2>
         <div class="mb3">
-          <div
-            class="mb2 pointer payment-option flex items-center"
-            data-only-show-this="credit"
-          >
+          <div class="mb2 pointer payment-option flex items-center">
             <div class="flex items-center justify-between col-12">
               <label for="credit" class="pointer col-12">
                 <div class="flex items-center">
-                  <el-radio checked></el-radio>
+                  <el-radio
+                    v-model="paymentMethod"
+                    class="pack-payment-price"
+                    label="creditCard"
+                  ></el-radio>
                   <div class="col-3 me2">
                     <div class="ms1 upgrade-experiment payment-variant-text">
                       {{ $t("Credit / Debit Card") }}
@@ -131,103 +132,131 @@
                   </div>
                 </div>
               </label>
-              <div
-                alt="info"
-                id="1"
-                data-title="Credit Card Payment Information"
-                data-cm-modal-url="/en/payment/showPaymentMethodInformationC?paymentmethod=1"
-              >
-                <div
-                  class="upgrade-experiment help-icon-wrapper icon icon-20 flex-none fill-action-unhighlight"
-                >
-                  <svg class="icon-24 absolute circle unchecked">
-                    <use
-                      xlink:href="/assets/desktop/icons/icons.svg#icon-help"
-                    ></use>
-                  </svg>
+            </div>
+          </div>
+          <div class="mb2 pointer payment-option flex items-center">
+            <div class="flex items-center justify-between col-12">
+              <label for="credit" class="pointer col-12">
+                <div class="flex items-center">
+                  <el-radio
+                    v-model="paymentMethod"
+                    class="pack-payment-price"
+                    label="internetBanking"
+                  ></el-radio>
+                  <div class="col-3 me2">
+                    <div class="ms1 upgrade-experiment payment-variant-text">
+                      {{ $t("Internet Banking") }}
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </label>
             </div>
           </div>
         </div>
-        <div data-need-payment-option="true" hidden="">
-          <div class="m2 flex items-center">
-            <div class="icon-24 fill-red me2">
-              <svg
-                version="1.1"
-                id="Layer_1"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                x="0px"
-                y="0px"
-                viewBox="0 0 50 50"
-                style="enable-background: new 0 0 50 50"
-                xml:space="preserve"
-              >
-                <circle cx="25" cy="25" r="24.5"></circle>
-                <path
-                  class="st0"
-                  d="M24.6,44.2c-2.8,0-4.9-2.2-4.9-5.1c0-3,2.1-5.2,4.8-5.2c2.8,0,4.8,2.1,4.8,5.2C29.4,42,27.4,44.2,24.6,44.2
-                  L24.6,44.2z M20.6,6.5c0.4-0.4,1-0.7,1.6-0.7h4.8c0.6,0,1.2,0.2,1.6,0.7c0.4,0.4,0.6,1,0.6,1.6l-0.8,18c0,1.2-1.1,2.2-2.3,2.2h-3
-                  c-1.2,0-2.2-1-2.3-2.2L20,8.1C19.9,7.5,20.2,6.9,20.6,6.5L20.6,6.5z"
-                ></path>
-              </svg>
+
+        <div class="text-center" v-if="paymentMethod == 'internetBanking'">
+          <div v-if="getInternetBankingCountry">
+            <img
+              :src="getInternetBankingCountry.qrcode"
+              style="width: 250px; height: 250px; object-fit: cover"
+            />
+            <div style="font-size: 18px; font-weight: 500">
+              {{ $t("Bank transfer information") }}
             </div>
-            <div class="h4">{{ $t("Please select a payment option") }}</div>
+            <div
+              style="
+                font-size: 16px;
+                background: #fceebf;
+                padding: 10px 0;
+                border-radius: 5px;
+                width: 80%;
+                margin: 0px auto;
+                margin-top: 15px;
+                color: #756738;
+              "
+            >
+              {{
+                $t(
+                  "Please send the correct content so we can confirm payment",
+                  { contentBanking: contentBanking }
+                )
+              }}
+            </div>
+            <table class="infomation-banking">
+              <tr>
+                <td>{{ $t("Account name") }}</td>
+                <td>{{ getInternetBankingCountry.account_name }}</td>
+              </tr>
+              <tr>
+                <td>{{ $t("Account number") }}</td>
+                <td>{{ getInternetBankingCountry.account_number }}</td>
+              </tr>
+              <tr>
+                <td>{{ $t("Bank") }}</td>
+                <td>{{ getInternetBankingCountry.bank }}</td>
+              </tr>
+              <tr>
+                <td>{{ $t("Amount") }}</td>
+                <td>
+                  {{
+                    discountGender
+                      ? (
+                          (Number(
+                            packPaymentInternetBanking[keyPriceLanguage]
+                          ) *
+                            (100 - discountGender)) /
+                          100
+                        ).toLocaleString("it-IT", {
+                          style: "currency",
+                          currency: currencyLanguage,
+                        })
+                      : Number(
+                          packPaymentInternetBanking[keyPriceLanguage]
+                        ).toLocaleString("it-IT", {
+                          style: "currency",
+                          currency: currencyLanguage,
+                        })
+                  }}
+                </td>
+              </tr>
+              <tr>
+                <td>{{ $t("Content") }}</td>
+                <td>{{ contentBanking }}</td>
+              </tr>
+            </table>
+            <el-button
+              type="submit"
+              class="upgrade-experiment upgrade-button relative bg-green white h4 py2 px4 my2 rounded shadow border-none upper-case pointer"
+              :loading="loadingPaymentBanking"
+              @click="paymentBanking"
+            >
+              {{ $t("I have already paid") }}
+            </el-button>
           </div>
         </div>
 
         <div
           class="col-10 center my2 mx-auto upgrade-experiment sdv-co-reg-wrapper"
-          data-incsdvcopromo="true"
-          data-inc-s-d-v-co-promo="true"
         >
-          <label for="incSDGCoReg" class="flex mx0">
-            <input
-              name="sdgCoRegSiteID"
-              value="1001"
-              hidden=""
-              id="sdgCoRegSiteID"
-            />
-            <input
-              type="checkbox"
-              name="incSDGCoReg"
-              value="1001"
-              class="hide"
-              id="incSDGCoReg"
-            />
-            <div
-              class="icon icon-30 relative green pl1 upgrade-experiment sdv-co-reg-checkbox"
-            >
-              <svg class="absolute icon-30 left-0 mt1">
-                <use
-                  xmlns:xlink="http://www.w3.org/1999/xlink"
-                  xlink:href="/assets/desktop/icons/icons.svg?v=20240423110304&amp;#icon-checkbox-on"
-                ></use>
-              </svg>
-              <svg class="absolute icon-30 left-0 unchecked mt1">
-                <use
-                  xmlns:xlink="http://www.w3.org/1999/xlink"
-                  xlink:href="/assets/desktop/icons/icons.svg?v=20240423110304&amp;#icon-checkbox-off"
-                ></use>
-              </svg>
-            </div>
+          <label>
             <div
               class="mt1 highlight-a relative ms2 upgrade-experiment sdv-co-reg-text"
             >
               {{
                 $t(
-                  "By opting in, you receive a free 1-month trial on Dating.com and agree that your profile (including photos, personal and payment data) will be copied to Dating.com (SOL Networks Limited) and you accept"
+                  "By opting in, you receive a free 1-month trial agree that your profile (including photos, personal and payment data) will be copied to Dating.com (SOL Networks Limited) and you accept"
                 )
               }}
-              <a href="" target="_blank">{{ $t("Terms") }}</a>
+              <a href="/term-of-use" target="_blank">{{ $t("Terms") }}</a>
               {{ $t("and") }}
-              <a href="" target="_blank">{{ $t("Privacy Policy") }}</a>
-              {{ $t("of") }} visicupid.com/
+              <a href="/privacy-statement" target="_blank">{{
+                $t("Privacy Policy")
+              }}</a>
+              {{ $t("of") }} visicupid.com
             </div>
           </label>
-        </div> -->
-        <div v-if="language == 'vi'">
+        </div>
+        <!-- <div v-if="language == 'vi'">
           <el-radio v-model="methodPaymentVnPay" label="INTCARD"
             >Thanh toán qua thẻ quốc tế</el-radio
           >
@@ -237,10 +266,10 @@
           <el-radio v-model="methodPaymentVnPay" label="VNPAYQR"
             >Thanh toán bằng ứng dụng hỗ trợ VNPAYQR</el-radio
           >
-        </div>
+        </div> -->
 
         <div class="col-12 center my2 flex justify-center">
-          <el-button
+          <!-- <el-button
             type="submit"
             class="upgrade-experiment upgrade-button relative bg-green white h4 py2 px4 my2 rounded shadow border-none upper-case pointer"
             :loading="isLoading"
@@ -249,9 +278,13 @@
             v-if="language == 'vi'"
           >
             {{ $t("Pay Now") }}
-          </el-button>
+          </el-button> -->
           <div
-            v-if="packageSelected && isDisplayPaypal && language == 'en'"
+            v-if="
+              packageSelected &&
+              isDisplayPaypal &&
+              paymentMethod == 'creditCard'
+            "
             id="paypal-button-container"
             style="width: 400px"
           ></div>
@@ -498,11 +531,17 @@
 
 <script>
 import { getAllPaymentPackage } from "@/api/payment-package";
-import { createOrder, createOrderPaypal, cancelOrderPaypal } from "@/api/order";
+import {
+  createOrder,
+  createOrderPaypal,
+  cancelOrderPaypal,
+  paymentBanking,
+} from "@/api/order";
 import { detailOrder } from "@/api/order";
 import { OrderStatus } from "@/define/index";
 import { getListStrategies } from "@/api/discount-strategy";
 import store from "@/store";
+import { getList } from "@/api/internet-banking";
 export default {
   data() {
     return {
@@ -546,9 +585,13 @@ export default {
       isDisplayPaypal: false,
       isLoading: false,
       list: [],
+      listInternetBanking: [],
       methodPaymentVnPay: "INTCARD",
       discountGender: 0,
       language: localStorage.getItem("language") || "en",
+      paymentMethod: "creditCard",
+      contentBanking: `VSI-${Math.round(Math.random() * 100000)}`,
+      loadingPaymentBanking: false,
     };
   },
   created() {
@@ -557,6 +600,7 @@ export default {
       return;
     }
     this.getListDiscount();
+    this.getListInternetBanking();
     detailOrder()
       .then((res) => {
         if (
@@ -591,8 +635,42 @@ export default {
     user() {
       return store.getters.user;
     },
+    getInternetBankingCountry() {
+      if (!this.listInternetBanking.length) return null;
+      const lang = localStorage.getItem("language") || "en";
+      const bankingCountry = this.listInternetBanking.find(
+        (e) => e.country == lang
+      );
+      if (!bankingCountry) return null;
+      return bankingCountry;
+    },
+    packPaymentInternetBanking() {
+      const packId = this.packageSelected;
+      const pack = this.list.find((e) => e.id == packId);
+      return pack || {};
+    },
   },
   methods: {
+    paymentBanking() {
+      this.loadingPaymentBanking = true;
+      paymentBanking({
+        id: this.packageSelected,
+        content: this.contentBanking,
+        lang: this.language,
+      })
+        .then((res) => {
+          this.loadingPaymentBanking = false;
+          this.$router.push({path: "/payment/inprogress"})
+        })
+        .catch(() => {
+          this.loadingPaymentBanking = true;
+        });
+    },
+    getListInternetBanking() {
+      getList().then((res) => {
+        this.listInternetBanking = res.data;
+      });
+    },
     getListDiscount() {
       getListStrategies().then((response) => {
         const today = new Date().toLocaleDateString();
@@ -610,7 +688,7 @@ export default {
       });
     },
     initPaypal(packageSelected, price_paypal) {
-      if (this.language != "en") return;
+      if (this.paymentMethod != "creditCard") return;
       window.paypal
         .Buttons({
           style: {
@@ -633,7 +711,7 @@ export default {
           async onApprove(data, actions) {
             createOrderPaypal({ id: packageSelected }).then((res) => {
               window.location.href =
-                window.location.origin + "/#/payment/complete";
+                window.location.origin + "/payment/complete";
             });
           },
           async onCancel(data) {
@@ -697,11 +775,9 @@ export default {
     choosePackPayment(packPayment) {
       this.packageSelected = packPayment.id;
     },
-  },
-  watch: {
-    packageSelected(id) {
+    resetPaypal(id) {
       this.isDisplayPaypal = false;
-      if (this.language == "en") {
+      if (this.paymentMethod == "creditCard") {
         setTimeout(() => {
           this.isDisplayPaypal = true;
         }, 100);
@@ -713,6 +789,15 @@ export default {
           this.initPaypal(this.packageSelected, price_paypal);
         }, 300);
       }
+    },
+  },
+  watch: {
+    packageSelected(id) {
+      this.resetPaypal(id);
+    },
+
+    paymentMethod() {
+      this.resetPaypal(this.packageSelected);
     },
   },
 };
@@ -738,6 +823,46 @@ export default {
       display: none;
     }
     margin-right: 10px;
+  }
+  .infomation-banking {
+    width: 90%;
+    border-collapse: collapse;
+    margin: 0px auto;
+    margin-top: 20px;
+    td {
+      width: 50%;
+    }
+  }
+  .infomation-banking td,
+  .infomation-banking th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  .infomation-banking tr td:nth-child(1) {
+    text-align: right;
+    padding-right: 15px;
+    font-weight: 600;
+  }
+  .infomation-banking tr td:nth-child(2) {
+    text-align: left;
+    padding-left: 15px;
+  }
+
+  .infomation-banking tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  .infomation-banking tr:hover {
+    background-color: #ddd;
+  }
+
+  .infomation-banking th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04aa6d;
+    color: white;
   }
 }
 </style>

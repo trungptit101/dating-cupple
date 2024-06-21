@@ -101,7 +101,7 @@
     </el-dialog>
     <el-dialog
       :close-on-click-modal="false"
-      title="Settings Profile"
+      :title="$t('Settings Profile')"
       :visible.sync="isDisplaySettingsProfile"
       top="5vh"
     >

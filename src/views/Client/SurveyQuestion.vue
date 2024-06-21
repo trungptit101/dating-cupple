@@ -144,7 +144,10 @@ export default {
             type: "success",
             duration: 5 * 1000,
           });
-          this.$router.push({ path: "/payment/upgrade" });
+          this.$store.dispatch("user/getInfo", store.getters.user.id);
+          setTimeout(() => {
+            this.$router.push({ path: "/payment/upgrade" });
+          }, 200);
         });
         return;
       }

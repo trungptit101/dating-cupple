@@ -24,9 +24,40 @@ export function cancelOrderPaypal(data) {
   });
 }
 
+export function paymentBanking(data) {
+  return request({
+    url: "/order/payment-banking",
+    method: "post",
+    data,
+  });
+}
+
+export function finishOrder(data) {
+  return request({
+    url: "/order/finish",
+    method: "post",
+    data,
+  });
+}
+
 export function detailOrder(params) {
   return request({
     url: "/order/detail",
+    method: "get",
+    params: params,
+  });
+}
+
+export function detailOrderBanking() {
+  return request({
+    url: "/order/banking-detail",
+    method: "get",
+  });
+}
+
+export function listRequestsBanking(params) {
+  return request({
+    url: "/order/requests-banking",
     method: "get",
     params: params,
   });

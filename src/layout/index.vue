@@ -51,8 +51,7 @@ export default {
     },
   },
   created() {
-    if (!this.user.is_complete_survey && this.user.role == UserRole.Candidate)
-      this.$router.push({ path: "/" });
+    if (this.user.role == UserRole.Candidate) this.$router.push({ path: "/" });
   },
   methods: {
     handleClickOutside() {

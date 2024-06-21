@@ -295,6 +295,7 @@ export default {
         otp: "",
         password: "",
       },
+      redirect: undefined,
       isDisplayFormContactUs: false,
       rules: {
         email: [
@@ -346,7 +347,17 @@ export default {
       },
     };
   },
-  watch: {},
+  watch: {
+    $route: {
+      handler: function (route) {
+        const query = route.query;
+        if (query) {
+          this.redirect = query.redirect;
+        }
+      },
+      immediate: true,
+    },
+  },
   methods: {
     closeContact() {
       this.isDisplayFormContactUs = false;

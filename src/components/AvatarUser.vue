@@ -10,6 +10,12 @@
       >
         <el-dropdown-item>{{ $t("Survey Question") }}</el-dropdown-item>
       </router-link>
+      <router-link
+        to="/payment/upgrade"
+        v-if="user.role == UserRole.Candidate && user.is_complete_survey"
+      >
+        <el-dropdown-item>{{ $t("Process Dating") }}</el-dropdown-item>
+      </router-link>
       <router-link to="/analysic" v-if="user.role == UserRole.Admin">
         <el-dropdown-item>{{ $t("Manager") }}</el-dropdown-item>
       </router-link>
