@@ -3,7 +3,9 @@
     <TopBanner :otherHome="true" />
     <div class="content">
       <h1 class="text-center">{{ $t("Privacy Statement") }}</h1>
-      <p style="font-size: 20px"><strong>{{ $t("Introduction") }}</strong></p>
+      <p style="font-size: 20px; line-height: 40px">
+        <strong>{{ $t("Introduction") }}</strong>
+      </p>
       <p>
         {{ $t("Welcome to Visicupid.com") }}.
         <span>
@@ -248,13 +250,13 @@ export default {
   data() {
     return {};
   },
-  methods: {
-  },
+  methods: {},
 };
 </script>
 <style lang="scss" scoped>
 .about-us {
   .content {
+    text-align: justify;
     padding: 2vh 5vw;
     line-height: 25px;
     font-size: 18px;

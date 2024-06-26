@@ -3,7 +3,9 @@
     <TopBanner :otherHome="true" />
     <div class="content">
       <h1 class="text-center">
-        <span style="color: rgb(47, 84, 150)">{{ $t("Refund Policy") }}</span>
+        <span style="color: rgb(47, 84, 150); line-height: 40px">{{
+          $t("Refund Policy")
+        }}</span>
       </h1>
       <p>
         {{
@@ -325,13 +327,13 @@ export default {
   data() {
     return {};
   },
-  methods: {
-  },
+  methods: {},
 };
 </script>
 <style lang="scss" scoped>
 .refund-policy {
   .content {
+    text-align: justify;
     padding: 2vh 5vw;
     line-height: 25px;
     font-size: 18px;

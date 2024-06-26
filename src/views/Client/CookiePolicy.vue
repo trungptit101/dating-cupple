@@ -6,7 +6,9 @@
         {{ $t("Cookie Policy") }}
       </h1>
       <h2>
-        <span style="color: #4472c4">{{ $t("Introduction") }}</span>
+        <span style="color: #4472c4; line-height: 40px">{{
+          $t("Introduction")
+        }}</span>
       </h2>
       <p>
         {{
@@ -131,13 +133,13 @@ export default {
   data() {
     return {};
   },
-  methods: {
-  },
+  methods: {},
 };
 </script>
 <style lang="scss" scoped>
 .cookie-policy {
   .content {
+    text-align: justify;
     padding: 2vh 5vw;
     line-height: 25px;
     font-size: 18px;

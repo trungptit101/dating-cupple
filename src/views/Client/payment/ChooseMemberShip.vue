@@ -711,8 +711,11 @@ export default {
           async onApprove(data, actions) {
             createOrderPaypal({ id: packageSelected }).then((res) => {
               window.location.href =
-                window.location.origin + "/payment/complete";
+                window.location.origin + "/#/payment/complete";
             });
+          },
+          async onError(err) {
+            console.log(err);
           },
           async onCancel(data) {
             console.log("cancel", data);

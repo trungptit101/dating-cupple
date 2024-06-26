@@ -153,6 +153,7 @@ export default {
   .content {
     padding: 2vh 5vw;
     line-height: 25px;
+    text-align: justify;
     ol li {
       font-size: 18px;
       padding: 5px 0;

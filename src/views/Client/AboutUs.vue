@@ -11,27 +11,37 @@
         }}
       </div>
       <div style="font-size: 18px">
-        <div class="title" style="color: #4472c4">{{ $t("Our Values") }}</div>
+        <div class="title" style="color: #4472c4; line-height: 40px">
+          {{ $t("Our Values") }}
+        </div>
         <div style="padding: 5px 0">
-          <span style="font-weight: bold; color: #4472c4">{{ $t("Integrity") }}: </span>
+          <span style="font-weight: bold; color: #4472c4"
+            >{{ $t("Integrity") }}:
+          </span>
           <span>{{
             $t("We conduct our services with honesty and transparency.")
           }}</span>
         </div>
         <div style="padding: 5px 0">
-          <span style="font-weight: bold; color: #4472c4">{{ $t("Respect") }}: </span>
+          <span style="font-weight: bold; color: #4472c4"
+            >{{ $t("Respect") }}:
+          </span>
           <span>{{
             $t("We honest and respect the individuality of every client.")
           }}</span>
         </div>
         <div style="padding: 5px 0">
-          <span style="font-weight: bold; color: #4472c4">{{ $t("Commitment") }}: </span>
+          <span style="font-weight: bold; color: #4472c4"
+            >{{ $t("Commitment") }}:
+          </span>
           <span>{{
             $t("We are dedicated to helping you find a lasting relationship.")
           }}</span>
         </div>
         <div style="padding: 5px 0">
-          <span style="font-weight: bold; color: #4472c4">{{ $t("Empathy") }}: </span>
+          <span style="font-weight: bold; color: #4472c4"
+            >{{ $t("Empathy") }}:
+          </span>
           <span>{{
             $t(
               "We understand the emotional journey of finding love and offer compassionate support."
@@ -159,6 +169,7 @@ export default {
 <style lang="scss" scoped>
 .about-us {
   .content {
+    text-align: justify;
     line-height: 25px;
     padding: 5vh;
     .title {

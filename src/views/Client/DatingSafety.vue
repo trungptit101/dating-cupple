@@ -3,7 +3,9 @@
     <TopBanner :otherHome="true" />
     <div class="content">
       <h1 class="text-center">
-        <span style="color: #4472c4">{{ $t("Dating Safety Tips") }}</span>
+        <span style="color: #4472c4; line-height: 40px">{{
+          $t("Dating Safety Tips")
+        }}</span>
       </h1>
       <p>
         {{
@@ -366,6 +368,7 @@ export default {
 <style lang="scss" scoped>
 .dating-safety {
   .content {
+    text-align: justify;
     padding: 2vh 5vw;
     line-height: 25px;
     font-size: 18px;

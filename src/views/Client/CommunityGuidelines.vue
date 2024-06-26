@@ -11,7 +11,9 @@
         }}
       </p>
       <p style="font-size: 20px">
-        <span style="color: #4472c4">{{ $t("Respect and Kindness") }}</span>
+        <span style="color: #4472c4; line-height: 40px">{{
+          $t("Respect and Kindness")
+        }}</span>
       </p>
       <ol>
         <li>
@@ -33,7 +35,9 @@
           }}
         </li>
       </ol>
-      <p style="color: #4472c4; font-size: 20px">{{ $t("Safety and Privacy") }}</p>
+      <p style="color: #4472c4; font-size: 20px">
+        {{ $t("Safety and Privacy") }}
+      </p>
       <ol>
         <li>
           <strong>{{ $t("Protect Personal Information") }}</strong
@@ -63,7 +67,9 @@
           }}
         </li>
       </ol>
-      <p style="color: #4472c4; font-size: 20px">{{ $t("Appropriate Content") }}</p>
+      <p style="color: #4472c4; font-size: 20px">
+        {{ $t("Appropriate Content") }}
+      </p>
       <ol>
         <li>
           <strong>{{ $t("Profile Photos and Information") }}</strong
@@ -84,7 +90,9 @@
           }}
         </li>
       </ol>
-      <p style="color: #4472c4; font-size: 20px">{{ $t("No Harassment or Discrimination") }}</p>
+      <p style="color: #4472c4; font-size: 20px">
+        {{ $t("No Harassment or Discrimination") }}
+      </p>
       <ol>
         <li>
           <strong>{{ $t("Harassment") }}</strong
@@ -105,7 +113,9 @@
           }}
         </li>
       </ol>
-      <p style="color: #4472c4; font-size: 20px">{{ $t("Authentic Connections") }}</p>
+      <p style="color: #4472c4; font-size: 20px">
+        {{ $t("Authentic Connections") }}
+      </p>
       <ol>
         <li>
           <strong>{{ $t("Genuine Intentions") }}</strong
@@ -149,7 +159,9 @@
           }}
         </li>
       </ol>
-      <p style="color: #4472c4; font-size: 20px">{{ $t("Conflict Resolution") }}</p>
+      <p style="color: #4472c4; font-size: 20px">
+        {{ $t("Conflict Resolution") }}
+      </p>
       <ol>
         <li>
           <strong>{{ $t("Address Conflicts Maturely") }}</strong
@@ -170,29 +182,59 @@
           }}
         </li>
       </ol>
-      <p style="color: #4472c4; font-size: 20px">{{ $t("Reporting and Support") }}</p>
+      <p style="color: #4472c4; font-size: 20px">
+        {{ $t("Reporting and Support") }}
+      </p>
       <ol>
         <li>
-          <strong>{{ $t("Report Violations") }}</strong>: {{ $t("If you witness or experience any violations of these guidelines, report them immediately using the reporting tools provided or by contacting our support team.") }}
+          <strong>{{ $t("Report Violations") }}</strong
+          >:
+          {{
+            $t(
+              "If you witness or experience any violations of these guidelines, report them immediately using the reporting tools provided or by contacting our support team."
+            )
+          }}
         </li>
         <li>
-          <strong>{{ $t("Support Each Other") }}</strong>: {{ $t("Be a supportive member of the community. Offer help and encouragement to others, and contribute positively to the community environment.") }}
+          <strong>{{ $t("Support Each Other") }}</strong
+          >:
+          {{
+            $t(
+              "Be a supportive member of the community. Offer help and encouragement to others, and contribute positively to the community environment."
+            )
+          }}
         </li>
       </ol>
-      <p style="color: #4472c4; font-size: 20px">{{ $t("Updates and Changes") }}</p>
+      <p style="color: #4472c4; font-size: 20px">
+        {{ $t("Updates and Changes") }}
+      </p>
       <ol>
         <li>
-          <strong>{{ $t("Stay Informed") }}</strong>: {{ $t("These guidelines may be updated periodically. Stay informed about any changes by regularly reviewing this page.") }}
+          <strong>{{ $t("Stay Informed") }}</strong
+          >:
+          {{
+            $t(
+              "These guidelines may be updated periodically. Stay informed about any changes by regularly reviewing this page."
+            )
+          }}
         </li>
         <li>
-          <strong>{{$t("Feedback Welcome")}}</strong>: {{$t("We value your feedback. If you have suggestions for improving these guidelines or the community experience, please contact us.")}}
+          <strong>{{ $t("Feedback Welcome") }}</strong
+          >:
+          {{
+            $t(
+              "We value your feedback. If you have suggestions for improving these guidelines or the community experience, please contact us."
+            )
+          }}
         </li>
       </ol>
       <p style="color: #4472c4; font-size: 20px">{{ $t("Conclusion") }}</p>
       <p style="font-size: 15px">
-        <i
-          >{{ $t("At Visicupid.com, we are committed to creating a safe, respectful, and enjoyable environment for everyone. By following these community guidelines, you help us achieve this goal. Thank you for being a valuable member of our community.") }}</i
-        >
+        <i>{{
+          $t(
+            "At Visicupid.com, we are committed to creating a safe, respectful, and enjoyable environment for everyone. By following these community guidelines, you help us achieve this goal. Thank you for being a valuable member of our community."
+          )
+        }}</i>
       </p>
     </div>
     <Footer />
@@ -207,13 +249,13 @@ export default {
   data() {
     return {};
   },
-  methods: {
-  },
+  methods: {},
 };
 </script>
 <style lang="scss" scoped>
 .community-guildelines {
   .content {
+    text-align: justify;
     padding: 2vh 5vw;
     line-height: 25px;
     font-size: 18px;

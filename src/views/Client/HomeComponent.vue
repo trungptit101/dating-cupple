@@ -110,7 +110,7 @@
     </div>
     <div class="footer py3 px4">
       <el-row>
-        <el-col :xs="12" :sm="6" :md="6">
+        <el-col :xs="16" :sm="6" :md="6">
           <div class="h3 mt2 mb1 color-dark-grey">Jenny Official</div>
           <a class="block flex items-center"
             ><i
@@ -121,7 +121,8 @@
             ><i class="el-icon-document icon-information" />53484643B</a
           >
           <a class="block flex items-center"
-            ><i class="el-icon-phone-outline icon-information" />(65) 98881336</a
+            ><i class="el-icon-phone-outline icon-information" />(65)
+            98881336</a
           >
           <a class="block flex items-center"
             ><i
@@ -129,7 +130,7 @@
             />jenbusiness.sg@gmail.com</a
           >
         </el-col>
-        <el-col :xs="12" :sm="6" :md="6">
+        <el-col :xs="8" :sm="6" :md="6">
           <div class="h3 mt2 mb1 color-dark-grey">{{ $t("Information") }}</div>
           <a
             class="block"
@@ -149,7 +150,7 @@
           }}</a>
           <a class="block" rel="nofollow">{{ $t("Site Map") }}</a>
         </el-col>
-        <el-col :xs="12" :sm="6" :md="6">
+        <el-col :xs="16" :sm="6" :md="6">
           <div class="h3 mt2 mb1 color-dark-grey">{{ $t("Legal") }}</div>
           <a
             class="block"
@@ -180,13 +181,14 @@
             >{{ $t("Community Guidelines") }}</a
           >
         </el-col>
-        <el-col :xs="12" :sm="6" :md="6">
+        <el-col :xs="8" :sm="6" :md="6">
           <div class="h3 mt2 mb1 color-dark-grey">{{ $t("Follow Us") }}</div>
-          <div class="flex items-center" style="text-indent: 10px">
+          <div class="items-center" style="text-indent: 5px">
             <a
               class="inline-block"
               href="https://www.facebook.com/Vietsyncupid"
               target="_blank"
+              style="margin-left: -5px"
               ><img
                 src="@/assets/images/fb.png"
                 width="50"

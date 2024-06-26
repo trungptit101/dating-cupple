@@ -68,6 +68,12 @@ const actions = {
     });
   },
 
+  completeSurvey({ commit }) {
+    const user = state.user;
+    user.is_complete_survey = 1;
+    commit("SET_USER", user);
+  },
+
   register({ commit }, user) {
     return new Promise((resolve, reject) => {
       register(user)
