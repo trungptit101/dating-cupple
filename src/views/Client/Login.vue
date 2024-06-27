@@ -8,7 +8,7 @@
         <a href="/" class="flex items-center white text-decoration-none m2">
           <img
             src="@/assets/images/logo-text-white.png"
-            style="cursor: pointer; object-fit: contain; width: 90px"
+            style="cursor: pointer; object-fit: cover; width: 90px"
           />
         </a>
 

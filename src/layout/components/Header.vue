@@ -7,7 +7,7 @@
       >
         <img
           src="@/assets/images/logo-text.png"
-          style="cursor: pointer; object-fit: contain; height: 100%"
+          style="cursor: pointer; object-fit: cover; height: 100%"
           @click="$router.push({ path: '/' })"
         />
         <div class="nav-header py1 px2 flex items-center">

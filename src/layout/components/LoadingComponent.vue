@@ -10,7 +10,7 @@
           src="@/assets/images/logo-text-white.png"
           style="
             cursor: pointer;
-            object-fit: contain;
+            object-fit: cover;
             margin-left: 1rem;
             margin-top: 1rem;
             width: 70px;

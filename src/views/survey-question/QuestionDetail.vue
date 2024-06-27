@@ -105,7 +105,7 @@
             <div v-else style="cursor: pointer">
               <img
                 :src="option.image"
-                style="width: 100px; height: 80px; object-fit: contain"
+                style="width: 100px; height: 80px; object-fit: cover"
               />
             </div>
           </div>
@@ -171,7 +171,7 @@
           <div v-else style="cursor: pointer">
             <img
               :src="form.background"
-              style="width: 100%; object-fit: contain"
+              style="width: 100%; object-fit: cover"
             />
           </div>
         </div>

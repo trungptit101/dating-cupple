@@ -247,11 +247,17 @@
                   "By opting in, you receive a free 1-month trial agree that your profile (including photos, personal and payment data) will be copied to Dating.com (SOL Networks Limited) and you accept"
                 )
               }}
-              <a href="/term-of-use" target="_blank">{{ $t("Terms") }}</a>
+              <a
+                @click="$router.push({ path: '/term-of-use' })"
+                target="_blank"
+                >{{ $t("Terms") }}</a
+              >
               {{ $t("and") }}
-              <a href="/privacy-statement" target="_blank">{{
-                $t("Privacy Policy")
-              }}</a>
+              <a
+                @click="$router.push({ path: '/privacy-statement' })"
+                target="_blank"
+                >{{ $t("Privacy Policy") }}</a
+              >
               {{ $t("of") }} visicupid.com
             </div>
           </label>
@@ -660,7 +666,7 @@ export default {
       })
         .then((res) => {
           this.loadingPaymentBanking = false;
-          this.$router.push({path: "/payment/inprogress"})
+          this.$router.push({ path: "/payment/inprogress" });
         })
         .catch(() => {
           this.loadingPaymentBanking = true;
@@ -703,15 +709,18 @@ export default {
                 {
                   amount: {
                     value: price_paypal,
+                    currency_code: "USD",
                   },
                 },
               ],
             });
           },
           async onApprove(data, actions) {
-            createOrderPaypal({ id: packageSelected }).then((res) => {
-              window.location.href =
-                window.location.origin + "/#/payment/complete";
+            return actions.order.capture().then((orderData) => {
+              createOrderPaypal({ id: packageSelected }).then((res) => {
+                window.location.href =
+                  window.location.origin + "/#/payment/complete";
+              });
             });
           },
           async onError(err) {

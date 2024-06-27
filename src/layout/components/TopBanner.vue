@@ -8,7 +8,7 @@
         style="
           cursor: pointer;
           height: 90px;
-          object-fit: contain;
+          object-fit: cover;
           margin-left: 1rem;
         "
         @click="$router.push({ path: '/' })"
