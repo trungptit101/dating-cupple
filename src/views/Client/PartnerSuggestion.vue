@@ -71,7 +71,7 @@
       :title="$t('Detail Partner')"
     >
       <div class="detail-partner">
-        <el-row
+        <!-- <el-row
           :gutter="24"
           v-if="partnerSelected.image_dating"
           style="margin-bottom: 20px"
@@ -89,7 +89,7 @@
               </div>
             </el-carousel-item>
           </el-carousel>
-        </el-row>
+        </el-row> -->
         <el-row :gutter="24" class="row-info">
           <el-col :span="12" class="text-right">{{ $t("Name") }}</el-col>
           <el-col :span="12">{{ partnerSelected.name }}</el-col>

@@ -198,7 +198,7 @@
         show-password
       />
     </el-form-item>
-    <el-form-item :label="$t('Portrait')" prop="image_dating">
+    <!-- <el-form-item :label="$t('Portrait')" prop="image_dating">
       <input
         type="file"
         ref="picker"
@@ -250,7 +250,7 @@
           }})
         </div>
       </div>
-    </el-form-item>
+    </el-form-item> -->
     <el-form-item class="d-flex privacy-age" prop="privacy">
       <div class="flex">
         <el-checkbox
